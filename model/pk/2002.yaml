@@ -1,0 +1,5 @@
+model_type: nonmem
+tags:
+- BAYES
+notes:
+- Pediatric atorv example; sensitivity with Ka variance * 10

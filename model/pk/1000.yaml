@@ -1,0 +1,17 @@
+model_type: nonmem
+based_on:
+- '102'
+model_path: 1000.ctl
+tags:
+- two-compartment + absorption
+- ETA-CL
+- ETA-KA
+- ETA-V2
+- CLWT-allo
+- V2WT-allo
+- QWT-allo
+- V3WT-allo
+- proportional RUV
+- BAYES
+notes:
+- Low ESS for some parameters. Try METHOD=NUTS.
