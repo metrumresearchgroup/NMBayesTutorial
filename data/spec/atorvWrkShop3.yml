@@ -1,0 +1,42 @@
+SETUP__:
+  description: Example Atorv analysis data set
+  sponsor: example-project
+  projectnumber: exampatorv101F
+  use_internal_db: true
+  character_last: true
+  comment_col: "C"
+C:
+  short: comment character
+  values: {comment: C, "non-comment": "."}
+ID:
+TIME:
+  short: time after first dose
+  unit: hour
+AMT: !look
+  unit: uM
+DV:
+CMT:
+DOSE: 
+  short: nominal dose amount
+  values: [5,10,20]
+  make_factor: true
+EVID:
+MDV:
+ADDL:
+II:
+SS:
+FORM:
+  short: formulation
+  values: {tablet: 1, chewable: 2}
+WT: 
+  short: weight
+  unit: kg
+  dots: {covariate: TRUE, continuous: TRUE, timevarying: FALSE}
+PER:
+BLQ:
+  short: below limit of quantification
+  values: {above QL: 1, below Q: 0}
+NUM:
+
+
+
