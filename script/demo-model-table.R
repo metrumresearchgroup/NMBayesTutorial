@@ -20,18 +20,22 @@ setwd(here())
 runno <- '1000'
 
 params <- list(
-  run = runno, 
+  run = runno,
+  #number of chains that were run
   n_chain = 4,
   script = "demo-model-table.R",
+  #Directory for the model output
   modelDir = here::here("model/pk"),
+  #Output directory for the derived tables
   tables = here::here(glue("deliv/table/pk/{runno}")), 
+  #Analsis dataset
   data = "../data/derived/analysis3.csv"
 )
 
 if (!file.exists(params$tables)) dir.create(params$tables)
 
 
-# proj and data dir
+# proj and data dir set up
 projectDir <- here::here()
 dataDir <- file.path(projectDir, "data")
 sourceDataDir <- file.path(dataDir, "source")
@@ -48,7 +52,7 @@ source(here::here("script/functions-table.R"))
 
 # read outputs ------------------------------------------------------------
 
-# Read in parameter values from ext files 
+# Read in parameter values from ext files (posterior samples)
 ext0 <- map_dfr(seq_len(params$n_chain), function(.chain) {
   data.table::fread(
     file = file.path(params$modelDir, params$run, glue("{params$run}_{.chain}"),
@@ -65,6 +69,8 @@ ext <- ext0 %>%  filter(ITERATION > 0)
 ext_tbl <- ext %>% select(-ITERATION, -MCMCOBJ)
 n_param <- ncol(ext_tbl) - 1  # don't include chain
 n_iter <- nrow(ext) / params$n_chain
+
+#Generate param_array object from NONMEM output for use with Rstan functions
 param_array <- array(
   double(n_iter * params$n_chain * n_param),
   dim = c(n_iter, params$n_chain, n_param),
@@ -83,7 +89,7 @@ ext_mean <- ext %>% summarize_all(mean)
 ext_lo <- ext %>% summarize_all(quantile, prob = 0.025)
 ext_hi <- ext %>% summarize_all(quantile, prob = 0.975)
 
-# Read iph files 
+# Read iph files (individual posteriors samples for ETAs)
 fn_iph <- file.path(
   params$modelDir,
   params$run,
@@ -137,7 +143,7 @@ fix_diag <- tibble(
   diag = c(rep(NA, n_theta), block(size_omega), block(size_sigma))
 )
 
-# parameter table 
+# parameter table generation using rstan functions
 
 ptable <- rstan::monitor(param_array, warmup = 0, print = FALSE) %>% 
   as.matrix %>%
@@ -156,7 +162,7 @@ ptable %>%
   left_join(shk, by = "parameter") %>% 
   knitr::kable(caption = "Summary of Model Parameter Estimates.") 
 
-# parameter key
+# parameter key labels with Latex formatting
 param_key <- tribble(
   ~name, ~abbr, ~desc, ~trans, ~type,
   "THETA1",     "$\\text{KA}$ (1/hr)",          "First order absorption rate constant",       "exp",         "struct", 
@@ -174,7 +180,7 @@ param_key <- tribble(
 )
 
 
-# param_df 
+# param_df formatting for Latex aesthetics. 
 
 param_df <- param_key %>% 
   left_join(
@@ -248,7 +254,7 @@ run <- params$run
 
 # Create table ------------------------------------------------------------
 
-##  create table with structural parameters and RV
+##  create table with structural parameters and RV using pmtables package
 struct_pm <- param_df %>% 
   mutate(type = case_when(
     type == "struct" ~ glue("Structural model"),
@@ -276,10 +282,10 @@ struct_pm <- param_df %>%
     notes = c(footLog, footAbbrev, footDerive1, footDerive2, footDerive3, footDerive4)
   ) %>% as_lscape()
 
-# struct_pm %>% st2report()
-# struct_pm %>% stable_save()
+# struct_pm %>% st2report() #Check output
+# struct_pm %>% stable_save() #Save output
 
-# Table pdf
+# Table pdf rendering
 st2doc(
   struct_pm,
   output_dir = params$tables,

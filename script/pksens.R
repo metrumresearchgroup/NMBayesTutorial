@@ -24,7 +24,7 @@ params <- list(
   tables = here::here("deliv/table/"), 
   figures = here::here("deliv/figure/"),
   #spec = "../script/analysis.yml", 
-  data = here::here("data/derived/atorvWrkShop2.csv")
+  data = here::here("data/derived/atorvWrkShop3.csv")
 )
 
 if (!dir.exists(params$tables)) dir.create(params$tables)
@@ -222,13 +222,16 @@ loo_sens <-
 # if the max value equals the final model, retain the sign of elpd_diff, otherwise multiply it by -1
 orig_row <- loo_sens %>% 
   filter(sens_num == 1 & elpd_loo == loo_orig_elpd) %>% 
-  mutate(sens_num = 0)
+  mutate(sens_num = 0) %>%
+  mutate(elpd_diff = 0,
+         se_diff = 0)
 
 comp<- loo_sens %>%
   mutate(elpd_diff = ifelse(elpd_loo!=loo_orig_elpd,elpd_diff,elpd_diff*-1),
-         elpd_loo = ifelse(elpd_loo==loo_orig_elpd,NA_real_,elpd_loo)) %>%
+         elpd_loo = ifelse(elpd_loo==loo_orig_elpd,NA_real_,elpd_loo),
+         se_elpd_loo = ifelse(elpd_loo==loo_orig_elpd,NA_real_,se_elpd_loo),) %>%
   group_by(sens_num) %>%
-  fill(elpd_loo,.direction = c("updown")) %>%
+  fill(c(elpd_loo,se_elpd_loo),.direction = c("updown")) %>%
   ungroup() %>%
   filter(elpd_diff != 0) %>%
   bind_rows(orig_row) %>%
@@ -253,7 +256,7 @@ loo_all <- comp %>%
                                                "Decrease location 50%"
          )))
 
-## Output table
+## Output table for loo evaluation
 
 looTab = loo_all %>% 
   mutate(group = case_when(sens_num == 0 ~ "",

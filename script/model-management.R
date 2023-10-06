@@ -73,26 +73,48 @@ mod1000 <- new_model(file.path(MODEL_DIR, 1000)) %>%
     TAGS$proportional_ruv,
     TAGS$bayes
   ))
-
+#Model object to be used with bbr
 mod1000 <- read_model(file.path(MODEL_DIR, 1000))
 
+#Submitting the initial chain stub file to generate
+#starting values.
 submit_model(
   mod1000,
   .bbi_args = list(overwrite = TRUE),
   .mode = "local"
 )
 
+#Quick examination of the sampled values in 1000.chn
 read.table(file.path(MODEL_DIR, "1000/1000.chn"), header = TRUE) %>% 
   select(ITERATION:`OMEGA.3.3.`) %>% 
   pivot_longer(cols = -ITERATION) %>% 
   pivot_wider(names_from = "ITERATION")
 
+#This function take the chain stub file (1000.ctl) and writes out 
+#four additional control streams (appended with a numeral to denote 
+#the chain number) where each control stream pulls from 
+#the chain file (1000.chn) to use the values as starting points for 
+#the sampling. The four files are then submitted and their output is 
+#kept in the same directory.
 run_chains(MODEL_DIR, 1000, .bbi_args = list(
   overwrite = TRUE, parallel = TRUE, threads = 2),
   .mode = "local")
 
 
 ####Pediatrics Example####
+#Prior predictive simulation control stream
+mod2000pps <- new_model(file.path(MODEL_DIR, '2000pps')) %>%
+  add_tags(c(
+    TAGS$bayes
+  ))
+
+submit_model(
+  mod2000pps,
+  .bbi_args = list(overwrite = TRUE),
+  .mode = "local"
+)
+
+
 mod2000 <- new_model(file.path(MODEL_DIR, 2000)) %>%
   add_tags(c(
     TAGS$bayes

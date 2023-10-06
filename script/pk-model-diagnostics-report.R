@@ -36,6 +36,9 @@ modelDir <- here("model/pk")
 # files for each individual chain, for any final model run with BAYES/NUTS it is
 # recommended that these simulations are run using the full posterior using the
 # methods implemented in this code.
+
+#These two scripts contain helper functions that perform simulations and 
+#summarizations for the creation of NPDE diagnostics. 
 source(here("script/run-sims-npde.R"))
 
 source(here("script/functions-diagnostics-npde.R"))
@@ -61,12 +64,19 @@ modelName <- "1000"
 
 
 ### Run this code to regenerate the simulations
+
+#Refer to runs-sims-npde.R for additional details on the function arguments. 
 system.time({
   run_sims_npde(
+    #model object corresponding to the model you want to simulate with
     mod_bbr = read_model(file.path(modelDir, modelName, glue("{modelName}_1"))),
+    #Path to the corresponding mrgsolve model file
     mrgsolve_path = here(glue("model/mrgsolve/{modelName}.mod")),
+    #Path to write out the simulations
     out_path = file.path(modelDir, modelName, glue("diag-sims-{modelName}.rds")),
+    #Noting if the dv measurement is on the log scale
     log_dv = FALSE,
+    #Number of posterior samples to use in the simulations
     n_post = 2000
   )
 })
@@ -78,11 +88,13 @@ system.time({
     params = list(
       run = modelName,
       logDV = FALSE,
-      # Specify the path of the simulation output file
+      # Specify the path of the simulation output file (generated from run_sims_npde)
       sims_output_path = file.path(modelDir, modelName,
                                    glue("diag-sims-{modelName}.rds"))
     ),
+    #output directory for the derived diagnostic file
     output_dir = file.path(modelDir, modelName),
+    #name of derived diagnostic html
     output_file = glue("diagnostic-plots-{modelName}.html")
   )
 })
