@@ -16,6 +16,8 @@ For further information on using renv, please see: https://rstudio.github.io/ren
 
 Directory listing:
 
+For more details refer to the [UserGuide](script/UserGuide.pdf)
+
 ~~~
    
    /data = simulated data used in the example runs with associated specification documents
