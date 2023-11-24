@@ -1,0 +1,290 @@
+Fri Nov 24 17:41:42 EST 2023
+$PROBLEM From bbr: see 2003.yaml for details
+
+$INPUT C ID TIME AMT DV CMT DOSE EVID MDV ADDL II SS FORM WT PER BLQ NUM
+
+$DATA ../../../../data/derived/atorvWrkShop3.csv IGNORE=(C='C', BLQ.EQ.1)
+
+$SUBROUTINES ADVAN4 TRANS4
+
+$PK
+
+NWT = LOG(WT/70) ; normalized to 70 kg adult
+MU_1 = THETA(1) + NWT * 0.75 ; CL
+MU_2 = THETA(2) + NWT        ; V2
+MU_3 = THETA(3) + NWT * 0.75 ; Q
+MU_4 = THETA(4) + NWT        ; V3
+MU_5 = THETA(5)              ; ka
+
+CL = EXP(MU_1 + ETA(1)) ; atv cl 
+V2 = EXP(MU_2 + ETA(2))
+Q  = EXP(MU_3 + ETA(3))
+V3 = EXP(MU_4 + ETA(4))
+KA = EXP(MU_5 + ETA(5))
+
+S2 = V2/1000          ; DOSE IN mmol & CONC IN nM
+
+$THETA
+( 5.65)     ;  THETA(1) TOTAL CL ATV
+( 5.6 )      ;  THETA(2) V2
+( 4.29)     ;  THETA(3) Q
+( 7.07)     ;  THETA(4) V3
+( -1.33)    ;  THETA(5) KA
+
+$OMEGA BLOCK(2) ;INITIAL values of OMEGAs
+0.1  ; cl
+0.003 0.2  ; v2
+
+$OMEGA 0 FIX
+$OMEGA 0 FIX
+$OMEGA 0 FIX
+$OMEGA 0 FIX
+$OMEGA 0 FIX
+
+$SIGMA  ;Initial value of SIGMA
+0.1; prop
+
+$ERROR
+
+IPRED = F;
+Y = IPRED*(1+ERR(1)) ; ATV
+
+$PRIOR NWPRI
+
+$THETAP          ; Prior information of THETAS
+( 5.65  FIX)     ;  THETA(1) TOTAL CL ATV
+( 5.6  FIX)      ;  THETA(2) V2
+( 4.29  FIX)     ;  THETA(3) Q
+( 7.07  FIX)     ;  THETA(4) V3
+( -1.33  FIX)    ;  THETA(5) KA
+
+$THETAPV BLOCK(5)     ;  variances for priors on THETAS (var-cov)
+2 FIX ; CL weakly informative
+0.00 2  ; V2 weakly informative
+0.00 0.00 2  ; Q weakly informative
+0.00 0.00 0.00 .0156   ; V3 SE**2 informative
+0.00 0.00 0.00 0.00 0.684    ; KA SE**2 informative
+
+$OMEGAP BLOCK(2)   ; prior information for OMEGA
+.1003   FIXED         ; cl
+.06034    .8477       ; v2
+
+$OMEGAPD (4.0, FIXED)     ; df for OMEGA prior
+
+$SIGMAP
+0.1 FIX           ; 1 prop error
+
+$SIGMAPD (1 FIX)
+
+$EST METHOD=CHAIN FILE=../init.chn NSAMPLE=4 ISAMPLE=0 SEED=1
+  CTYPE=0 IACCEPT=0.25 DF=10 DFS=0
+
+
+NM-TRAN MESSAGES
+  
+ WARNINGS AND ERRORS (IF ANY) FOR PROBLEM    1
+             
+ (WARNING  2) NM-TRAN INFERS THAT THE DATA ARE POPULATION.
+
+ (MU_WARNING 26) DATA ITEM(S) USED IN DEFINITION OF MU_(S) SHOULD BE CONSTANT FOR INDIV. REC.:
+  WT
+
+ LIM VALUES MAXLIM ASSESSED BY NMTRAN: 1,2,3,4,5,6,7,8,10,11,13,15,16        
+  
+Note: Analytical 2nd Derivatives are constructed in FSUBS but are never used.
+      You may insert $ABBR DERIV2=NO after the first $PROB to save FSUBS construction and compilation time
+  
+
+License Registered to: Metrum Research Group
+Expiration Date:    14 JUL 2024
+Current Date:       24 NOV 2023
+Days until program expires : 235
+1NONLINEAR MIXED EFFECTS MODEL PROGRAM (NONMEM) VERSION 7.5.1
+ ORIGINALLY DEVELOPED BY STUART BEAL, LEWIS SHEINER, AND ALISON BOECKMANN
+ CURRENT DEVELOPERS ARE ROBERT BAUER, ICON DEVELOPMENT SOLUTIONS,
+ AND ALISON BOECKMANN. IMPLEMENTATION, EFFICIENCY, AND STANDARDIZATION
+ PERFORMED BY NOUS INFOSYSTEMS.
+
+ PROBLEM NO.:         1
+ From bbr: see 2003.yaml for details
+0DATA CHECKOUT RUN:              NO
+ DATA SET LOCATED ON UNIT NO.:    2
+ THIS UNIT TO BE REWOUND:        NO
+ NO. OF DATA RECS IN DATA SET:      904
+ NO. OF DATA ITEMS IN DATA SET:  17
+ ID DATA ITEM IS DATA ITEM NO.:   2
+ DEP VARIABLE IS DATA ITEM NO.:   5
+ MDV DATA ITEM IS DATA ITEM NO.:  9
+0INDICES PASSED TO SUBROUTINE PRED:
+   8   3   4   0  12  11   6   0   0   0  10
+0LABELS FOR DATA ITEMS:
+ C ID TIME AMT DV CMT DOSE EVID MDV ADDL II SS FORM WT PER BLQ NUM
+0FORMAT FOR DATA:
+ (5(3E20.0/),2E20.0)
+
+ TOT. NO. OF OBS RECS:      310
+ TOT. NO. OF INDIVIDUALS:       39
+0LENGTH OF THETA:  12
+0DEFAULT THETA BOUNDARY TEST OMITTED:    NO
+0OMEGA HAS BLOCK FORM:
+  1
+  1  1
+  0  0  2
+  0  0  0  3
+  0  0  0  0  4
+  0  0  0  0  0  5
+  0  0  0  0  0  0  6
+  0  0  0  0  0  0  0  7
+  0  0  0  0  0  0  0  7  7
+  0  0  0  0  0  0  0  7  7  7
+  0  0  0  0  0  0  0  7  7  7  7
+  0  0  0  0  0  0  0  7  7  7  7  7
+  0  0  0  0  0  0  0  0  0  0  0  0  8
+  0  0  0  0  0  0  0  0  0  0  0  0  8  8
+0DEFAULT OMEGA BOUNDARY TEST OMITTED:    NO
+0SIGMA HAS BLOCK FORM:
+  1
+  0  2
+0DEFAULT SIGMA BOUNDARY TEST OMITTED:    NO
+0INITIAL ESTIMATE OF THETA:
+ LOWER BOUND    INITIAL EST    UPPER BOUND
+ -0.1000E+07     0.5650E+01     0.1000E+07
+ -0.1000E+07     0.5600E+01     0.1000E+07
+ -0.1000E+07     0.4290E+01     0.1000E+07
+ -0.1000E+07     0.7070E+01     0.1000E+07
+ -0.1000E+07    -0.1330E+01     0.1000E+07
+  0.5650E+01     0.5650E+01     0.5650E+01
+  0.5600E+01     0.5600E+01     0.5600E+01
+  0.4290E+01     0.4290E+01     0.4290E+01
+  0.7070E+01     0.7070E+01     0.7070E+01
+ -0.1330E+01    -0.1330E+01    -0.1330E+01
+  0.4000E+01     0.4000E+01     0.4000E+01
+  0.1000E+01     0.1000E+01     0.1000E+01
+0INITIAL ESTIMATE OF OMEGA:
+ BLOCK SET NO.   BLOCK                                                                    FIXED
+        1                                                                                   NO
+                  0.1000E+00
+                  0.3000E-02   0.2000E+00
+        2                                                                                  YES
+                  0.0000E+00
+        3                                                                                  YES
+                  0.0000E+00
+        4                                                                                  YES
+                  0.0000E+00
+        5                                                                                  YES
+                  0.0000E+00
+        6                                                                                  YES
+                  0.0000E+00
+        7                                                                                  YES
+                  0.2000E+01
+                  0.0000E+00   0.2000E+01
+                  0.0000E+00   0.0000E+00   0.2000E+01
+                  0.0000E+00   0.0000E+00   0.0000E+00   0.1560E-01
+                  0.0000E+00   0.0000E+00   0.0000E+00   0.0000E+00   0.6840E+00
+        8                                                                                  YES
+                  0.1003E+00
+                  0.6034E-01   0.8477E+00
+0INITIAL ESTIMATE OF SIGMA:
+ BLOCK SET NO.   BLOCK                                                                    FIXED
+        1                                                                                   NO
+                  0.1000E+00
+        2                                                                                  YES
+                  0.1000E+00
+0
+ PRIOR SUBROUTINE USER-SUPPLIED
+1DOUBLE PRECISION PREDPP VERSION 7.5.1
+
+ TWO COMPARTMENT MODEL WITH FIRST-ORDER ABSORPTION (ADVAN4)
+0MAXIMUM NO. OF BASIC PK PARAMETERS:   5
+0BASIC PK PARAMETERS (AFTER TRANSLATION):
+   BASIC PK PARAMETER NO.  1: ELIMINATION RATE (K)
+   BASIC PK PARAMETER NO.  2: CENTRAL-TO-PERIPH. RATE (K23)
+   BASIC PK PARAMETER NO.  3: PERIPH.-TO-CENTRAL RATE (K32)
+   BASIC PK PARAMETER NO.  5: ABSORPTION RATE (KA)
+ TRANSLATOR WILL CONVERT PARAMETERS
+ CL, V2, Q, V3 TO K, K23, K32 (TRANS4)
+0COMPARTMENT ATTRIBUTES
+ COMPT. NO.   FUNCTION   INITIAL    ON/OFF      DOSE      DEFAULT    DEFAULT
+                         STATUS     ALLOWED    ALLOWED    FOR DOSE   FOR OBS.
+    1         DEPOT        OFF        YES        YES        YES        NO
+    2         CENTRAL      ON         NO         YES        NO         YES
+    3         PERIPH.      ON         NO         YES        NO         NO
+    4         OUTPUT       OFF        YES        NO         NO         NO
+1
+ ADDITIONAL PK PARAMETERS - ASSIGNMENT OF ROWS IN GG
+ COMPT. NO.                             INDICES
+              SCALE      BIOAVAIL.   ZERO-ORDER  ZERO-ORDER  ABSORB
+                         FRACTION    RATE        DURATION    LAG
+    1            *           *           *           *           *
+    2            6           *           *           *           *
+    3            *           *           *           *           *
+    4            *           -           -           -           -
+             - PARAMETER IS NOT ALLOWED FOR THIS MODEL
+             * PARAMETER IS NOT SUPPLIED BY PK SUBROUTINE;
+               WILL DEFAULT TO ONE IF APPLICABLE
+0DATA ITEM INDICES USED BY PRED ARE:
+   EVENT ID DATA ITEM IS DATA ITEM NO.:      8
+   TIME DATA ITEM IS DATA ITEM NO.:          3
+   DOSE AMOUNT DATA ITEM IS DATA ITEM NO.:   4
+   STEADY STATE DATA ITEM IS DATA ITEM NO.: 12
+   INTERVAL DATA ITEM IS DATA ITEM NO.:     11
+   ADDL. DOSES DATA ITEM IS DATA ITEM NO.:  10
+   COMPT. NO. DATA ITEM IS DATA ITEM NO.:    6
+
+0PK SUBROUTINE CALLED WITH EVERY EVENT RECORD.
+ PK SUBROUTINE NOT CALLED AT NONEVENT (ADDITIONAL OR LAGGED) DOSE TIMES.
+0ERROR SUBROUTINE CALLED WITH EVERY EVENT RECORD.
+1
+
+
+ #TBLN:      1
+ #METH: Chain Method Processing
+
+ RANDOM GENERATION TYPE (CTYPE):     0
+ RANDOM GENERATION SEED (SEED):      1
+ RANDOM SAMPLE SELECTION (ISAMPLE):  0
+ RANDOM SAMPLE RANGE END (ISAMPEND): -2147483647
+ NUMBER OF RANDOM SAMPLES (NSAMPLE): 4
+ UNIFORM FRACTIONAL RANGE (IACCEPT): 0.250000000000000
+ RANDOM SELECTION TYPE (SELECT):     0
+ DEG. FR. TO GENERATE OMEGAS (DF):   10
+ DEG. FR. TO GENERATE SIGMAS (DFS):  0
+ CHAIN FILE (FILE):                  ../init.chn
+ EXCL. TITLE IN CHAIN FILE (NOTITLE):NO
+ EX. COL. LBS. IN CHAIN FL.(NOLABEL):NO
+ FORMAT FOR CHAIN FILE (FORMAT):     S1PE12.5
+ PAR. ORDER in CHAIN FILE (ORDER):   TSOL
+ RANDOM SAMPLING METHOD (RANMETHOD):3U
+
+ THE FOLLOWING LABELS ARE EQUIVALENT
+ PRED=NPRED
+ RES=NRES
+ WRES=NWRES
+ IWRS=NIWRES
+ IPRD=NIPRED
+ IRS=NIRES
+
+
+
+ FROM SAMPLE 0 OF CHAIN FILE ../init.chn
+ NEW INITIAL ESTIMATES OF THETA
+  0.5650E+01
+  0.5600E+01
+  0.4290E+01
+  0.7070E+01
+ -0.1330E+01
+ NEW INITIAL ESTIMATES OF OMEGA
+  0.1000E+00
+  0.3000E-02  0.2000E+00
+  0.0000E+00  0.0000E+00  0.0000E+00
+  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+ NEW INITIAL ESTIMATES OF SIGMA
+  0.1000E+00
+ Elapsed postprocess time in seconds:     0.00
+ Elapsed finaloutput time in seconds:     0.00
+ #CPUT: Total CPU Time in Seconds,        0.205
+Stop Time:
+Fri Nov 24 17:41:48 EST 2023

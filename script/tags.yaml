@@ -38,5 +38,6 @@ combined_ruv: "combined RUV"
 
 
 # estimation method
+foce: "FOCE"
 bayes: "BAYES"
 nuts: "NUTS"

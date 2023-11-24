@@ -1,0 +1,12 @@
+model_type: nonmem
+tags:
+- one-compartment + absorption
+- ETA-CL
+- ETA-KA
+- ETA-V
+- CLWT-allo
+- V2WT-allo
+- QWT-allo
+- V3WT-allo
+- proportional RUV
+- FOCE

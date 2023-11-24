@@ -1,0 +1,9 @@
+time="2023-11-24T17:45:08-05:00" level=info msg="Successfully loaded default configuration from /data/NMBayesTutorial/model/pk/2002/2002-1/bbi.yaml"
+time="2023-11-24T17:45:08-05:00" level=info msg="Beginning Local Path"
+time="2023-11-24T17:45:08-05:00" level=info msg="A total of 1 models have completed the initial preparation phase"
+time="2023-11-24T17:45:08-05:00" level=info msg="[2002-1] Beginning local work phase"
+time="2023-11-24T17:59:28-05:00" level=info msg="[2002-1] Beginning cleanup phase"
+time="2023-11-24T17:59:29-05:00" level=info msg="[2002-1] Cleanup completed"
+time="2023-11-24T17:59:29-05:00" level=info msg="Waiting for any post execution hooks to finish"
+time="2023-11-24T17:59:29-05:00" level=info msg="\r1 models completed in 14m20.650743965s"
+

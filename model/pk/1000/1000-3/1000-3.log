@@ -1,0 +1,78 @@
+PARAFILE=1000-3.pnm, PROTOCOL=MPI, NODES= 2
+TABLE NO.     1: MCMC Bayesian Analysis: Goal Function=AVERAGE VALUE OF LIKELIHOOD FUNCTION: Problem=1 Subproblem=0 Superproblem1=0 Iteration1=0 Superproblem2=0 Iteration2=0
+ ITERATION        -1000
+ STARTING SUBJECTS          1 TO       80 ON MANAGER: OK
+ STARTING SUBJECTS         81 TO      160 ON WORKER1: OK
+ COLLECTING SUBJECTS        1 TO       80 ON MANAGER
+ COLLECTING SUBJECTS       81 TO      160 ON WORKER1
+ Tot. mngr. proc.   Time for this  Iteration  (DDD:HH:MM:SS.DD) 000:00:00:00.01
+ Total Load         Time for this  Iteration  (DDD:HH:MM:SS.DD) 000:00:00:00.00
+ Total Computation  Time for this  Iteration  (DDD:HH:MM:SS.DD) 000:00:00:00.10
+ Accum. mngr. proc. Time among all Iterations (DDD:HH:MM:SS.DD) 000:00:00:15.14
+ Accumulated Load   Time among all Iterations (DDD:HH:MM:SS.DD) 000:00:00:02.04
+ Accumulated Comp.  Time among all Iterations (DDD:HH:MM:SS.DD) 000:00:01:43.54
+ Accumulated CPU    Time of present job       (DDD:HH:MM:SS.DD) 000:00:01:33.68
+
+ ITERATION           -1
+ STARTING SUBJECTS          1 TO       78 ON MANAGER: OK
+ STARTING SUBJECTS         79 TO      160 ON WORKER1: OK
+ COLLECTING SUBJECTS        1 TO       78 ON MANAGER
+ COLLECTING SUBJECTS       79 TO      160 ON WORKER1
+ Tot. mngr. proc.   Time for this  Iteration  (DDD:HH:MM:SS.DD) 000:00:00:00.01
+ Total Load         Time for this  Iteration  (DDD:HH:MM:SS.DD) 000:00:00:00.00
+ Total Computation  Time for this  Iteration  (DDD:HH:MM:SS.DD) 000:00:00:00.10
+ Accum. mngr. proc. Time among all Iterations (DDD:HH:MM:SS.DD) 000:00:00:15.15
+ Accumulated Load   Time among all Iterations (DDD:HH:MM:SS.DD) 000:00:00:02.04
+ Accumulated Comp.  Time among all Iterations (DDD:HH:MM:SS.DD) 000:00:01:43.64
+ Accumulated CPU    Time of present job       (DDD:HH:MM:SS.DD) 000:00:01:33.68
+
+ ITERATION            0
+ STARTING SUBJECTS          1 TO       78 ON MANAGER: OK
+ STARTING SUBJECTS         79 TO      160 ON WORKER1: OK
+ COLLECTING SUBJECTS        1 TO       78 ON MANAGER
+ COLLECTING SUBJECTS       79 TO      160 ON WORKER1
+ Tot. mngr. proc.   Time for this  Iteration  (DDD:HH:MM:SS.DD) 000:00:00:00.02
+ Total Load         Time for this  Iteration  (DDD:HH:MM:SS.DD) 000:00:00:00.00
+ Total Computation  Time for this  Iteration  (DDD:HH:MM:SS.DD) 000:00:00:00.10
+ Accum. mngr. proc. Time among all Iterations (DDD:HH:MM:SS.DD) 000:00:02:47.41
+ Accumulated Load   Time among all Iterations (DDD:HH:MM:SS.DD) 000:00:00:20.43
+ Accumulated Comp.  Time among all Iterations (DDD:HH:MM:SS.DD) 000:00:19:03.01
+ Accumulated CPU    Time of present job       (DDD:HH:MM:SS.DD) 000:00:21:56.34
+
+ ITERATION        10000
+ STARTING SUBJECTS          1 TO       77 ON MANAGER: OK
+ STARTING SUBJECTS         78 TO      160 ON WORKER1: OK
+ COLLECTING SUBJECTS        1 TO       77 ON MANAGER
+ COLLECTING SUBJECTS       78 TO      160 ON WORKER1
+ ITERATION        10000
+ STARTING SUBJECTS          1 TO       77 ON MANAGER: OK
+ STARTING SUBJECTS         78 TO      160 ON WORKER1: OK
+ COLLECTING SUBJECTS        1 TO       77 ON MANAGER
+ COLLECTING SUBJECTS       78 TO      160 ON WORKER1
+PARAFILE=1000-3.pnm, PROTOCOL=MPI, NODES= 2
+FNLETA STEP : Problem=1 Subproblem=0 Superproblem1=0 Iteration1=0 Superproblem2=0 Iteration2=0
+ ITERATION            0
+ STARTING SUBJECTS          1 TO       80 ON MANAGER: OK
+ STARTING SUBJECTS         81 TO      160 ON WORKER1: OK
+ COLLECTING SUBJECTS        1 TO       80 ON MANAGER
+ COLLECTING SUBJECTS       81 TO      160 ON WORKER1
+PARAFILE=1000-3.pnm, PROTOCOL=MPI, NODES= 2
+WRES STEP : Problem=1 Subproblem=0 Superproblem1=0 Iteration1=0 Superproblem2=0 Iteration2=0
+ ITERATION            0
+ STARTING SUBJECTS          1 TO       80 ON MANAGER: OK
+ STARTING SUBJECTS         81 TO      160 ON WORKER1: OK
+ COLLECTING SUBJECTS        1 TO       80 ON MANAGER
+ COLLECTING SUBJECTS       81 TO      160 ON WORKER1
+ Tot. mngr. proc.   Time for this  Iteration  (DDD:HH:MM:SS.DD) 000:00:00:00.01
+ Total Load         Time for this  Iteration  (DDD:HH:MM:SS.DD) 000:00:00:00.01
+ Total Computation  Time for this  Iteration  (DDD:HH:MM:SS.DD) 000:00:00:00.02
+ Accum. mngr. proc. Time among all Iterations (DDD:HH:MM:SS.DD) 000:00:00:00.01
+ Accumulated Load   Time among all Iterations (DDD:HH:MM:SS.DD) 000:00:00:00.01
+ Accumulated Comp.  Time among all Iterations (DDD:HH:MM:SS.DD) 000:00:00:00.02
+ Accumulated CPU    Time of present job       (DDD:HH:MM:SS.DD) 000:00:21:56.34
+
+ ITERATION            1
+ STARTING SUBJECTS          1 TO       58 ON MANAGER: OK
+ STARTING SUBJECTS         59 TO      160 ON WORKER1: OK
+ COLLECTING SUBJECTS        1 TO       58 ON MANAGER
+ COLLECTING SUBJECTS       59 TO      160 ON WORKER1

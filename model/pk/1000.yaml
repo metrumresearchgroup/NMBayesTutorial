@@ -1,0 +1,14 @@
+model_type: nmbayes
+tags:
+- one-compartment + absorption
+- ETA-CL
+- ETA-KA
+- ETA-V
+- CLWT-allo
+- V2WT-allo
+- QWT-allo
+- V3WT-allo
+- proportional RUV
+- BAYES
+based_on:
+- 1000-FOCE
