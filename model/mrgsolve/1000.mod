@@ -12,7 +12,7 @@ ETA4 = 0
 ETA5 = 0
 
 [ nmext ]
-path = '../pk/1000/1000_1/1000_1.ext'
+path = '../pk/1000/1000-1/1000-1.ext'
 root = 'cppfile'
 
 [ main ]
