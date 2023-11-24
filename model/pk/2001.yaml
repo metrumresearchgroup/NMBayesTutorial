@@ -1,5 +1,0 @@
-model_type: nonmem
-tags:
-- BAYES
-notes:
-- Pediatric atorv example; sensitivity with fixed Ka
