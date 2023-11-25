@@ -93,27 +93,13 @@ saveRDS(
   file.path(model_dir, model_name, glue("diag-sims-{model_name}.rds"))
 )
 
-# system.time({
-#   run_sims_npde(
-#     #model object corresponding to the model you want to simulate with
-#     mod_bbr = read_model(file.path(model_dir, model_name, glue("{model_name}_1"))),
-#     #Path to the corresponding mrgsolve model file
-#     mrgsolve_path = here(glue("model/mrgsolve/{model_name}.mod")),
-#     #Path to write out the simulations
-#     out_path = file.path(model_dir, model_name, glue("diag-sims-{model_name}.rds")),
-#     #Noting if the dv measurement is on the log scale
-#     log_dv = FALSE,
-#     #Number of posterior samples to use in the simulations
-#     n_post = 2000
-#   )
-# })
-
 ### Run this code to regenerate the diagnostics
 system.time({
   rmarkdown::render(
     here("script/diagnostic-templates/template-bayes-report.Rmd"),
     params = list(
       run = model_name,
+      n_post = 2000,
       logDV = FALSE,
       # Specify the path of the simulation output file (generated from run_sims_npde)
       sims_output_path = file.path(model_dir, model_name,
@@ -138,15 +124,16 @@ model_name <- "2000"
 # function to generate the appropriate report diagnostics.
 
 ### Run this code to regenerate the simulations - only needed if model re-run
-system.time({
-  run_sims_npde(
-    mod_bbr = read_model(file.path(model_dir, model_name, glue("{model_name}_1"))),
-    mrgsolve_path = here(glue("model/mrgsolve/{model_name}.mod")),
-    out_path = file.path(model_dir, model_name, glue("diag-sims-{model_name}.rds")),
-    log_dv = FALSE,
-    n_post = 1500
-  )
+set.seed(201)
+mod_bbr <- read_model(file.path(model_dir, model_name))
+mod_ms <- mread(file.path(model_dir_sim, glue("{model_name}.mod")))
+progressr::with_progress({
+  sim <- nm_join_bayes(mod_bbr, mod_ms, n_post = 1500)
 })
+saveRDS(
+  sim,
+  file.path(model_dir, model_name, glue("diag-sims-{model_name}.rds"))
+)
 
 ### Run this code to regenerate the diagnostics
 system.time({
@@ -155,8 +142,10 @@ system.time({
     params = list(
       run = model_name,
       logDV = FALSE,
-      yspec = "atorvWrkShop3.yml",
+      yspec = here("data/spec/atorvWrkShop3.yml"),
       n_thin = 1,
+      n_thin2 = 1,
+      n_post = 1500,
       contCov = c('WT','NUM'),
       catCov = c("FORM","DOSE"),
       etas = c("ETA1//ETA-CL", "ETA2//ETA-V2/F"),

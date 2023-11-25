@@ -2,7 +2,7 @@ $GLOBAL
 #define cPRED (CENT/(V2)) * 1000 
   
 [ prob ]
-1000
+2000
   
 [ param ]
 FORM = 1
@@ -11,7 +11,7 @@ ETA1 = 0
 ETA2 = 0
 
 [ nmext ]
-path = '../pk/2000/2000_1/2000_1.ext'
+path = '../pk/2000/2000-1/2000-1.ext'
 root = 'cppfile'
 
 [ main ]

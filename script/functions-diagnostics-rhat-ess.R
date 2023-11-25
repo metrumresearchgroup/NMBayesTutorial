@@ -788,7 +788,7 @@ plot_change_ess <- function(fit, par, breaks = seq(0.1, 1, 0.05),
     if (!is.character(par)) {
       par <- dimnames(fit)[[3]][par]
     }
-    sims <- fit[, , par]
+    sims <- fit[, , par, drop = TRUE]
   }
   
   iter_breaks <- round(breaks * NROW(sims))
@@ -854,7 +854,7 @@ plot_quantile_ess <- function(fit, par, nalpha = 20, rank = TRUE) {
     if (!is.character(par)) {
       par <- dimnames(fit)[[3]][par]
     }
-    sims <- fit[, , par]
+    sims <- fit[, , par, drop = TRUE]
     params <- data.frame(value = as.vector(sims))
     params$divergent <- 0
     params$max_depth <- 0
