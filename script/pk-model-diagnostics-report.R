@@ -69,6 +69,19 @@ model_name <- "1000"
 
 # Refer to ?nm_join_bayes() for additional details on the function arguments. 
 
+# Decompress .iph files. This is only needed because the file sizes are too
+# large for GitHub.
+# No guarantees this will work on non-unix OSes
+for (i in 1:4) {
+  dir_i <- file.path(model_dir, glue("1000/1000-{i}"))
+  # zip file was split into multiple parts, so need to join together first
+  parts <- list.files(dir_i, glue("1000-{i}.iph.z*"), full.names = TRUE)
+  parts <- str_subset(parts, ".iph-all", negate = TRUE)
+  new_zip <- file.path(dir_i, glue("1000-{i}.iph-all.zip"))
+  system(paste("cat", paste(parts, collapse = " "), ">", new_zip))
+  system(paste("unzip", new_zip, "-d", dir_i))
+}
+
 set.seed(201)
 mod_bbr <- read_model(file.path(model_dir, model_name))
 mod_ms <- mread(file.path(model_dir_sim, glue("{model_name}.mod")))

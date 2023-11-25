@@ -2,6 +2,7 @@ library(bbr)
 library(bbr.bayes)
 library(tidyverse)
 library(here)
+library(glue)
 
 # define model dir and load tags
 MODEL_DIR <- here("model/pk")
@@ -107,6 +108,16 @@ submit_model(
   mod1000,
   .bbi_args = list(overwrite = TRUE, threads = 2)
 )
+
+# # Compress .iph files. This is only needed because the file sizes are too large
+# # for GitHub. Split into files of no more than 50 MB.
+# for (i in 1:4) {
+#   zip(
+#     file.path(MODEL_DIR, glue("1000/1000-{i}/1000-{i}.iph.zip")),
+#     file.path(MODEL_DIR, glue("1000/1000-{i}/1000-{i}.iph")),
+#     flags = "-s 50m -r6Xj"
+#   )
+# }
 
 ####Pediatrics Example####
 #Prior predictive simulation control stream
