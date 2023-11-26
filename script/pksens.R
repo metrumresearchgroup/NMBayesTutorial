@@ -6,18 +6,19 @@ library(yspec)
 library(mrggsave)
 library(glue)
 library(bbr)
+library(bbr.bayes)
 library(here)
 library(scales)
 library(loo)
 library(magrittr)
 library(pmtables)
 library(patchwork)
+library(posterior)
 
 runno <- '2000'
 
 params <- list(
   run = runno, 
-  n_chains = 4,
   sens_run = 5, # number of sensitivity analysis runs
   script = "pksens.R",
   modelDir = here::here("model/pk"),
@@ -40,35 +41,23 @@ options(mrg.script = params$script)
 
 
 # Helper functions --------------------------------------------------------
-source(here::here("script/functions-diagnostics.R"))
+# source(here::here("script/functions-diagnostics.R"))
 
 
 # Read and plot posterior estimates from sensitivity analyses -------------
 
-## Read ext files of the final model (parameter values)
-ext_orig <- map_dfr(seq_len(params$n_chain), function(.chain) {
-  data.table::fread(
-    file = file.path(params$modelDir, params$run, glue("{params$run}_{.chain}"),
-                     glue("{params$run}_{.chain}.ext"))
-  ) %>% 
-    as_tibble() %>% 
-    mutate(chain = .chain)
-}) %>%
+## Read posterior of the final model (parameter values)
+
+draws_orig <- read_fit_model(file.path(params$modelDir, params$run)) %>% 
+  as_draws_df() %>% 
   mutate(sens_num = 0)
 
-## Read ext files of the sensitivity analysis model
-ext0 <- map_dfr(seq_len(params$sens_run), function(.sens_run) {
-  
-  map_dfr(seq_len(params$n_chain), function(.chain) {
-    data.table::fread(
-      file = file.path(params$modelDir, glue(.sens_run + as.numeric(params$run)), 
-                       glue(.sens_run + as.numeric(params$run),"_{.chain}"),
-                       glue(.sens_run + as.numeric(params$run),"_{.chain}.ext"))
-    ) %>% 
-      as_tibble() %>% 
-      mutate(chain = .chain)
-  })  %>% 
-    
+## Read posterior of the sensitivity analysis models
+draws0 <- map_dfr(seq_len(params$sens_run), function(.sens_run) {
+  draws_orig <- read_fit_model(
+    file.path(params$modelDir, as.numeric(params$run) + .sens_run)
+  ) %>% 
+    as_draws_df() %>% 
     mutate(sens_num = .sens_run)
 })
 
@@ -78,9 +67,12 @@ ext0 <- map_dfr(seq_len(params$sens_run), function(.sens_run) {
 #One with KA prior mean increased 50% (2004)
 #One with KA prior mean decreased 50% (2005)
 ## remove burn-in iterations and add labels
-ext <- ext0 %>%  
-  bind_rows(ext_orig) %>%
-  filter(ITERATION > 0) %>%
+draws_all <- draws0 %>%  
+  bind_rows(draws_orig)
+
+draws <- draws_all %>% 
+  # e.g., THETA[1] -> THETA1
+  rename_with(~ str_remove_all(.x, "\\[|\\]")) %>% 
   mutate(param = ifelse(sens_num == 0, "Final model",     # run sens_num==0 is the final model 
                         "V2"), # runs 1-5 adjusted something affecting V2
          paramadj = case_when(sens_num == 0 ~ "Final model",
@@ -97,11 +89,10 @@ ext <- ext0 %>%
                                                "Decrease location 50%"
                                                )))
 
-
 ## subset data for plotting
 
 ### 1). KA variance on V2
-ext_ka_var <- ext %>% 
+draws_ka_var <- draws %>% 
   filter(param %in% c("V2", "Final model")) %>%
   filter(sens_num == 0 | sens_num <= 3) %>%
   gather(THETA1:THETA2,key='key',value = 'value') %>%
@@ -110,7 +101,7 @@ ext_ka_var <- ext %>%
                          TRUE ~ key))
 
 ### 2). KA location on V2
-ext_ka_location <- ext %>% 
+draws_ka_location <- draws %>% 
   filter(param %in% c("V2", "Final model")) %>%
   filter(sens_num == 0 | (sens_num > 3)) %>%
   gather(THETA1:THETA2,key='key',value = 'value') %>%
@@ -121,7 +112,7 @@ ext_ka_location <- ext %>%
 ## Plot 
 
 ### 1). plot KA variance on density
-p1 <- ext_ka_var %>%
+p1 <- draws_ka_var %>%
   ggplot(aes(exp(value), colour = factor(paramadj), fill = factor(paramadj))) +
   geom_density(alpha=0.1) +
   theme_bw()+
@@ -130,7 +121,7 @@ p1 <- ext_ka_var %>%
   facet_wrap(~key,scales = 'free')
 
 ### 2). plot KA scale on V2 density
-p2 <- ext_ka_location %>% 
+p2 <- draws_ka_location %>% 
   ggplot(aes(exp(value), colour = factor(paramadj), fill = factor(paramadj))) +
   geom_density(alpha=0.1) +
   theme_bw()+
@@ -141,7 +132,7 @@ p2 <- ext_ka_location %>%
 
 psave <- p1/p2; psave
 
-mrggsave_last(stem = "sensitivity-analysis-{params$run}-V2-CL-KA", width = 7, height = 7)
+mrggsave_last(stem = "FigureS1", width = 7, height = 7)
 
 
 
@@ -149,29 +140,12 @@ mrggsave_last(stem = "sensitivity-analysis-{params$run}-V2-CL-KA", width = 7, he
 
 ## original chain  
 
-iph <- get_chain_files(params$modelDir, params$run, params$n_chains, "iph") %>% 
-  filter(ITERATION > 0)
-
-iobj <- iph %>% select(chain,ITERATION, ID, MCMCOBJ)
-
-n_iter <- max(iobj$ITERATION)
-n_id <- n_distinct(iobj$ID)
-iobj_array <- array(
-  double(n_iter * params$n_chains * n_id),
-  dim = c(n_iter, params$n_chains, n_id)
-)
-for (.chain in seq_len(params$n_chains)) {
-  iobj_array[,.chain,] <- iobj %>% 
-    filter(chain == .chain) %>% 
-    arrange(ID, ITERATION) %>% 
-    pull(MCMCOBJ) %>% 
-    as.matrix()
-}
-
-rel_n_eff <- relative_eff(exp(iobj_array))
-loo_orig <- loo(iobj_array, r_eff = rel_n_eff) 
-
-# loo_orig<- loo_out$estimates %>% as_tibble() %>% slice(3) %>% mutate(sens_num=0)
+draws_iph <- subset_draws(draws_orig, variable = "MCMCOBJ_IPH")
+iobj_array <- draws_iph %>% 
+  select(-.chain, -.iteration, -.draw) %>% 
+  as.matrix()
+rel_n_eff <- relative_eff(exp(iobj_array), chain_id = draws_iph$.chain)
+loo_orig <- loo(iobj_array, r_eff = rel_n_eff, cores = 2) 
 
 #store ELPD of final model
 loo_orig_elpd <- loo_orig$estimates %>% as_tibble(rownames="metric")  %>% filter(metric=="elpd_loo") 
@@ -180,33 +154,15 @@ loo_orig_elpd <- loo_orig_elpd$Estimate
 ## sensitivity analysis runs
 loo_sens <- 
   map_dfr(seq_len(params$sens_run), function(.sens_run) {
-    
 
-    iph <- get_chain_files(params$modelDir,
-                           glue(.sens_run + as.numeric(params$run)),
-                           params$n_chains, "iph") %>% 
-      filter(ITERATION > 0)
-    
-    iobj <- iph %>% select(chain, ITERATION, ID, MCMCOBJ)
-    
-    n_iter <- max(iobj$ITERATION)
-    n_id <- n_distinct(iobj$ID)
-    iobj_array <- array(
-      double(n_iter * params$n_chains * n_id),
-      dim = c(n_iter, params$n_chains, n_id)
-    )
-    for (.chain in seq_len(params$n_chains)) {
-      iobj_array[,.chain,] <- iobj %>% 
-        filter(chain == .chain) %>% 
-        arrange(ID, ITERATION) %>% 
-        pull(MCMCOBJ) %>% 
-        as.matrix()
-    }
-    
-    rel_n_eff <- relative_eff(exp(iobj_array))
-    loo_out <- loo(iobj_array, r_eff = rel_n_eff) #looic is the LOO information criterion
-    
-    # loo_out$estimates %>% as_tibble() %>% slice(3) %>% mutate(sens_num=.sens_run)
+    draws_iph <- subset_draws(filter(draws_all, sens_num == .sens_run),
+                              variable = "MCMCOBJ_IPH")
+    iobj_array <- draws_iph %>% 
+      select(-.chain, -.iteration, -.draw) %>% 
+      as.matrix()
+    rel_n_eff <- relative_eff(exp(iobj_array), chain_id = draws_iph$.chain)
+    loo_out <- loo(iobj_array, r_eff = rel_n_eff, cores = 2) 
+
     print(loo_out)
     
     x <- print(loo_compare(loo_out, loo_orig), simplify=F, digits=3) %>% 
@@ -289,6 +245,6 @@ looTab %T>% stable_save(dir = tabdir_run, file = "LOO-summary.tex")
 st2doc(
   list(looTab),
   output_dir = tabdir_run,
-  output_file = glue("LOO-summary-preview.pdf")
+  output_file = glue("TableS2.pdf")
 )
 

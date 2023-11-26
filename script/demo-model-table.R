@@ -357,6 +357,6 @@ struct_pm <- param_df %>%
 st2doc(
   struct_pm,
   output_dir = params$tables,
-  output_file = glue("{run}_preview_param_table_ped-pk.pdf"),
+  output_file = glue("TableS1.pdf"),
   landscape = TRUE
 )
