@@ -66,19 +66,15 @@ library(bbr)
 library(bbr.bayes)
 suppressPackageStartupMessages(library(posterior))
 library(bayesplot)
-# library(PKPDmisc)
-# library(yaml)
 library(yspec)
 library(mrggsave)
 library(pmtables)
 library(mrgsolve)
 library(furrr)
-# library(npde)
 library(patchwork)
 library(loo)
 library(glue)
 library(cowplot)
-# suppressPackageStartupMessages(library(rstan))
 
 ### Directories ----------------------------
 figDir <- here::here("deliv", "figure", "report")
@@ -368,16 +364,6 @@ p <- map(pars_to_plot, ~ {
 })
 
 p_trace_dens <- p
-
-# p_trace <- bayesplot::mcmc_trace(
-#   draws_param_thin,
-#   pars = pars_to_plot,
-#   facet_args = list(ncol = 2)
-# )
-# p_dens <- bayesplot::mcmc_dens_overlay(
-#   draws_param_thin,
-#   pars = pars_to_plot
-# )
 ```
 
 ```{r include_trace_density, eval=params$include_plots, include=params$include_plots, echo=F, message=FALSE}

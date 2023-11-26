@@ -25,8 +25,6 @@ plan(multisession)
 set.seed(01262022)
 opt <- furrr_options(seed = TRUE)
 
-# source(here("script/functions-diagnostics-npde.R"))
-
 # Set up directories and model numbers to pull in posterior
 out_data_dir <- here("script", "simout")
 modelDir <- here("model/pk")
@@ -46,7 +44,6 @@ draws_param <- draws %>%
   as_draws_df() %>% 
   # e.g., THETA[1] -> THETA1
   rename_with(~ str_remove_all(.x, "\\[|\\]"))
-draws_param
 
 withr::with_seed(01242022, {
   post <- draws_param %>%
