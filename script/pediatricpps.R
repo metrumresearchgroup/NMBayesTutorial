@@ -16,11 +16,10 @@ library(future)
 library(future.apply)
 library(purrr)
 library(furrr)
-library(PKPDmisc)
+library(mrgmisc)
 
 
-setwd(here())
-options(mrggsave.dir = "deliv/figure", mrg.script = "pediatricpps.R")
+options(mrggsave.dir = here("deliv/figure"), mrg.script = "pediatricpps.R")
 theme_set(pmplots::pm_theme())
 
 mrg_vpc_theme = new_vpc_theme(list(
