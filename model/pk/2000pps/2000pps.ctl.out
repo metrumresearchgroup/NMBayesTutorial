@@ -15,10 +15,10 @@ Note: Analytical 2nd Derivatives are constructed in FSUBS but are never used.
 Recompiling certain components
 Building NONMEM Executable
 Starting nonmem execution ...
-License Registered to: Metrum Research Group (with RADAR5NM)
-Expiration Date:    14 JUL 2023
-Current Date:       27 MAR 2023
-Days until program expires : 107
+License Registered to: Metrum Research Group
+Expiration Date:    14 JUL 2024
+Current Date:       24 NOV 2023
+Days until program expires : 235
 
  PROBLEM NO.:           1      SUBPROBLEM NO.:           1
  
@@ -47,7 +47,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1318.5087923623646     
- Elapsed estimation  time in seconds:     0.20
+ Elapsed estimation  time in seconds:     0.18
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -166,7 +166,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2212.0046072789951     
- Elapsed estimation  time in seconds:     0.20
+ Elapsed estimation  time in seconds:     0.18
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -183,7 +183,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2268.7100127379508     
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.10
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -251,7 +251,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1789.5560012820142     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -268,7 +268,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1277.9848569631019     
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.10
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -285,7 +285,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1694.3574701965670     
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.10
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -302,7 +302,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3050.6965576920620     
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.10
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -319,7 +319,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    160278.60527461988     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -336,7 +336,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    28933.620553170345     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -353,7 +353,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    14942.584873017200     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -370,7 +370,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1031.3337734495617     
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.05
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -404,7 +404,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    887.73431679179362     
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.07
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -421,7 +421,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3130.5199722059751     
- Elapsed estimation  time in seconds:     0.10
+ Elapsed estimation  time in seconds:     0.13
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -472,7 +472,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1505.7511778418282     
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.10
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -489,7 +489,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1837.1699459738593     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -523,7 +523,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    9454.1839014698489     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -540,7 +540,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    99.462092966753488     
- Elapsed estimation  time in seconds:     0.20
+ Elapsed estimation  time in seconds:     0.18
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -574,7 +574,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    786.72950464616349     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.04
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -608,7 +608,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1597.4380161651566     
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.09
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -676,7 +676,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    835.40544971803774     
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.10
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -710,7 +710,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1192.8204975997851     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -727,7 +727,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3496.0289900283701     
- Elapsed estimation  time in seconds:     0.10
+ Elapsed estimation  time in seconds:     0.11
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -744,7 +744,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    932.40434516354753     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -778,7 +778,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2210.8466015482286     
- Elapsed estimation  time in seconds:     0.14
+ Elapsed estimation  time in seconds:     0.10
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -829,7 +829,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1788.2911429691098     
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.14
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -914,7 +914,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=   -729.30246560711271     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.04
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -931,7 +931,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    14022.615747198975     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -948,7 +948,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    101.24714814611366     
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.05
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -965,7 +965,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2698.7798445717353     
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.06
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -982,7 +982,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1278.4331784659555     
- Elapsed estimation  time in seconds:     0.06
+ Elapsed estimation  time in seconds:     0.05
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1016,7 +1016,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    152.69466163412639     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1033,7 +1033,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=   -698.29026400409953     
- Elapsed estimation  time in seconds:     0.10
+ Elapsed estimation  time in seconds:     0.09
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1050,7 +1050,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2458.2326243115358     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1121,7 +1121,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    701.92120285562748     
- Elapsed estimation  time in seconds:     0.23
+ Elapsed estimation  time in seconds:     0.18
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1172,7 +1172,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2368.8904596595580     
- Elapsed estimation  time in seconds:     0.13
+ Elapsed estimation  time in seconds:     0.12
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1257,7 +1257,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    786.34012741321851     
- Elapsed estimation  time in seconds:     0.10
+ Elapsed estimation  time in seconds:     0.11
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1274,7 +1274,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1589.1308517618020     
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.07
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1342,7 +1342,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3566.3187116838717     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1379,7 +1379,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2079.2340903711397     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1416,7 +1416,7 @@ Days until program expires : 107
  Extreme position, rejecting sample
  Sampling Mode
  iteration            0 MCMCOBJ=    2.0000000000000000E+100
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1433,7 +1433,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2878432.7469018996     
- Elapsed estimation  time in seconds:     0.01
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1450,7 +1450,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    33402526.074808966     
- Elapsed estimation  time in seconds:     0.01
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1484,7 +1484,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    966.59892284090188     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1518,7 +1518,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2082.2414676473350     
- Elapsed estimation  time in seconds:     0.08
+ Elapsed estimation  time in seconds:     0.06
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1535,7 +1535,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    4185.1612423249189     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.01
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1552,7 +1552,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1516.2530236769364     
- Elapsed estimation  time in seconds:     0.06
+ Elapsed estimation  time in seconds:     0.05
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1586,7 +1586,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2333.5602618933140     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1606,7 +1606,7 @@ Days until program expires : 107
  Extreme position, rejecting sample
  Sampling Mode
  iteration            0 MCMCOBJ=    2.0000000000000000E+100
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1623,7 +1623,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2060.0843390934979     
- Elapsed estimation  time in seconds:     0.22
+ Elapsed estimation  time in seconds:     0.11
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1640,7 +1640,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=   -331.49069125270745     
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.04
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1728,7 +1728,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1534.5285984215473     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1762,7 +1762,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1277.5558914456765     
- Elapsed estimation  time in seconds:     0.15
+ Elapsed estimation  time in seconds:     0.11
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1830,7 +1830,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=   -918.96930147832722     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.04
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1847,7 +1847,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    869.25046027197027     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1898,7 +1898,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    913.25239761228238     
- Elapsed estimation  time in seconds:     0.21
+ Elapsed estimation  time in seconds:     0.18
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1932,7 +1932,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3920.7825584874809     
- Elapsed estimation  time in seconds:     0.01
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -1983,7 +1983,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1261.2441759786759     
- Elapsed estimation  time in seconds:     0.15
+ Elapsed estimation  time in seconds:     0.12
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2085,7 +2085,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    19323.499968796357     
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.01
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2122,7 +2122,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    307.50073647841208     
- Elapsed estimation  time in seconds:     0.10
+ Elapsed estimation  time in seconds:     0.13
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2156,7 +2156,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2486.0025007897311     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2173,7 +2173,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3174.4804540487817     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2207,7 +2207,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    349.55493525572126     
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.07
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2224,7 +2224,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1997.0385162150067     
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2241,7 +2241,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1568.1137625769802     
- Elapsed estimation  time in seconds:     0.21
+ Elapsed estimation  time in seconds:     0.10
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2258,7 +2258,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1988.5840360992900     
- Elapsed estimation  time in seconds:     0.77
+ Elapsed estimation  time in seconds:     0.73
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2296,7 +2296,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2167790.7530831411     
- Elapsed estimation  time in seconds:     0.01
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2347,7 +2347,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2043.5232654051599     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2364,7 +2364,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    4332.7868043469234     
- Elapsed estimation  time in seconds:     0.19
+ Elapsed estimation  time in seconds:     0.20
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2435,7 +2435,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2100.2410834085626     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2469,7 +2469,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3272.7098285142251     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2486,7 +2486,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    5052.7272766359265     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2503,7 +2503,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    4018.5205706103320     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2520,7 +2520,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    14911.102268029952     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2537,7 +2537,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=   -270.36351278060664     
- Elapsed estimation  time in seconds:     0.07
+ Elapsed estimation  time in seconds:     0.04
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2571,7 +2571,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    10305.225075151990     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.01
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2588,7 +2588,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    617.07597483342465     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2639,7 +2639,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3376.7899351578608     
- Elapsed estimation  time in seconds:     0.21
+ Elapsed estimation  time in seconds:     0.12
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2656,7 +2656,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2042.3662669304322     
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2673,7 +2673,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    6982.3775181955079     
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2690,7 +2690,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1579.9473637867309     
- Elapsed estimation  time in seconds:     0.19
+ Elapsed estimation  time in seconds:     0.11
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2707,7 +2707,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2337.9569044487280     
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2724,7 +2724,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2456.6693664096351     
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2741,7 +2741,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1880.1808751928620     
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2758,7 +2758,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    8251.2855312530482     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2775,7 +2775,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3823.3571199506332     
- Elapsed estimation  time in seconds:     0.19
+ Elapsed estimation  time in seconds:     0.11
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2792,7 +2792,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3225.7279178683943     
- Elapsed estimation  time in seconds:     0.18
+ Elapsed estimation  time in seconds:     0.09
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2809,7 +2809,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2393.5396461626810     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2860,7 +2860,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    677.21873260211487     
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.10
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2877,7 +2877,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1633.9300386766008     
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.12
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2911,7 +2911,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    6776.8422722253290     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.01
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2928,7 +2928,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=   -211.35331772545186     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -2979,7 +2979,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1620.6984533016428     
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.11
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3013,7 +3013,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1051.7359702923793     
- Elapsed estimation  time in seconds:     0.18
+ Elapsed estimation  time in seconds:     0.10
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3030,7 +3030,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1176.8594892559745     
- Elapsed estimation  time in seconds:     0.17
+ Elapsed estimation  time in seconds:     0.09
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3047,7 +3047,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    28060.087331439798     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3081,7 +3081,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    337.27064874415976     
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3098,7 +3098,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1678.7184404117045     
- Elapsed estimation  time in seconds:     0.09
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3115,7 +3115,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1371.8687582779285     
- Elapsed estimation  time in seconds:     0.08
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3132,7 +3132,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    31465.875635557277     
- Elapsed estimation  time in seconds:     0.07
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3149,7 +3149,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3015.0401298944948     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3166,12 +3166,12 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1993.1508904232328     
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
  Elapsed postprocess time in seconds:     0.00
- Elapsed finaloutput time in seconds:     0.01
+ Elapsed finaloutput time in seconds:     0.00
 
  PROBLEM NO.:           1      SUBPROBLEM NO.:         185
  
@@ -3183,7 +3183,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    5606.3934916180242     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3200,7 +3200,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3454.6773603392039     
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3217,7 +3217,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    344.86122235674537     
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3234,7 +3234,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=   -432.72789300559276     
- Elapsed estimation  time in seconds:     0.07
+ Elapsed estimation  time in seconds:     0.06
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3268,7 +3268,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1714.3263604599895     
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.10
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3285,7 +3285,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1815.6518004936233     
- Elapsed estimation  time in seconds:     0.08
+ Elapsed estimation  time in seconds:     0.05
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3336,7 +3336,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3191006508.6817517     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3353,7 +3353,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    721.14448762010682     
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.14
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3370,7 +3370,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    3236.9142207223808     
- Elapsed estimation  time in seconds:     0.06
+ Elapsed estimation  time in seconds:     0.07
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3472,7 +3472,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2669.6176597749404     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3523,7 +3523,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1804.1609767615673     
- Elapsed estimation  time in seconds:     0.16
+ Elapsed estimation  time in seconds:     0.10
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3540,7 +3540,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1622.0018659473653     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3574,7 +3574,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1918.2093785165548     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3591,7 +3591,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    17806.565214798535     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3625,7 +3625,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1943.0330037027866     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3676,7 +3676,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    113.19511160611792     
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.04
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3727,7 +3727,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    650.67865668957461     
- Elapsed estimation  time in seconds:     0.06
+ Elapsed estimation  time in seconds:     0.05
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3761,7 +3761,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1433.4517568334397     
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3778,7 +3778,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    4926.2738216511543     
- Elapsed estimation  time in seconds:     0.20
+ Elapsed estimation  time in seconds:     0.09
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3829,7 +3829,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1639.3730026224121     
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.07
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3863,7 +3863,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2263.7255738238555     
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.11
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3914,7 +3914,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=   -13.327867271949929     
- Elapsed estimation  time in seconds:     0.08
+ Elapsed estimation  time in seconds:     0.11
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -3931,7 +3931,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2244.6290940097256     
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -4036,7 +4036,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2792.5934807644453     
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.13
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -4053,7 +4053,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    4317.6315358934053     
- Elapsed estimation  time in seconds:     0.01
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -4087,7 +4087,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    1244.5970443020249     
- Elapsed estimation  time in seconds:     0.09
+ Elapsed estimation  time in seconds:     0.12
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -4104,7 +4104,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    2363.8548231312175     
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -4121,7 +4121,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    163.73431009313714     
- Elapsed estimation  time in seconds:     0.18
+ Elapsed estimation  time in seconds:     0.09
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -4138,7 +4138,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    25703.665304836413     
- Elapsed estimation  time in seconds:     0.01
+ Elapsed estimation  time in seconds:     0.02
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -4223,7 +4223,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    876.11360095986117     
- Elapsed estimation  time in seconds:     0.21
+ Elapsed estimation  time in seconds:     0.19
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 
@@ -4274,7 +4274,7 @@ Days until program expires : 107
 
  Sampling Mode
  iteration            0 MCMCOBJ=    905.30084088452452     
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
  BURN-IN WAS NOT TESTED FOR CONVERGENCE
  STATISTICAL PORTION WAS NOT PERFORMED
 

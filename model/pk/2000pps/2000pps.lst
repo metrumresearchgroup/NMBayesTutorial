@@ -1,4 +1,4 @@
-Mon Mar 27 13:32:39 EDT 2023
+Fri Nov 24 17:04:42 EST 2023
 $PROBLEM 2000pps
 
 $INPUT C ID TIME AMT DV CMT DOSE EVID MDV ADDL II SS FORM WT PER BLQ NUM
@@ -96,10 +96,10 @@ Note: Analytical 2nd Derivatives are constructed in FSUBS but are never used.
       You may insert $ABBR DERIV2=NO after the first $PROB to save FSUBS construction and compilation time
   
 
-License Registered to: Metrum Research Group (with RADAR5NM)
-Expiration Date:    14 JUL 2023
-Current Date:       27 MAR 2023
-Days until program expires : 107
+License Registered to: Metrum Research Group
+Expiration Date:    14 JUL 2024
+Current Date:       24 NOV 2023
+Days until program expires : 235
 1NONLINEAR MIXED EFFECTS MODEL PROGRAM (NONMEM) VERSION 7.5.1
  ORIGINALLY DEVELOPED BY STUART BEAL, LEWIS SHEINER, AND ALISON BOECKMANN
  CURRENT DEVELOPERS ARE ROBERT BAUER, ICON DEVELOPMENT SOLUTIONS,
@@ -727,7 +727,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.20
+ Elapsed estimation  time in seconds:     0.18
 1
  
  
@@ -2876,7 +2876,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.20
+ Elapsed estimation  time in seconds:     0.18
 1
  
  
@@ -3183,7 +3183,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.10
 1
  
  
@@ -4411,7 +4411,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -4718,7 +4718,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.10
 1
  
  
@@ -5025,7 +5025,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.10
 1
  
  
@@ -5332,7 +5332,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.10
 1
  
  
@@ -5639,7 +5639,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -5946,7 +5946,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -6253,7 +6253,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -6560,7 +6560,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.05
 1
  
  
@@ -7174,7 +7174,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.07
 1
  
  
@@ -7481,7 +7481,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.10
+ Elapsed estimation  time in seconds:     0.13
 1
  
  
@@ -8402,7 +8402,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.10
 1
  
  
@@ -8709,7 +8709,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -9323,7 +9323,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -9630,7 +9630,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.20
+ Elapsed estimation  time in seconds:     0.18
 1
  
  
@@ -10244,7 +10244,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.04
 1
  
  
@@ -10858,7 +10858,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.09
 1
  
  
@@ -12086,7 +12086,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.10
 1
  
  
@@ -12700,7 +12700,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -13007,7 +13007,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.10
+ Elapsed estimation  time in seconds:     0.11
 1
  
  
@@ -13314,7 +13314,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -13928,7 +13928,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.14
+ Elapsed estimation  time in seconds:     0.10
 1
  
  
@@ -14849,7 +14849,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.14
 1
  
  
@@ -16384,7 +16384,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.04
 1
  
  
@@ -16691,7 +16691,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -16998,7 +16998,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.05
 1
  
  
@@ -17305,7 +17305,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.06
 1
  
  
@@ -17612,7 +17612,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.06
+ Elapsed estimation  time in seconds:     0.05
 1
  
  
@@ -18226,7 +18226,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -18533,7 +18533,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.10
+ Elapsed estimation  time in seconds:     0.09
 1
  
  
@@ -18840,7 +18840,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -20068,7 +20068,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.23
+ Elapsed estimation  time in seconds:     0.18
 1
  
  
@@ -20989,7 +20989,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.13
+ Elapsed estimation  time in seconds:     0.12
 1
  
  
@@ -22524,7 +22524,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.10
+ Elapsed estimation  time in seconds:     0.11
 1
  
  
@@ -22831,7 +22831,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.07
 1
  
  
@@ -24059,7 +24059,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -24673,7 +24673,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -25287,7 +25287,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -25594,7 +25594,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.01
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -25901,7 +25901,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.01
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -26515,7 +26515,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -27129,7 +27129,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.08
+ Elapsed estimation  time in seconds:     0.06
 1
  
  
@@ -27436,7 +27436,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.01
 1
  
  
@@ -27743,7 +27743,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.06
+ Elapsed estimation  time in seconds:     0.05
 1
  
  
@@ -28357,7 +28357,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -28664,7 +28664,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -28971,7 +28971,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.22
+ Elapsed estimation  time in seconds:     0.11
 1
  
  
@@ -29278,7 +29278,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.04
 1
  
  
@@ -30813,7 +30813,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -31427,7 +31427,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.15
+ Elapsed estimation  time in seconds:     0.11
 1
  
  
@@ -32655,7 +32655,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.04
 1
  
  
@@ -32962,7 +32962,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -33883,7 +33883,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.21
+ Elapsed estimation  time in seconds:     0.18
 1
  
  
@@ -34497,7 +34497,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.01
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -35418,7 +35418,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.15
+ Elapsed estimation  time in seconds:     0.12
 1
  
  
@@ -37260,7 +37260,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.01
 1
  
  
@@ -37874,7 +37874,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.10
+ Elapsed estimation  time in seconds:     0.13
 1
  
  
@@ -38488,7 +38488,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -38795,7 +38795,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -39409,7 +39409,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.07
 1
  
  
@@ -39716,7 +39716,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -40023,7 +40023,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.21
+ Elapsed estimation  time in seconds:     0.10
 1
  
  
@@ -40330,7 +40330,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.77
+ Elapsed estimation  time in seconds:     0.73
 1
  
  
@@ -40946,7 +40946,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.01
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -41870,7 +41870,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -42178,7 +42178,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.19
+ Elapsed estimation  time in seconds:     0.20
 1
  
  
@@ -43410,7 +43410,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -44026,7 +44026,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -44334,7 +44334,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -44642,7 +44642,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -44950,7 +44950,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -45258,7 +45258,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.07
+ Elapsed estimation  time in seconds:     0.04
 1
  
  
@@ -45874,7 +45874,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.01
 1
  
  
@@ -46182,7 +46182,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -47106,7 +47106,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.21
+ Elapsed estimation  time in seconds:     0.12
 1
  
  
@@ -47414,7 +47414,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -47722,7 +47722,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -48030,7 +48030,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.19
+ Elapsed estimation  time in seconds:     0.11
 1
  
  
@@ -48338,7 +48338,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -48646,7 +48646,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -48954,7 +48954,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -49262,7 +49262,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -49570,7 +49570,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.19
+ Elapsed estimation  time in seconds:     0.11
 1
  
  
@@ -49878,7 +49878,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.18
+ Elapsed estimation  time in seconds:     0.09
 1
  
  
@@ -50186,7 +50186,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -51110,7 +51110,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.10
 1
  
  
@@ -51418,7 +51418,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.12
 1
  
  
@@ -52034,7 +52034,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.01
 1
  
  
@@ -52342,7 +52342,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -53266,7 +53266,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.11
 1
  
  
@@ -53882,7 +53882,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.18
+ Elapsed estimation  time in seconds:     0.10
 1
  
  
@@ -54190,7 +54190,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.17
+ Elapsed estimation  time in seconds:     0.09
 1
  
  
@@ -54498,7 +54498,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -55114,7 +55114,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -55422,7 +55422,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.09
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -55730,7 +55730,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.08
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -56038,7 +56038,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.07
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -56346,7 +56346,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -56654,7 +56654,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -56785,7 +56785,7 @@ SEED   2 RESET TO INITIAL: YES
 +        5.01E+00
  
  Elapsed postprocess time in seconds:     0.00
- Elapsed finaloutput time in seconds:     0.01
+ Elapsed finaloutput time in seconds:     0.00
   
 1
  PROBLEM NO.:           1      SUBPROBLEM NO.:         185
@@ -56962,7 +56962,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -57270,7 +57270,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -57578,7 +57578,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -57886,7 +57886,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.07
+ Elapsed estimation  time in seconds:     0.06
 1
  
  
@@ -58502,7 +58502,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.11
+ Elapsed estimation  time in seconds:     0.10
 1
  
  
@@ -58810,7 +58810,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.08
+ Elapsed estimation  time in seconds:     0.05
 1
  
  
@@ -59734,7 +59734,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -60042,7 +60042,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.14
 1
  
  
@@ -60350,7 +60350,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.06
+ Elapsed estimation  time in seconds:     0.07
 1
  
  
@@ -62198,7 +62198,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -63122,7 +63122,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.16
+ Elapsed estimation  time in seconds:     0.10
 1
  
  
@@ -63430,7 +63430,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -64046,7 +64046,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -64354,7 +64354,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -64970,7 +64970,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -65894,7 +65894,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.03
+ Elapsed estimation  time in seconds:     0.04
 1
  
  
@@ -66818,7 +66818,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.06
+ Elapsed estimation  time in seconds:     0.05
 1
  
  
@@ -67434,7 +67434,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -67742,7 +67742,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.20
+ Elapsed estimation  time in seconds:     0.09
 1
  
  
@@ -68666,7 +68666,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.05
+ Elapsed estimation  time in seconds:     0.07
 1
  
  
@@ -69282,7 +69282,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.11
 1
  
  
@@ -70206,7 +70206,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.08
+ Elapsed estimation  time in seconds:     0.11
 1
  
  
@@ -70514,7 +70514,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -72362,7 +72362,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.12
+ Elapsed estimation  time in seconds:     0.13
 1
  
  
@@ -72670,7 +72670,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.01
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -73286,7 +73286,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.09
+ Elapsed estimation  time in seconds:     0.12
 1
  
  
@@ -73594,7 +73594,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.04
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -73902,7 +73902,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.18
+ Elapsed estimation  time in seconds:     0.09
 1
  
  
@@ -74210,7 +74210,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.01
+ Elapsed estimation  time in seconds:     0.02
 1
  
  
@@ -75750,7 +75750,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.21
+ Elapsed estimation  time in seconds:     0.19
 1
  
  
@@ -76674,7 +76674,7 @@ SEED   2 RESET TO INITIAL: YES
  REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
   
  #TERE:
- Elapsed estimation  time in seconds:     0.02
+ Elapsed estimation  time in seconds:     0.03
 1
  
  
@@ -77114,6 +77114,6 @@ SEED   2 RESET TO INITIAL: YES
  
  Elapsed postprocess time in seconds:     0.00
  Elapsed finaloutput time in seconds:     0.00
- #CPUT: Total CPU Time in Seconds,       16.476
+ #CPUT: Total CPU Time in Seconds,       14.824
 Stop Time:
-Mon Mar 27 13:33:14 EDT 2023
+Fri Nov 24 17:05:04 EST 2023

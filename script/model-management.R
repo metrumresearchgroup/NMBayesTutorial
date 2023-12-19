@@ -1,29 +1,12 @@
-# The model-management.R file is intended to be a scratchpad for doing things
-# like defining, submitting, tagging, etc. your models. There is no need to keep
-# a "record in code" of these activities because they can all be reconstructed
-# later via functions like `run_log()`, as demonstrated in `model-summary.Rmd`
-#
-# The `Model Management Demo` (rendered from the `model-management-demo.Rmd`
-# file) shows code for a range of these activities at different stages in the
-# modeling process. It exists purely for reference; the intent is _not_ for you
-# to replicate the full narrative.
-# https://ghe.metrumrg.com/pages/example-projects/bbr-nonmem-poppk-foce/model-management-demo
-#
-# This script assumes you have already installed and set up bbi. For details
-# on getting set up with bbr, see:
-# https://metrumresearchgroup.github.io/bbr/articles/getting-started.html#setup
-
-
 library(bbr)
+library(bbr.bayes)
 library(tidyverse)
-
-setwd(file.path(rprojroot::find_rstudio_root_file(),"script"))
-source("functions-model.R")
-
+library(here)
+library(glue)
 
 # define model dir and load tags
-MODEL_DIR <- "../model/pk"
-TAGS <- yaml::read_yaml("tags.yaml")
+MODEL_DIR <- here("model/pk")
+TAGS <- yaml::read_yaml("script/tags.yaml")
 
 
 ############################################
@@ -60,7 +43,10 @@ bbi_init(.dir = MODEL_DIR,            # the directory to create the bbi.yaml in
 # https://metrumresearchgroup.github.io/bbr/articles/getting-started.html#bbi-yaml-configuration-file
 
 ####Demo Example#####
-mod1000 <- new_model(file.path(MODEL_DIR, 1000)) %>%
+
+# Start with FOCE model (suppose model has been developed using FOCE to this point)
+
+mod1000_foce <- new_model(file.path(MODEL_DIR, "1000-FOCE")) %>%
   add_tags(c(
     TAGS$one_compartment_absorption,
     TAGS$eta_cl,
@@ -71,35 +57,67 @@ mod1000 <- new_model(file.path(MODEL_DIR, 1000)) %>%
     TAGS$cov_q_wt_fixed,
     TAGS$cov_v3_wt_fixed,
     TAGS$proportional_ruv,
-    TAGS$bayes
+    TAGS$foce
   ))
 #Model object to be used with bbr
-mod1000 <- read_model(file.path(MODEL_DIR, 1000))
+mod1000_foce <- read_model(file.path(MODEL_DIR, "1000-FOCE"))
 
-#Submitting the initial chain stub file to generate
-#starting values.
+# Run the FOCE model
 submit_model(
-  mod1000,
+  mod1000_foce,
   .bbi_args = list(overwrite = TRUE),
   .mode = "local"
 )
 
-#Quick examination of the sampled values in 1000.chn
-read.table(file.path(MODEL_DIR, "1000/1000.chn"), header = TRUE) %>% 
-  select(ITERATION:`OMEGA.3.3.`) %>% 
-  pivot_longer(cols = -ITERATION) %>% 
-  pivot_wider(names_from = "ITERATION")
+# Copy FOCE model to Bayes template model
+mod1000 <- copy_model_as_nmbayes(
+  mod1000_foce,
+  file.path(MODEL_DIR, 1000),
+  .inherit_tags = TRUE
+) %>% 
+  replace_tag(TAGS$foce, TAGS$bayes)
 
-#This function take the chain stub file (1000.ctl) and writes out 
-#four additional control streams (appended with a numeral to denote 
-#the chain number) where each control stream pulls from 
-#the chain file (1000.chn) to use the values as starting points for 
-#the sampling. The four files are then submitted and their output is 
-#kept in the same directory.
-run_chains(MODEL_DIR, 1000, .bbi_args = list(
-  overwrite = TRUE, parallel = TRUE, threads = 2),
-  .mode = "local")
+# This sets up a new control stream (1000.ctl) with the model mostly unchanged
+# apart from the following:
 
+# ; TODO: This model was copied by bbr.bayes::copy_model_as_nmbayes().
+# ;       nmbayes models require a METHOD=CHAIN estimation record and a
+# ;       METHOD=BAYES or METHOD=NUTS estimation record. The records
+# ;       below are meant as a starting point.  At the very least, you
+# ;       need to adjust the number of iterations (see NITER option in
+# ;       the second $EST block), but please review all options
+# ;       carefully.
+# ;
+# ;       See ?bbr.bayes::bbr_nmbayes and the NONMEM docs for details.
+# $EST METHOD=CHAIN FILE=1000.chn NSAMPLE=4 ISAMPLE=0 SEED=1
+# CTYPE=0 IACCEPT=0.3 DF=10 DFS=0
+# 
+# $EST METHOD=NUTS SEED=1 NBURN=250 NITER=NNNN
+# AUTO=2 CTYPE=0 OLKJDF=2 OVARF=1
+# NUTS_DELTA=0.95 PRINT=10 MSFO=1000.msf RANMETHOD=P PARAFPRINT=10000
+# BAYES_PHI_STORE=1
+
+# As per these instructions, we edit 1000.ctl which will act as a template for 4
+# chain runs. The main change will be the addition of priors.
+
+#Model object to be used with bbr
+mod1000 <- read_model(file.path(MODEL_DIR, 1000))
+
+# Run the model
+submit_model(
+  mod1000,
+  .bbi_args = list(overwrite = TRUE, threads = 2)
+)
+
+# # Compress .iph files. This is only needed because the file sizes are too large
+# # for GitHub. Split into files of no more than 50 MB.
+# for (i in 1:4) {
+#   zip(
+#     file.path(MODEL_DIR, glue("1000/1000-{i}/1000-{i}.iph.zip")),
+#     file.path(MODEL_DIR, glue("1000/1000-{i}/1000-{i}.iph")),
+#     flags = "-s 50m -r6Xj"
+#   )
+# }
 
 ####Pediatrics Example####
 #Prior predictive simulation control stream
@@ -124,18 +142,8 @@ mod2000 <- read_model(file.path(MODEL_DIR, 2000))
 
 submit_model(
   mod2000,
-  .bbi_args = list(overwrite = TRUE),
-  .mode = "local"
+  .bbi_args = list(overwrite = TRUE, threads = 2)
 )
-
-read.table(file.path(MODEL_DIR, "2000/2000.chn"), header = TRUE) %>% 
-  select(ITERATION:`OMEGA.2.2.`) %>% 
-  pivot_longer(cols = -ITERATION) %>% 
-  pivot_wider(names_from = "ITERATION")
-
-run_chains(MODEL_DIR, 2000, .bbi_args = list(
-  overwrite = TRUE, parallel = TRUE, threads = 2),
-  .mode = "local")
 
 #####Example Sensitivity Analysis for Pediatric Example######
 #Five models will be run
@@ -146,32 +154,47 @@ run_chains(MODEL_DIR, 2000, .bbi_args = list(
 #One with KA prior mean decreased 50% (2005)
 
 mod2001 <- copy_model_from(mod2000,2001) %>%
-  update_run_number()
+  update_model_id()
 edit_model(mod2001)
 
 mod2002 <- copy_model_from(mod2000,2002) %>%
-  update_run_number()
+  update_model_id()
 edit_model(mod2002)
 
 mod2003 <- copy_model_from(mod2000,2003) %>%
-  update_run_number()
+  update_model_id()
 edit_model(mod2003)
 
 mod2004 <- copy_model_from(mod2000,2004) %>%
-  update_run_number()
+  update_model_id()
 edit_model(mod2004)
 
 mod2005 <- copy_model_from(mod2000,2005) %>%
-  update_run_number()
+  update_model_id()
 edit_model(mod2005)
 
-submit_models(
-  list(mod2001,mod2002, mod2003,mod2004,mod2005),
-  .bbi_args = list(overwrite = TRUE),
-  .mode = "local"
+submit_model(
+  mod2001,
+  .bbi_args = list(overwrite = TRUE, threads = 2)
 )
 
-run_chains(MODEL_DIR, 2001, .bbi_args = list(
-  overwrite = TRUE, parallel = TRUE, threads = 2),
-  .mode = "local")
+submit_model(
+  mod2002,
+  .bbi_args = list(overwrite = TRUE, threads = 2)
+)
+
+submit_model(
+  mod2003,
+  .bbi_args = list(overwrite = TRUE, threads = 2)
+)
+
+submit_model(
+  mod2004,
+  .bbi_args = list(overwrite = TRUE, threads = 2)
+)
+
+submit_model(
+  mod2005,
+  .bbi_args = list(overwrite = TRUE, threads = 2)
+)
 

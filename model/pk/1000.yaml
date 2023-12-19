@@ -1,17 +1,14 @@
-model_type: nonmem
-based_on:
-- '102'
-model_path: 1000.ctl
+model_type: nmbayes
 tags:
-- two-compartment + absorption
+- one-compartment + absorption
 - ETA-CL
 - ETA-KA
-- ETA-V2
+- ETA-V
 - CLWT-allo
 - V2WT-allo
 - QWT-allo
 - V3WT-allo
 - proportional RUV
 - BAYES
-notes:
-- Low ESS for some parameters. Try METHOD=NUTS.
+based_on:
+- 1000-FOCE

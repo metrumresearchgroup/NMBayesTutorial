@@ -1,4 +1,4 @@
-$PROBLEM 1000
+$PROBLEM From bbr: see 1000.yaml for details
 
 $INPUT C NUM ID TIME SEQ CMT EVID AMT DV AGE WT HT EGFR ALB BMI SEX AAG
   SCR AST ALT CP TAFD TAD LDOS MDV BLQ PHASE
@@ -22,8 +22,6 @@ $PK
   MU_4   = THETA(4) + V3WT
   MU_5   = THETA(5) + QWT
 
-  ;" CALL EXTRASEND()
-
   KA     = EXP(MU_1 + ETA(1))
   V2     = EXP(MU_2 + ETA(2))
   CL     = EXP(MU_3 + ETA(3))
@@ -37,25 +35,24 @@ $ERROR
   IPRED = F
   Y     = IPRED * (1 + EPS(1))
 
-$THETA
-; log values
-  (0.5)         ; 1 KA (1/hr) - 1.5
-  (3.5)         ; 2 V2 (L) - 60
-  (1)           ; 3 CL (L/hr) - 3.5
-  (4)           ; 4 V3 (L) - 70
-  (2)           ; 5 Q  (L/hr) - 4
+$THETA  ; log values
+  (0.5)   ;  1 KA (1/hr) - 1.5
+  (3.5)   ;  2 V2 (L) - 60
+  (1)     ;  3 CL (L/hr) - 3.5
+  (4)     ;  4 V3 (L) - 70
+  (2)     ;  5 Q  (L/hr) - 4
 
 $OMEGA BLOCK(3)
-  0.2           ; ETA(KA)
-  0.01 0.2      ; ETA(V2)
-  0.01 0.01 0.2 ; ETA(CL)
+  0.2   ;ETA(KA)
+  0.01 0.2   ;ETA(V2)
+  0.01 0.01 0.2   ;ETA(CL)
 
 $OMEGA
   0.01 FIX    ; ETA(V3)
   0.01 FIX    ; ETA(Q)
 
 $SIGMA
-  0.05          ; 1 pro error
+  0.05     ; 1 pro error
 
 $PRIOR NWPRI
 
@@ -76,16 +73,11 @@ $SIGMAP
 
 $SIGMAPD (1 FIX)
 
-; CHAIN options:
-;   CTYPE=0: initial estimates for THETA are sampled from a uniform
-;     distribution between (1-IACCEPT)*THETA and (1+IACCEPT)*THETA)
-;   CTYPE=2: initial estimates for THETA are from a normal distribution with
-;     mean from the initial estimate in $THETA and variance from $THETAPV
-;   DF=0: initial estimates for OMEGA come from Wishart distribution using
-;     values in $OMEGA and degrees of freedom equal to dimensions of OMEGA
-;   DFS=0: initial estimates for SIGMA come from Wishart distribution using
-;     values in $SIGMA and degrees of freedom equal to dimensions of SIGMA
-$EST METHOD=CHAIN FILE=1000.chn NSAMPLE=4 ISAMPLE=0 SEED=1 CTYPE=0 IACCEPT=0.3 DF=10 DFS=0
-;$EST METHOD=BAYES SEED=1 NBURN=1000 NITER=10000 PRINT=10 MSFO=./1000.msf RANMETHOD=P PARAFPRINT=10000 BAYES_PHI_STORE=1
+$EST METHOD=CHAIN FILE=1000.chn NSAMPLE=4 ISAMPLE=0 SEED=1
+  CTYPE=0 IACCEPT=0.3 DF=10 DFS=0
 
-;$TABLE NUM CL V2 Q V3 KA ETAS(1:LAST) EPRED IPRED NPDE EWRES NOPRINT ONEHEADER FILE=1000.tab RANMETHOD=P
+$EST METHOD=BAYES SEED=1 NBURN=1000 NITER=10000
+  PRINT=10 MSFO=./1000.msf RANMETHOD=P PARAFPRINT=10000 BAYES_PHI_STORE=1
+
+$TABLE NUM CL V2 Q V3 KA ETAS(1:LAST) EPRED IPRED NPDE EWRES NOPRINT ONEHEADER
+  FILE=1000.tab RANMETHOD=P

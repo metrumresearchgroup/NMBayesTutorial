@@ -5,7 +5,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://namespaces.oreilly.com/xmlnut/address output.xsd"
 xmlns:nm="http://namespaces.oreilly.com/xmlnut/address"
 >
-<nm:start_datetime>2023-03-27T13:32:56.842</nm:start_datetime>
+<nm:start_datetime>2023-11-24T17:04:49.031</nm:start_datetime>
 <nm:control_stream><![CDATA[
 $PROBLEM 2000pps
 
@@ -106,10 +106,10 @@ Note: Analytical 2nd Derivatives are constructed in FSUBS but are never used.
 ]]></nm:nmtran>
 <nm:nonmem nm:version='7.5.1'>
 <nm:license_information><![CDATA[
-License Registered to: Metrum Research Group (with RADAR5NM)
-Expiration Date:    14 JUL 2023
-Current Date:       27 MAR 2023
-Days until program expires : 107
+License Registered to: Metrum Research Group
+Expiration Date:    14 JUL 2024
+Current Date:       24 NOV 2023
+Days until program expires : 235
 ]]></nm:license_information>
 <nm:program_information><![CDATA[
 1NONLINEAR MIXED EFFECTS MODEL PROGRAM (NONMEM) VERSION 7.5.1
@@ -936,7 +936,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>14.330054608684096</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.20</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.18</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1318.5087923623646</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -3519,7 +3519,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.20</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.18</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2212.0046072789951</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -3888,7 +3888,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>14.453323394674788</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2268.7100127379508</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -5364,7 +5364,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>65.773674660764314</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1789.5560012820142</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -5733,7 +5733,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1277.9848569631019</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -6102,7 +6102,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>6.2288867547700466</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1694.3574701965670</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -6471,7 +6471,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>35.597789487121510</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3050.6965576920620</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -6840,7 +6840,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>160278.60527461988</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -7209,7 +7209,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>28933.620553170345</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -7578,7 +7578,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>14942.584873017200</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -7947,7 +7947,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>5.6518675273154244</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1031.3337734495617</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -8685,7 +8685,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>9.1027192549247857</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.07</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>887.73431679179362</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -9054,7 +9054,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.13</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3130.5199722059751</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -10160,7 +10160,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1505.7511778418282</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -10529,7 +10529,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1837.1699459738593</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -11267,7 +11267,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>9454.1839014698489</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -11636,7 +11636,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>11.117560554174666</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.20</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.18</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>99.462092966753488</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -12374,7 +12374,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>786.72950464616349</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -13112,7 +13112,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>20.080363098169773</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.09</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1597.4380161651566</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -14588,7 +14588,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>48.003639327327740</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>835.40544971803774</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -15326,7 +15326,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>83.621211923917443</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1192.8204975997851</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -15695,7 +15695,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>66.355669837355038</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3496.0289900283701</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -16064,7 +16064,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>932.40434516354753</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -16802,7 +16802,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>13.134644516700112</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.14</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2210.8466015482286</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -17909,7 +17909,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>10.923404397665893</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.14</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1788.2911429691098</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -19754,7 +19754,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>-729.30246560711271</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -20123,7 +20123,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>14022.615747198975</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -20492,7 +20492,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>10.332706136528213</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>101.24714814611366</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -20861,7 +20861,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>2.3577775468954010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.06</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2698.7798445717353</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -21230,7 +21230,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.06</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1278.4331784659555</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -21968,7 +21968,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>152.69466163412639</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -22337,7 +22337,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.09</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>-698.29026400409953</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -22706,7 +22706,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>71.667165230417282</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2458.2326243115358</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -24182,7 +24182,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.23</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.18</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>701.92120285562748</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -25289,7 +25289,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>31.668624365093624</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.13</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2368.8904596595580</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -27133,7 +27133,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>19.760135598510477</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>786.34012741321851</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -27502,7 +27502,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.07</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1589.1308517618020</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -28978,7 +28978,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>93.971278809987226</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3566.3187116838717</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -29716,7 +29716,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2079.2340903711397</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -30454,7 +30454,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2.0000000000000000E+100</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -30823,7 +30823,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.01</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2878432.7469018996</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -31192,7 +31192,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.01</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>33402526.074808966</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -31930,7 +31930,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>966.59892284090188</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -32668,7 +32668,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.08</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.06</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2082.2414676473350</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -33037,7 +33037,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.01</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>4185.1612423249189</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -33406,7 +33406,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>12.287416986573152</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.06</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1516.2530236769364</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -34144,7 +34144,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2333.5602618933140</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -34513,7 +34513,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2.0000000000000000E+100</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -34882,7 +34882,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>48.196115120541869</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.22</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2060.0843390934979</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -35251,7 +35251,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>-331.49069125270745</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -37096,7 +37096,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>67.378459896720983</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1534.5285984215473</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -37834,7 +37834,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>36.929125253969133</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.15</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1277.5558914456765</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -39310,7 +39310,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>-918.96930147832722</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -39679,7 +39679,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>86.440429189668038</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>869.25046027197027</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -40786,7 +40786,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.21</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.18</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>913.25239761228238</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -41524,7 +41524,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.01</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3920.7825584874809</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -42631,7 +42631,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>13.912707617743425</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.15</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1261.2441759786759</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -44845,7 +44845,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.01</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>19323.499968796357</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -45583,7 +45583,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>57.237063644560607</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.13</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>307.50073647841208</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -46321,7 +46321,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2486.0025007897311</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -46690,7 +46690,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3174.4804540487817</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -47428,7 +47428,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.07</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>349.55493525572126</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -47797,7 +47797,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>41.596768143845885</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1997.0385162150067</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -48165,7 +48165,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>59.147724200203200</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.21</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1568.1137625769802</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -48534,7 +48534,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>25.413414663009338</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.77</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.73</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1988.5840360992900</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -49272,7 +49272,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.01</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2167790.7530831411</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -50379,7 +50379,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>70.896915666757934</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2043.5232654051599</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -50748,7 +50748,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.19</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.20</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>4332.7868043469234</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -52224,7 +52224,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>53.958519505901180</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2100.2410834085626</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -52962,7 +52962,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3272.7098285142251</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -53331,7 +53331,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>5052.7272766359265</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -53700,7 +53700,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>4018.5205706103320</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -54069,7 +54069,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>14911.102268029952</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -54438,7 +54438,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.07</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>-270.36351278060664</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -55176,7 +55176,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.01</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>10305.225075151990</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -55545,7 +55545,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>19.591150829014893</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>617.07597483342465</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -56652,7 +56652,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.21</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3376.7899351578608</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -57021,7 +57021,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>69.410977638816448</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2042.3662669304322</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -57390,7 +57390,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>6982.3775181955079</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -57759,7 +57759,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>34.877275135807039</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.19</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1579.9473637867309</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -58128,7 +58128,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>61.726424735024722</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2337.9569044487280</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -58497,7 +58497,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2456.6693664096351</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -58866,7 +58866,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>91.758164717319829</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1880.1808751928620</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -59235,7 +59235,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>8251.2855312530482</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -59604,7 +59604,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.19</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3823.3571199506332</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -59973,7 +59973,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>7.0908448127987462</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.18</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.09</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3225.7279178683943</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -60342,7 +60342,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2393.5396461626810</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -61449,7 +61449,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>4.6332838912137353</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>677.21873260211487</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -61818,7 +61818,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>35.373084237193595</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1633.9300386766008</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -62556,7 +62556,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.01</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>6776.8422722253290</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -62925,7 +62925,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>13.059928862084524</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>-211.35331772545186</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -64032,7 +64032,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1620.6984533016428</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -64770,7 +64770,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>9.1419985571226992</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.18</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1051.7359702923793</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -65139,7 +65139,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.17</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.09</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1176.8594892559745</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -65508,7 +65508,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>28060.087331439798</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -66246,7 +66246,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>86.119576574525141</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>337.27064874415976</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -66615,7 +66615,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>69.698657843259397</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.09</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1678.7184404117045</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -66984,7 +66984,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>61.813317592658365</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.08</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1371.8687582779285</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -67353,7 +67353,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.07</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>31465.875635557277</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -67722,7 +67722,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3015.0401298944948</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -68091,7 +68091,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1993.1508904232328</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -68203,7 +68203,7 @@ SEED   2 RESET TO INITIAL: YES
 </nm:estimation>
 <nm:post_process_times>
 <nm:post_elapsed_time>0.00</nm:post_elapsed_time>
-<nm:finaloutput_elapsed_time>0.01</nm:finaloutput_elapsed_time>
+<nm:finaloutput_elapsed_time>0.00</nm:finaloutput_elapsed_time>
 </nm:post_process_times>
 </nm:problem>
 <nm:problem nm:number='1' nm:subproblem='185' nm:superproblem1='0' nm:iteration1='0' nm:superproblem2='0' nm:iteration2='0'>
@@ -68460,7 +68460,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>5606.3934916180242</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -68829,7 +68829,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3454.6773603392039</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -69198,7 +69198,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>344.86122235674537</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -69567,7 +69567,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.07</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.06</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>-432.72789300559276</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -70305,7 +70305,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>43.800902809827591</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1714.3263604599895</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -70674,7 +70674,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.08</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1815.6518004936233</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -71780,7 +71780,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3191006508.6817517</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -72149,7 +72149,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>42.745995962527019</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.14</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>721.14448762010682</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -72518,7 +72518,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>22.583214504837390</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.06</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.07</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>3236.9142207223808</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -74732,7 +74732,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2669.6176597749404</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -75839,7 +75839,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>9.0949941005390009</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.16</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.10</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1804.1609767615673</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -76208,7 +76208,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>82.733847756691446</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1622.0018659473653</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -76946,7 +76946,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>33.405873124924923</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1918.2093785165548</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -77315,7 +77315,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>17806.565214798535</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -78053,7 +78053,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>73.769198454933345</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1943.0330037027866</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -79160,7 +79160,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>113.19511160611792</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -80267,7 +80267,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.06</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>650.67865668957461</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -81005,7 +81005,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>26.544243499996135</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1433.4517568334397</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -81374,7 +81374,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.20</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.09</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>4926.2738216511543</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -82481,7 +82481,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>5.9219146468714401</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.05</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.07</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1639.3730026224121</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -83219,7 +83219,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2263.7255738238555</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -84326,7 +84326,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>33.717920624527011</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.08</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.11</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>-13.327867271949929</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -84695,7 +84695,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2244.6290940097256</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -86909,7 +86909,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>3.7455932782760937</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.13</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2792.5934807644453</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -87278,7 +87278,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.01</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>4317.6315358934053</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -88016,7 +88016,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.09</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.12</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>1244.5970443020249</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -88385,7 +88385,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.04</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>2363.8548231312175</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -88754,7 +88754,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.18</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.09</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>163.73431009313714</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -89123,7 +89123,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.01</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>25703.665304836413</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -90968,7 +90968,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>1.0000000000000000E-010</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.21</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.19</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>876.11360095986117</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -92075,7 +92075,7 @@ SEED   2 RESET TO INITIAL: YES
 <nm:col nm:cname='EPS1'>47.481263532644668</nm:col>
 </nm:row>
 </nm:epsshrinkvr>
-<nm:estimation_elapsed_time>0.02</nm:estimation_elapsed_time>
+<nm:estimation_elapsed_time>0.03</nm:estimation_elapsed_time>
 <nm:final_objective_function_text>AVERAGE VALUE OF LIKELIHOOD FUNCTION</nm:final_objective_function_text>
 <nm:final_objective_function>905.30084088452452</nm:final_objective_function>
 <nm:final_objective_function_std>0.0000000000000000</nm:final_objective_function_std>
@@ -92560,6 +92560,6 @@ SEED   2 RESET TO INITIAL: YES
 </nm:post_process_times>
 </nm:problem>
 </nm:nonmem>
-<nm:stop_datetime>2023-03-27T13:33:13.908</nm:stop_datetime>
-<nm:total_cputime>16.476</nm:total_cputime>
+<nm:stop_datetime>2023-11-24T17:05:03.946</nm:stop_datetime>
+<nm:total_cputime>14.824</nm:total_cputime>
 </nm:output>

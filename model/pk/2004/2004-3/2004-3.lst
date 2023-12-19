@@ -1,0 +1,3449 @@
+Fri Nov 24 17:46:08 EST 2023
+$PROBLEM From bbr: see 2004.yaml for details
+
+$INPUT C ID TIME AMT DV CMT DOSE EVID MDV ADDL II SS FORM WT PER BLQ NUM
+
+$DATA ../../../../data/derived/atorvWrkShop3.csv IGNORE=(C='C', BLQ.EQ.1)
+
+$SUBROUTINES ADVAN4 TRANS4
+
+$PK
+
+NWT = LOG(WT/70) ; normalized to 70 kg adult
+MU_1 = THETA(1) + NWT * 0.75 ; CL
+MU_2 = THETA(2) + NWT        ; V2
+MU_3 = THETA(3) + NWT * 0.75 ; Q
+MU_4 = THETA(4) + NWT        ; V3
+MU_5 = THETA(5)              ; ka
+
+CL = EXP(MU_1 + ETA(1)) ; atv cl 
+V2 = EXP(MU_2 + ETA(2))
+Q  = EXP(MU_3 + ETA(3))
+V3 = EXP(MU_4 + ETA(4))
+KA = EXP(MU_5 + ETA(5))
+
+S2 = V2/1000          ; DOSE IN mmol & CONC IN nM
+
+$THETA
+( 5.65)     ;  THETA(1) TOTAL CL ATV
+( 5.6 )      ;  THETA(2) V2
+( 4.29)     ;  THETA(3) Q
+( 7.07)     ;  THETA(4) V3
+( -1.33)    ;  THETA(5) KA
+
+$OMEGA BLOCK(2) ;INITIAL values of OMEGAs
+0.1  ; cl
+0.003 0.2  ; v2
+
+$OMEGA 0 FIX
+$OMEGA 0 FIX
+$OMEGA 0 FIX
+$OMEGA 0 FIX
+$OMEGA 0 FIX
+
+$SIGMA  ;Initial value of SIGMA
+0.1; prop
+
+$ERROR
+
+IPRED = F;
+Y = IPRED*(1+ERR(1)) ; ATV
+
+$PRIOR NWPRI
+
+$THETAP          ; Prior information of THETAS
+( 5.65  FIX)     ;  THETA(1) TOTAL CL ATV
+( 5.6  FIX)      ;  THETA(2) V2
+( 4.29  FIX)     ;  THETA(3) Q
+( 7.07  FIX)     ;  THETA(4) V3
+( -0.925)    ;  THETA(5) KA; log(exp(-1.33)*1.5) increase by 50% 
+
+$THETAPV BLOCK(5)     ;  variances for priors on THETAS (var-cov)
+2 FIX ; CL weakly informative
+0.00 2  ; V2 weakly informative
+0.00 0.00 2  ; Q weakly informative
+0.00 0.00 0.00 .0156   ; V3 SE**2 informative
+0.00 0.00 0.00 0.00 .00684    ; KA SE**2 informative
+
+$OMEGAP BLOCK(2)   ; prior information for OMEGA
+.1003   FIXED         ; cl
+.06034    .8477       ; v2
+
+$OMEGAPD (4.0, FIXED)     ; df for OMEGA prior
+
+$SIGMAP
+0.1 FIX           ; 1 prop error
+
+$SIGMAPD (1 FIX)
+
+$EST METHOD=CHAIN FILE=../init.chn NSAMPLE=0 ISAMPLE=3 SEED=1
+  CTYPE=0 IACCEPT=0.25 DF=10 DFS=0
+
+$EST MAXEVAL=9999 METHOD=NUTS INTERACTION AUTO=2 CTYPE=0
+  OLKJDF=2 OVARF=1 NUTS_DELTA=0.95 NBURN = 1000 NITER = 2000
+  SEED=3 PRINT=1 NOABORT THIN = 1 RANMETHOD=P PARAFPRINT=10000
+  BAYES_PHI_STORE=1
+
+$TABLE NUM CL V2 Q KA V3 ETAS(1:LAST) EPRED IPRED NPDE EWRES NOPRINT ONEHEADER FILE=./2004.tab
+
+
+NM-TRAN MESSAGES
+  
+ WARNINGS AND ERRORS (IF ANY) FOR PROBLEM    1
+             
+ (WARNING  2) NM-TRAN INFERS THAT THE DATA ARE POPULATION.
+
+ (MU_WARNING 26) DATA ITEM(S) USED IN DEFINITION OF MU_(S) SHOULD BE CONSTANT FOR INDIV. REC.:
+  WT
+
+ LIM VALUES MAXLIM ASSESSED BY NMTRAN: 1,2,3,4,5,6,7,8,10,11,13,15,16        
+  
+Note: Analytical 2nd Derivatives are constructed in FSUBS but are never used.
+      You may insert $ABBR DERIV2=NO after the first $PROB to save FSUBS construction and compilation time
+  
+
+License Registered to: Metrum Research Group
+Expiration Date:    14 JUL 2024
+Current Date:       24 NOV 2023
+Days until program expires : 235
+1NONLINEAR MIXED EFFECTS MODEL PROGRAM (NONMEM) VERSION 7.5.1
+ ORIGINALLY DEVELOPED BY STUART BEAL, LEWIS SHEINER, AND ALISON BOECKMANN
+ CURRENT DEVELOPERS ARE ROBERT BAUER, ICON DEVELOPMENT SOLUTIONS,
+ AND ALISON BOECKMANN. IMPLEMENTATION, EFFICIENCY, AND STANDARDIZATION
+ PERFORMED BY NOUS INFOSYSTEMS.
+
+ PROBLEM NO.:         1
+ From bbr: see 2004.yaml for details
+0DATA CHECKOUT RUN:              NO
+ DATA SET LOCATED ON UNIT NO.:    2
+ THIS UNIT TO BE REWOUND:        NO
+ NO. OF DATA RECS IN DATA SET:      904
+ NO. OF DATA ITEMS IN DATA SET:  17
+ ID DATA ITEM IS DATA ITEM NO.:   2
+ DEP VARIABLE IS DATA ITEM NO.:   5
+ MDV DATA ITEM IS DATA ITEM NO.:  9
+0INDICES PASSED TO SUBROUTINE PRED:
+   8   3   4   0  12  11   6   0   0   0  10
+0LABELS FOR DATA ITEMS:
+ C ID TIME AMT DV CMT DOSE EVID MDV ADDL II SS FORM WT PER BLQ NUM
+0(NONBLANK) LABELS FOR PRED-DEFINED ITEMS:
+ CL V2 Q V3 KA IPRED
+0FORMAT FOR DATA:
+ (5(3E20.0/),2E20.0)
+
+ TOT. NO. OF OBS RECS:      310
+ TOT. NO. OF INDIVIDUALS:       39
+0LENGTH OF THETA:  12
+0DEFAULT THETA BOUNDARY TEST OMITTED:    NO
+0OMEGA HAS BLOCK FORM:
+  1
+  1  1
+  0  0  2
+  0  0  0  3
+  0  0  0  0  4
+  0  0  0  0  0  5
+  0  0  0  0  0  0  6
+  0  0  0  0  0  0  0  7
+  0  0  0  0  0  0  0  7  7
+  0  0  0  0  0  0  0  7  7  7
+  0  0  0  0  0  0  0  7  7  7  7
+  0  0  0  0  0  0  0  7  7  7  7  7
+  0  0  0  0  0  0  0  0  0  0  0  0  8
+  0  0  0  0  0  0  0  0  0  0  0  0  8  8
+0DEFAULT OMEGA BOUNDARY TEST OMITTED:    NO
+0SIGMA HAS BLOCK FORM:
+  1
+  0  2
+0DEFAULT SIGMA BOUNDARY TEST OMITTED:    NO
+0INITIAL ESTIMATE OF THETA:
+ LOWER BOUND    INITIAL EST    UPPER BOUND
+ -0.1000E+07     0.5650E+01     0.1000E+07
+ -0.1000E+07     0.5600E+01     0.1000E+07
+ -0.1000E+07     0.4290E+01     0.1000E+07
+ -0.1000E+07     0.7070E+01     0.1000E+07
+ -0.1000E+07    -0.1330E+01     0.1000E+07
+  0.5650E+01     0.5650E+01     0.5650E+01
+  0.5600E+01     0.5600E+01     0.5600E+01
+  0.4290E+01     0.4290E+01     0.4290E+01
+  0.7070E+01     0.7070E+01     0.7070E+01
+ -0.9250E+00    -0.9250E+00    -0.9250E+00
+  0.4000E+01     0.4000E+01     0.4000E+01
+  0.1000E+01     0.1000E+01     0.1000E+01
+0INITIAL ESTIMATE OF OMEGA:
+ BLOCK SET NO.   BLOCK                                                                    FIXED
+        1                                                                                   NO
+                  0.1000E+00
+                  0.3000E-02   0.2000E+00
+        2                                                                                  YES
+                  0.0000E+00
+        3                                                                                  YES
+                  0.0000E+00
+        4                                                                                  YES
+                  0.0000E+00
+        5                                                                                  YES
+                  0.0000E+00
+        6                                                                                  YES
+                  0.0000E+00
+        7                                                                                  YES
+                  0.2000E+01
+                  0.0000E+00   0.2000E+01
+                  0.0000E+00   0.0000E+00   0.2000E+01
+                  0.0000E+00   0.0000E+00   0.0000E+00   0.1560E-01
+                  0.0000E+00   0.0000E+00   0.0000E+00   0.0000E+00   0.6840E-02
+        8                                                                                  YES
+                  0.1003E+00
+                  0.6034E-01   0.8477E+00
+0INITIAL ESTIMATE OF SIGMA:
+ BLOCK SET NO.   BLOCK                                                                    FIXED
+        1                                                                                   NO
+                  0.1000E+00
+        2                                                                                  YES
+                  0.1000E+00
+0TABLES STEP OMITTED:    NO
+ NO. OF TABLES:           1
+ SEED NUMBER (SEED):    11456
+ NPDTYPE:    0
+ INTERPTYPE:    0
+ RANMETHOD:             3U
+ MC SAMPLES (ESAMPLE):    300
+ WRES SQUARE ROOT TYPE (WRESCHOL): EIGENVALUE
+0-- TABLE   1 --
+0RECORDS ONLY:    ALL
+04 COLUMNS APPENDED:    YES
+ PRINTED:                NO
+ HEADERS:               ONE
+ FILE TO BE FORWARDED:   NO
+ FORMAT:                S1PE11.4
+ IDFORMAT:
+ LFORMAT:
+ RFORMAT:
+ FIXED_EFFECT_ETAS:
+0USER-CHOSEN ITEMS:
+ NUM CL V2 Q KA V3 ETA1 ETA2 ETA3 ETA4 ETA5 ETA6 ETA7 EPRED IPRED NPDE EWRES
+0
+ PRIOR SUBROUTINE USER-SUPPLIED
+1DOUBLE PRECISION PREDPP VERSION 7.5.1
+
+ TWO COMPARTMENT MODEL WITH FIRST-ORDER ABSORPTION (ADVAN4)
+0MAXIMUM NO. OF BASIC PK PARAMETERS:   5
+0BASIC PK PARAMETERS (AFTER TRANSLATION):
+   BASIC PK PARAMETER NO.  1: ELIMINATION RATE (K)
+   BASIC PK PARAMETER NO.  2: CENTRAL-TO-PERIPH. RATE (K23)
+   BASIC PK PARAMETER NO.  3: PERIPH.-TO-CENTRAL RATE (K32)
+   BASIC PK PARAMETER NO.  5: ABSORPTION RATE (KA)
+ TRANSLATOR WILL CONVERT PARAMETERS
+ CL, V2, Q, V3 TO K, K23, K32 (TRANS4)
+0COMPARTMENT ATTRIBUTES
+ COMPT. NO.   FUNCTION   INITIAL    ON/OFF      DOSE      DEFAULT    DEFAULT
+                         STATUS     ALLOWED    ALLOWED    FOR DOSE   FOR OBS.
+    1         DEPOT        OFF        YES        YES        YES        NO
+    2         CENTRAL      ON         NO         YES        NO         YES
+    3         PERIPH.      ON         NO         YES        NO         NO
+    4         OUTPUT       OFF        YES        NO         NO         NO
+1
+ ADDITIONAL PK PARAMETERS - ASSIGNMENT OF ROWS IN GG
+ COMPT. NO.                             INDICES
+              SCALE      BIOAVAIL.   ZERO-ORDER  ZERO-ORDER  ABSORB
+                         FRACTION    RATE        DURATION    LAG
+    1            *           *           *           *           *
+    2            6           *           *           *           *
+    3            *           *           *           *           *
+    4            *           -           -           -           -
+             - PARAMETER IS NOT ALLOWED FOR THIS MODEL
+             * PARAMETER IS NOT SUPPLIED BY PK SUBROUTINE;
+               WILL DEFAULT TO ONE IF APPLICABLE
+0DATA ITEM INDICES USED BY PRED ARE:
+   EVENT ID DATA ITEM IS DATA ITEM NO.:      8
+   TIME DATA ITEM IS DATA ITEM NO.:          3
+   DOSE AMOUNT DATA ITEM IS DATA ITEM NO.:   4
+   STEADY STATE DATA ITEM IS DATA ITEM NO.: 12
+   INTERVAL DATA ITEM IS DATA ITEM NO.:     11
+   ADDL. DOSES DATA ITEM IS DATA ITEM NO.:  10
+   COMPT. NO. DATA ITEM IS DATA ITEM NO.:    6
+
+0PK SUBROUTINE CALLED WITH EVERY EVENT RECORD.
+ PK SUBROUTINE NOT CALLED AT NONEVENT (ADDITIONAL OR LAGGED) DOSE TIMES.
+0ERROR SUBROUTINE CALLED WITH EVERY EVENT RECORD.
+1
+
+
+ #TBLN:      1
+ #METH: Chain Method Processing
+
+ RANDOM GENERATION TYPE (CTYPE):     0
+ RANDOM GENERATION SEED (SEED):      1
+ RANDOM SAMPLE SELECTION (ISAMPLE):  3
+ RANDOM SAMPLE RANGE END (ISAMPEND): -2147483647
+ NUMBER OF RANDOM SAMPLES (NSAMPLE): 0
+ UNIFORM FRACTIONAL RANGE (IACCEPT): 0.250000000000000
+ RANDOM SELECTION TYPE (SELECT):     0
+ DEG. FR. TO GENERATE OMEGAS (DF):   10
+ DEG. FR. TO GENERATE SIGMAS (DFS):  0
+ CHAIN FILE (FILE):                  ../init.chn
+ EXCL. TITLE IN CHAIN FILE (NOTITLE):NO
+ EX. COL. LBS. IN CHAIN FL.(NOLABEL):NO
+ FORMAT FOR CHAIN FILE (FORMAT):     S1PE12.5
+ PAR. ORDER in CHAIN FILE (ORDER):   TSOL
+ RANDOM SAMPLING METHOD (RANMETHOD):3U
+
+ THE FOLLOWING LABELS ARE EQUIVALENT
+ PRED=NPRED
+ RES=NRES
+ WRES=NWRES
+ IWRS=NIWRES
+ IPRD=NIPRED
+ IRS=NIRES
+
+
+
+ FROM SAMPLE 3 OF CHAIN FILE ../init.chn
+ NEW INITIAL ESTIMATES OF THETA
+  0.6944E+01
+  0.6271E+01
+  0.4275E+01
+  0.8050E+01
+ -0.1419E+01
+ NEW INITIAL ESTIMATES OF OMEGA
+  0.8494E-01
+ -0.3353E-01  0.1950E+00
+  0.0000E+00  0.0000E+00  0.0000E+00
+  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+ NEW INITIAL ESTIMATES OF SIGMA
+  0.4965E-01
+
+ #PARA: PARAFILE=2004-3.pnm, PROTOCOL=MPI, NODES= 2
+
+1
+
+
+ #TBLN:      1
+ #METH: NUTS Bayesian Analysis
+
+ ESTIMATION STEP OMITTED:                 NO
+ ANALYSIS TYPE:                           POPULATION
+ NUMBER OF SADDLE POINT RESET ITERATIONS:      0
+ GRADIENT METHOD USED:               NOSLOW
+ CONDITIONAL ESTIMATES USED:              YES
+ CENTERED ETA:                            NO
+ EPS-ETA INTERACTION:                     YES
+ LAPLACIAN OBJ. FUNC.:                    NO
+ NO. OF FUNCT. EVALS. ALLOWED:            9999
+ NO. OF SIG. FIGURES REQUIRED:            3
+ INTERMEDIATE PRINTOUT:                   YES
+ ESTIMATE OUTPUT TO MSF:                  NO
+ ABORT WITH PRED EXIT CODE 1:             NO
+ IND. OBJ. FUNC. VALUES SORTED:           NO
+ NUMERICAL DERIVATIVE
+       FILE REQUEST (NUMDER):               NONE
+ MAP (ETAHAT) ESTIMATION METHOD (OPTMAP):   0
+ ETA HESSIAN EVALUATION METHOD (ETADER):    0
+ INITIAL ETA FOR MAP ESTIMATION (MCETA):    0
+ SIGDIGITS FOR MAP ESTIMATION (SIGLO):      100
+ GRADIENT SIGDIGITS OF
+       FIXED EFFECTS PARAMETERS (SIGL):     100
+ NOPRIOR SETTING (NOPRIOR):                 0
+ NOCOV SETTING (NOCOV):                     OFF
+ DERCONT SETTING (DERCONT):                 OFF
+ FINAL ETA RE-EVALUATION (FNLETA):          1
+ EXCLUDE NON-INFLUENTIAL (NON-INFL.) ETAS
+       IN SHRINKAGE (ETASTYPE):             NO
+ NON-INFL. ETA CORRECTION (NONINFETA):      0
+ RAW OUTPUT FILE (FILE): 2004-3.ext
+ EXCLUDE TITLE (NOTITLE):                   NO
+ EXCLUDE COLUMN LABELS (NOLABEL):           NO
+ FORMAT FOR ADDITIONAL FILES (FORMAT):      S1PE12.5
+ PARAMETER ORDER FOR OUTPUTS (ORDER):       TSOL
+ KNUTHSUMOFF:                               0
+ INCLUDE LNTWOPI:                           NO
+ INCLUDE CONSTANT TERM TO PRIOR (PRIORC):   NO
+ INCLUDE CONSTANT TERM TO OMEGA (ETA) (OLNTWOPI):NO
+ EM OR BAYESIAN METHOD USED:                MCMC BAYESIAN (BAYES)
+ BAYES INDIVIDUAL PARAMETERS ONLY: NO
+ MU MODELING PATTERN (MUM):
+ GRADIENT/GIBBS PATTERN (GRD):
+ AUTOMATIC SETTING FEATURE (AUTO):          2
+ CONVERGENCE TYPE (CTYPE):                  0
+ KEEP ITERATIONS (THIN):            1
+ BURN-IN ITERATIONS (NBURN):                1000
+ FIRST ITERATION FOR MAP (MAPITERS):          NO
+ ITERATIONS (NITER):                        2000
+ ANNEAL SETTING (CONSTRAIN):                 1
+ STARTING SEED FOR MC METHODS (SEED):       3
+ MC SAMPLES PER SUBJECT (ISAMPLE):          1
+ RANDOM SAMPLING METHOD (RANMETHOD):        3UP
+ PROPOSAL DENSITY SCALING RANGE
+              (ISCALE_MIN, ISCALE_MAX):     1.000000000000000E-06   ,1000000.00000000
+ SAMPLE ACCEPTANCE RATE (IACCEPT):          0.400000000000000
+ METROPOLIS HASTINGS POPULATION SAMPLING FOR NON-GIBBS
+ SAMPLED THETAS AND SIGMAS:
+ PROPOSAL DENSITY SCALING RANGE
+              (PSCALE_MIN, PSCALE_MAX):   1.000000000000000E-02   ,1000.00000000000
+ SAMPLE ACCEPTANCE RATE (PACCEPT):                       0.500000000000000
+ SAMPLES FOR GLOBAL SEARCH KERNEL (PSAMPLE_M1):          1
+ SAMPLES FOR LOCAL SEARCH KERNEL (PSAMPLE_M2):           -1
+ SAMPLES FOR LOCAL UNIVARIATE KERNEL (PSAMPLE_M3):       1
+ METROPOLIS HASTINGS POPULATION SAMPLING FOR NON-GIBBS
+ SAMPLED OMEGAS:
+ SAMPLE ACCEPTANCE RATE (OACCEPT):                       0.500000000000000
+ SAMPLES FOR GLOBAL SEARCH KERNEL (OSAMPLE_M1):          -1
+ SAMPLES FOR LOCAL SEARCH KERNEL (OSAMPLE_M2):           -1
+ SAMPLES FOR LOCAL UNIVARIATE SEARCH KERNEL (OSAMPLE_M3):-1
+ MASS/IMP./POST. MATRIX REFRESH SETTING (MASSREST):      -1
+ MASS MATRIX ACCUMULATION ITERATIONS (MADAPT):          -1
+ MASS MATRIX BLOCKING TYPE (NUTS_MASS):                 BD
+ MODEL PARAMETERS TRANSFORMED BY MASS MATRIX (NUTS_TRANSFORM=0)
+ POWER TERM WEIGHTING FOR MASS MATRIX ACCUM. (KAPPA):   1.00000000000000
+ NUTS SAMPLE ACCEPTANCE RATE (NUTS_DELTA):                   0.950000000000000
+ NUTS GAMMA SETTING (NUTS_GAMMA):                            5.000000000000000E-02
+ USER DEFINED PRIOR SETTING FOR THETAS: (TPU):        0.00000000000000
+ DEG. FR. FOR LKJ CORRELATION PRIOR FOR OMEGAS (OLKJDF): 2.00000000000000
+ WEIGHT FACTOR FOR STD PRIOR FOR OMEGAS (OVARF): 1.00000000000000
+ WEIGHT FACTOR FOR STD PRIOR FOR SIGMAS (SVARF): -1.000000000000000+300
+ NUTS WARMUP METHOD (NUTS_TEST):       0
+ NUTS MAXIMAL DEPTH SEARCH (NUTS_MAXDEPTH):       10
+ NUTS STAGE I WARMUP ITERATIONS (NUTS_INIT):       75.0000000000000
+ NUTS STAGE II BASE WARMUP ITERATIONS (NUTS_BASE): -3.00000000000000
+ NUTS STAGE III FINAL ITERATIONS (NUTS_TERM): 50.0000000000000
+ INITIAL ITERATIONS FOR STEP NUTS SIZE ASSESSMENT (NUTS_STEPITER): 1
+ INTERVAL ITERATIONS FOR STEP NUTS SIZE ASSESSMENT (NUTS_STEPINTER):0
+ ETA PARAMETERIZATION (NUTS_EPARAM):2
+ OMEGA PARAMETERIZATION (NUTS_OPARAM):1
+ SIGMA PARAMETERIZATION (NUTS_SPARAM):1
+ NUTS REGULARIZING METHOD (NUTS_REG): 0.00000000000000
+
+
+ THE FOLLOWING LABELS ARE EQUIVALENT
+ PRED=PREDI
+ RES=RESI
+ WRES=WRESI
+ IWRS=IWRESI
+ IPRD=IPREDI
+ IRS=IRESI
+
+ EM/BAYES SETUP:
+ THETAS THAT ARE MU MODELED:
+   1   2
+ THETAS THAT ARE GIBBS SAMPLED:
+   1   2   3   4   5
+ THETAS THAT ARE METROPOLIS-HASTINGS SAMPLED:
+ 
+ SIGMAS THAT ARE GIBBS SAMPLED:
+   1
+ SIGMAS THAT ARE METROPOLIS-HASTINGS SAMPLED:
+ 
+ OMEGAS ARE GIBBS SAMPLED
+
+ MONITORING OF SEARCH:
+
+ Burn-in Mode
+ iteration         -258 MCMCOBJ=    2362.2711102234339     
+ iteration         -257 MCMCOBJ=    2362.2711102234339     
+ iteration         -256 MCMCOBJ=    1184.9768039686103     
+ iteration         -255 MCMCOBJ=    821.43663324769807     
+ iteration         -254 MCMCOBJ=    460.04968554001192     
+ iteration         -253 MCMCOBJ=    306.08928914747736     
+ iteration         -252 MCMCOBJ=    232.90253415570609     
+ iteration         -251 MCMCOBJ=    110.95751632126209     
+ iteration         -250 MCMCOBJ=    38.296032470955112     
+ iteration         -249 MCMCOBJ=    4.9377771864122995     
+ iteration         -248 MCMCOBJ=   -33.647652032774317     
+ iteration         -247 MCMCOBJ=   -52.477909695297562     
+ iteration         -246 MCMCOBJ=   -35.087648031038697     
+ iteration         -245 MCMCOBJ=   -50.599861798498047     
+ iteration         -244 MCMCOBJ=   -70.152569251899251     
+ iteration         -243 MCMCOBJ=   -76.974634948196297     
+ iteration         -242 MCMCOBJ=   -81.779049065496537     
+ iteration         -241 MCMCOBJ=   -77.349957861441411     
+ iteration         -240 MCMCOBJ=   -72.623568716102781     
+ iteration         -239 MCMCOBJ=   -66.393536209171614     
+ iteration         -238 MCMCOBJ=   -55.855075598206007     
+ iteration         -237 MCMCOBJ=   -71.922111390057765     
+ iteration         -236 MCMCOBJ=   -24.558558400929670     
+ iteration         -235 MCMCOBJ=   -28.423765342156887     
+ iteration         -234 MCMCOBJ=   -37.233372238673631     
+ iteration         -233 MCMCOBJ=   -45.601684712914292     
+ iteration         -232 MCMCOBJ=   -35.312329248286652     
+ iteration         -231 MCMCOBJ=   -38.438938691991446     
+ iteration         -230 MCMCOBJ=   -73.493612239424266     
+ iteration         -229 MCMCOBJ=   -83.580573636420766     
+ iteration         -228 MCMCOBJ=   -81.023156380587480     
+ iteration         -227 MCMCOBJ=   -71.976266703271790     
+ iteration         -226 MCMCOBJ=   -72.385138621400856     
+ iteration         -225 MCMCOBJ=   -81.353181951267842     
+ iteration         -224 MCMCOBJ=   -76.196437832171910     
+ iteration         -223 MCMCOBJ=   -70.113163303859139     
+ iteration         -222 MCMCOBJ=   -75.470675158775364     
+ iteration         -221 MCMCOBJ=   -75.418329709860672     
+ iteration         -220 MCMCOBJ=   -74.280636605679859     
+ iteration         -219 MCMCOBJ=   -96.842218064592942     
+ iteration         -218 MCMCOBJ=   -81.181973770065682     
+ iteration         -217 MCMCOBJ=   -78.875695610299758     
+ iteration         -216 MCMCOBJ=   -75.117306594551366     
+ iteration         -215 MCMCOBJ=   -60.637235690665889     
+ iteration         -214 MCMCOBJ=   -65.057134530974480     
+ iteration         -213 MCMCOBJ=   -50.926605648746950     
+ iteration         -212 MCMCOBJ=   -69.155727397055287     
+ iteration         -211 MCMCOBJ=   -108.62891428319928     
+ iteration         -210 MCMCOBJ=   -106.18722305839627     
+ iteration         -209 MCMCOBJ=   -103.02153754937656     
+ iteration         -208 MCMCOBJ=   -81.784017438256512     
+ iteration         -207 MCMCOBJ=   -75.644654175000710     
+ iteration         -206 MCMCOBJ=   -80.550550065153672     
+ iteration         -205 MCMCOBJ=   -66.641259690913316     
+ iteration         -204 MCMCOBJ=   -67.167782925807444     
+ iteration         -203 MCMCOBJ=   -64.126159764554174     
+ iteration         -202 MCMCOBJ=   -51.305199743779085     
+ iteration         -201 MCMCOBJ=   -71.625229281173290     
+ iteration         -200 MCMCOBJ=   -108.90478668719523     
+ iteration         -199 MCMCOBJ=   -107.73271864310358     
+ iteration         -198 MCMCOBJ=   -77.515994278595741     
+ iteration         -197 MCMCOBJ=   -71.638760340075379     
+ iteration         -196 MCMCOBJ=   -95.045420168360906     
+ iteration         -195 MCMCOBJ=   -104.37089337987364     
+ iteration         -194 MCMCOBJ=   -127.28054765546666     
+ iteration         -193 MCMCOBJ=   -121.05770545914694     
+ iteration         -192 MCMCOBJ=   -128.04665833978109     
+ iteration         -191 MCMCOBJ=   -86.430874283987080     
+ iteration         -190 MCMCOBJ=   -68.004471192214936     
+ iteration         -189 MCMCOBJ=   -78.519026364636332     
+ iteration         -188 MCMCOBJ=   -53.569850210389269     
+ iteration         -187 MCMCOBJ=   -52.353282028398404     
+ iteration         -186 MCMCOBJ=   -40.772540427321523     
+ iteration         -185 MCMCOBJ=   -90.348673498149566     
+ iteration         -184 MCMCOBJ=   -84.833019301651007     
+ iteration         -183 MCMCOBJ=   -64.141280032050304     
+ iteration         -182 MCMCOBJ=   -64.141280032050332     
+ iteration         -181 MCMCOBJ=   -72.534441854217789     
+ iteration         -180 MCMCOBJ=   -88.901848316989472     
+ iteration         -179 MCMCOBJ=   -65.332309914538357     
+ iteration         -178 MCMCOBJ=   -72.321420161466804     
+ iteration         -177 MCMCOBJ=   -54.670142388597462     
+ iteration         -176 MCMCOBJ=   -76.458967264078055     
+ iteration         -175 MCMCOBJ=   -50.150512838509286     
+ iteration         -174 MCMCOBJ=   -62.691730171854580     
+ iteration         -173 MCMCOBJ=   -65.894349730391411     
+ iteration         -172 MCMCOBJ=   -85.950477495126066     
+ iteration         -171 MCMCOBJ=   -81.926115694407045     
+ iteration         -170 MCMCOBJ=   -61.855534582479272     
+ iteration         -169 MCMCOBJ=   -33.043994669616879     
+ iteration         -168 MCMCOBJ=   -32.399956520894769     
+ iteration         -167 MCMCOBJ=   -70.858517362340024     
+ iteration         -166 MCMCOBJ=   -61.705499741207078     
+ iteration         -165 MCMCOBJ=   -82.874510896596618     
+ iteration         -164 MCMCOBJ=   -82.874510896596334     
+ iteration         -163 MCMCOBJ=   -82.874510896596561     
+ iteration         -162 MCMCOBJ=   -94.708368921124162     
+ iteration         -161 MCMCOBJ=   -91.843231119836346     
+ iteration         -160 MCMCOBJ=   -77.191888226121648     
+ iteration         -159 MCMCOBJ=   -59.660554451385401     
+ iteration         -158 MCMCOBJ=   -29.193790319346057     
+ iteration         -157 MCMCOBJ=   -33.011874767423819     
+ iteration         -156 MCMCOBJ=   -67.198781953878381     
+ iteration         -155 MCMCOBJ=   -86.694707249551115     
+ iteration         -154 MCMCOBJ=   -78.551324914061070     
+ iteration         -153 MCMCOBJ=   -81.800240759502032     
+ iteration         -152 MCMCOBJ=   -93.697158337882911     
+ iteration         -151 MCMCOBJ=   -101.96798356344674     
+ iteration         -150 MCMCOBJ=   -89.104154337383591     
+ iteration         -149 MCMCOBJ=   -63.636309445235447     
+ iteration         -148 MCMCOBJ=   -66.990846042575853     
+ iteration         -147 MCMCOBJ=   -93.500393967290165     
+ iteration         -146 MCMCOBJ=   -93.152908625253502     
+ iteration         -145 MCMCOBJ=   -81.149947062092338     
+ iteration         -144 MCMCOBJ=   -81.497105428294205     
+ iteration         -143 MCMCOBJ=   -63.747162685284877     
+ iteration         -142 MCMCOBJ=   -56.837264172084559     
+ iteration         -141 MCMCOBJ=   -81.805432519155886     
+ iteration         -140 MCMCOBJ=   -95.593507211401842     
+ iteration         -139 MCMCOBJ=   -102.68412337866464     
+ iteration         -138 MCMCOBJ=   -98.656762559447245     
+ iteration         -137 MCMCOBJ=   -107.72379714095976     
+ iteration         -136 MCMCOBJ=   -95.364620538087536     
+ iteration         -135 MCMCOBJ=   -104.11786415410272     
+ iteration         -134 MCMCOBJ=   -64.996184924037252     
+ iteration         -133 MCMCOBJ=   -64.124826012067004     
+ iteration         -132 MCMCOBJ=   -76.158423494547520     
+ iteration         -131 MCMCOBJ=   -87.104878283450361     
+ iteration         -130 MCMCOBJ=   -96.901299145407108     
+ iteration         -129 MCMCOBJ=   -83.086184451836203     
+ iteration         -128 MCMCOBJ=   -92.575606090253444     
+ iteration         -127 MCMCOBJ=   -87.664527645718408     
+ iteration         -126 MCMCOBJ=   -87.292156075192182     
+ iteration         -125 MCMCOBJ=   -87.292156075191770     
+ iteration         -124 MCMCOBJ=   -86.015851914153416     
+ iteration         -123 MCMCOBJ=   -73.956191565272292     
+ iteration         -122 MCMCOBJ=   -87.637406958940829     
+ iteration         -121 MCMCOBJ=   -63.295388528567564     
+ iteration         -120 MCMCOBJ=   -63.562358879312818     
+ iteration         -119 MCMCOBJ=   -42.178905803927321     
+ iteration         -118 MCMCOBJ=   -47.674831941829666     
+ iteration         -117 MCMCOBJ=   -51.370851370296243     
+ iteration         -116 MCMCOBJ=   -45.875339622982949     
+ iteration         -115 MCMCOBJ=   -26.244570527201002     
+ iteration         -114 MCMCOBJ=   -38.224680075591174     
+ iteration         -113 MCMCOBJ=   -34.122755629741626     
+ iteration         -112 MCMCOBJ=   -28.955654402323049     
+ iteration         -111 MCMCOBJ=   -50.298132747234547     
+ iteration         -110 MCMCOBJ=   -53.404964506941617     
+ iteration         -109 MCMCOBJ=   -61.168025485357866     
+ iteration         -108 MCMCOBJ=   -71.638708992422593     
+ iteration         -107 MCMCOBJ=   -56.557922967553935     
+ iteration         -106 MCMCOBJ=   -66.096786486309497     
+ iteration         -105 MCMCOBJ=   -75.581055282020799     
+ iteration         -104 MCMCOBJ=   -58.259609457334648     
+ iteration         -103 MCMCOBJ=   -65.869769534646267     
+ iteration         -102 MCMCOBJ=   -77.155624862072059     
+ iteration         -101 MCMCOBJ=   -51.173935447410670     
+ iteration         -100 MCMCOBJ=   -56.633542309865817     
+ iteration          -99 MCMCOBJ=   -58.039725326508240     
+ iteration          -98 MCMCOBJ=   -75.348523318867663     
+ iteration          -97 MCMCOBJ=   -93.874365904607103     
+ iteration          -96 MCMCOBJ=   -94.721271254880136     
+ iteration          -95 MCMCOBJ=   -89.569594360311072     
+ iteration          -94 MCMCOBJ=   -89.083691216814174     
+ iteration          -93 MCMCOBJ=   -79.225517187667492     
+ iteration          -92 MCMCOBJ=   -84.372069809095464     
+ iteration          -91 MCMCOBJ=   -88.980831776646596     
+ iteration          -90 MCMCOBJ=   -82.477353420446661     
+ iteration          -89 MCMCOBJ=   -92.976815230554749     
+ iteration          -88 MCMCOBJ=   -110.55550745257987     
+ iteration          -87 MCMCOBJ=   -117.08058123593133     
+ iteration          -86 MCMCOBJ=   -125.47287080160947     
+ iteration          -85 MCMCOBJ=   -81.060687879887098     
+ iteration          -84 MCMCOBJ=   -94.736802569867564     
+ iteration          -83 MCMCOBJ=   -79.613997279894079     
+ iteration          -82 MCMCOBJ=   -96.173405183423952     
+ iteration          -81 MCMCOBJ=   -80.454475639597732     
+ iteration          -80 MCMCOBJ=   -86.158117845064368     
+ iteration          -79 MCMCOBJ=   -78.363862865785222     
+ iteration          -78 MCMCOBJ=   -74.691801200910021     
+ iteration          -77 MCMCOBJ=   -100.77836030054050     
+ iteration          -76 MCMCOBJ=   -79.719209168893855     
+ iteration          -75 MCMCOBJ=   -49.123382215333947     
+ iteration          -74 MCMCOBJ=   -45.649463407545952     
+ iteration          -73 MCMCOBJ=   -82.049844339286366     
+ iteration          -72 MCMCOBJ=   -66.199932018582956     
+ iteration          -71 MCMCOBJ=   -45.739510889276950     
+ iteration          -70 MCMCOBJ=   -57.430025390765110     
+ iteration          -69 MCMCOBJ=   -28.752983893634614     
+ iteration          -68 MCMCOBJ=   -29.156568631291144     
+ iteration          -67 MCMCOBJ=   -64.439164617817397     
+ iteration          -66 MCMCOBJ=   -66.209495337211479     
+ iteration          -65 MCMCOBJ=   -73.920575072372657     
+ iteration          -64 MCMCOBJ=   -56.988194137580855     
+ iteration          -63 MCMCOBJ=   -81.128069064600680     
+ iteration          -62 MCMCOBJ=   -91.153900094806446     
+ iteration          -61 MCMCOBJ=   -89.268233228052807     
+ iteration          -60 MCMCOBJ=   -91.549414144120107     
+ iteration          -59 MCMCOBJ=   -91.822178716588922     
+ iteration          -58 MCMCOBJ=   -103.53204607401364     
+ iteration          -57 MCMCOBJ=   -103.75604596120384     
+ iteration          -56 MCMCOBJ=   -93.930028161773720     
+ iteration          -55 MCMCOBJ=   -97.722333163378892     
+ iteration          -54 MCMCOBJ=   -109.29935456356377     
+ iteration          -53 MCMCOBJ=   -97.932218982791113     
+ iteration          -52 MCMCOBJ=   -93.004383443153529     
+ iteration          -51 MCMCOBJ=   -69.564496792884327     
+ iteration          -50 MCMCOBJ=   -69.564496792885180     
+ iteration          -49 MCMCOBJ=   -69.564496792885450     
+ iteration          -48 MCMCOBJ=   -66.423888793105817     
+ iteration          -47 MCMCOBJ=   -68.634872620963435     
+ iteration          -46 MCMCOBJ=   -65.180656579264678     
+ iteration          -45 MCMCOBJ=   -90.904994204115283     
+ iteration          -44 MCMCOBJ=   -89.812502089075849     
+ iteration          -43 MCMCOBJ=   -78.410210534275677     
+ iteration          -42 MCMCOBJ=   -91.786213665821606     
+ iteration          -41 MCMCOBJ=   -114.48527364755364     
+ iteration          -40 MCMCOBJ=   -105.32693749150184     
+ iteration          -39 MCMCOBJ=   -102.15928823464496     
+ iteration          -38 MCMCOBJ=   -71.886863327583001     
+ iteration          -37 MCMCOBJ=   -65.395711881767639     
+ iteration          -36 MCMCOBJ=   -59.965586039043814     
+ iteration          -35 MCMCOBJ=   -83.101731758563545     
+ iteration          -34 MCMCOBJ=   -74.662052519457689     
+ iteration          -33 MCMCOBJ=   -76.845938184525892     
+ iteration          -32 MCMCOBJ=   -74.759386932031376     
+ iteration          -31 MCMCOBJ=   -44.942021912701037     
+ iteration          -30 MCMCOBJ=   -52.239160344191021     
+ iteration          -29 MCMCOBJ=   -43.923652222122634     
+ iteration          -28 MCMCOBJ=   -63.443678226016957     
+ iteration          -27 MCMCOBJ=   -90.172907814960254     
+ iteration          -26 MCMCOBJ=   -79.361161146521454     
+ iteration          -25 MCMCOBJ=   -88.555319057151934     
+ iteration          -24 MCMCOBJ=   -113.25016361096233     
+ iteration          -23 MCMCOBJ=   -110.83161535376580     
+ iteration          -22 MCMCOBJ=   -73.412000524603442     
+ iteration          -21 MCMCOBJ=   -80.791737798157072     
+ iteration          -20 MCMCOBJ=   -81.691222214607293     
+ iteration          -19 MCMCOBJ=   -79.133979356922083     
+ iteration          -18 MCMCOBJ=   -111.82625263713888     
+ iteration          -17 MCMCOBJ=   -108.60918653308893     
+ iteration          -16 MCMCOBJ=   -113.97652064180967     
+ iteration          -15 MCMCOBJ=   -90.879067537858788     
+ iteration          -14 MCMCOBJ=   -107.26692234331311     
+ iteration          -13 MCMCOBJ=   -90.772054124594206     
+ iteration          -12 MCMCOBJ=   -109.33146662239027     
+ iteration          -11 MCMCOBJ=   -99.102276262415145     
+ iteration          -10 MCMCOBJ=   -99.002862350280992     
+ iteration           -9 MCMCOBJ=   -101.46600979828975     
+ iteration           -8 MCMCOBJ=   -98.870883979910815     
+ iteration           -7 MCMCOBJ=   -91.549561761328818     
+ iteration           -6 MCMCOBJ=   -71.689841975139828     
+ iteration           -5 MCMCOBJ=   -72.410857537414813     
+ iteration           -4 MCMCOBJ=   -79.674967826414360     
+ iteration           -3 MCMCOBJ=   -80.673159111422251     
+ iteration           -2 MCMCOBJ=   -91.718879513126936     
+ iteration           -1 MCMCOBJ=   -86.426684068786344     
+ Sampling Mode
+ iteration            0 MCMCOBJ=   -100.64996655344424     
+ iteration            1 MCMCOBJ=   -83.631440259815435     
+ iteration            2 MCMCOBJ=   -96.731574343960588     
+ iteration            3 MCMCOBJ=   -98.644356783253869     
+ iteration            4 MCMCOBJ=   -87.018646486868278     
+ iteration            5 MCMCOBJ=   -64.942799397689129     
+ iteration            6 MCMCOBJ=   -58.245272516182567     
+ iteration            7 MCMCOBJ=   -68.532694272724342     
+ iteration            8 MCMCOBJ=   -55.186592185464512     
+ iteration            9 MCMCOBJ=   -58.002433831407508     
+ iteration           10 MCMCOBJ=   -61.841767898735469     
+ iteration           11 MCMCOBJ=   -64.690761512568230     
+ iteration           12 MCMCOBJ=   -81.184265229240737     
+ iteration           13 MCMCOBJ=   -56.446706922137786     
+ iteration           14 MCMCOBJ=   -89.057208405376798     
+ iteration           15 MCMCOBJ=   -103.51465016775708     
+ iteration           16 MCMCOBJ=   -92.159701503015199     
+ iteration           17 MCMCOBJ=   -114.11981822611124     
+ iteration           18 MCMCOBJ=   -101.83604415814503     
+ iteration           19 MCMCOBJ=   -103.45806896955433     
+ iteration           20 MCMCOBJ=   -93.329154763169669     
+ iteration           21 MCMCOBJ=   -83.004989902333818     
+ iteration           22 MCMCOBJ=   -91.929753806839869     
+ iteration           23 MCMCOBJ=   -87.375844061541031     
+ iteration           24 MCMCOBJ=   -80.381839349355118     
+ iteration           25 MCMCOBJ=   -68.418885465391256     
+ iteration           26 MCMCOBJ=   -76.289021377675084     
+ iteration           27 MCMCOBJ=   -90.795147405884805     
+ iteration           28 MCMCOBJ=   -77.625727115642306     
+ iteration           29 MCMCOBJ=   -61.069016796470109     
+ iteration           30 MCMCOBJ=   -75.568912698541055     
+ iteration           31 MCMCOBJ=   -61.034333664657680     
+ iteration           32 MCMCOBJ=   -62.533063340370589     
+ iteration           33 MCMCOBJ=   -59.294582362062776     
+ iteration           34 MCMCOBJ=   -63.378238853037544     
+ iteration           35 MCMCOBJ=   -69.030664852260927     
+ iteration           36 MCMCOBJ=   -59.971763120825813     
+ iteration           37 MCMCOBJ=   -51.668967055794653     
+ iteration           38 MCMCOBJ=   -44.151831085557383     
+ iteration           39 MCMCOBJ=   -44.116667066549795     
+ iteration           40 MCMCOBJ=   -41.972069844913335     
+ iteration           41 MCMCOBJ=   -49.636377556892903     
+ iteration           42 MCMCOBJ=   -52.089988294706160     
+ iteration           43 MCMCOBJ=   -47.166128233889189     
+ iteration           44 MCMCOBJ=   -47.755954152952960     
+ iteration           45 MCMCOBJ=   -64.398401747292127     
+ iteration           46 MCMCOBJ=   -54.848989148475866     
+ iteration           47 MCMCOBJ=   -58.183674020453132     
+ iteration           48 MCMCOBJ=   -54.686398240969147     
+ iteration           49 MCMCOBJ=   -58.492594555188212     
+ iteration           50 MCMCOBJ=   -82.752906886661904     
+ iteration           51 MCMCOBJ=   -67.654232950937114     
+ iteration           52 MCMCOBJ=   -94.705114485604383     
+ iteration           53 MCMCOBJ=   -53.054676173316672     
+ iteration           54 MCMCOBJ=   -67.359729723661658     
+ iteration           55 MCMCOBJ=   -68.176955262227978     
+ iteration           56 MCMCOBJ=   -83.626924930290755     
+ iteration           57 MCMCOBJ=   -50.444093112314050     
+ iteration           58 MCMCOBJ=   -45.887591771086981     
+ iteration           59 MCMCOBJ=   -62.413688442322929     
+ iteration           60 MCMCOBJ=   -75.343586208959337     
+ iteration           61 MCMCOBJ=   -95.850572722416771     
+ iteration           62 MCMCOBJ=   -99.892248341927314     
+ iteration           63 MCMCOBJ=   -73.311948365102509     
+ iteration           64 MCMCOBJ=   -71.636671299919598     
+ iteration           65 MCMCOBJ=   -72.017756957440255     
+ iteration           66 MCMCOBJ=   -64.783275351923109     
+ iteration           67 MCMCOBJ=   -59.368611280832404     
+ iteration           68 MCMCOBJ=   -39.889773407557051     
+ iteration           69 MCMCOBJ=   -42.204355806353426     
+ iteration           70 MCMCOBJ=   -52.999129574017317     
+ iteration           71 MCMCOBJ=   -52.036555816569830     
+ iteration           72 MCMCOBJ=   -61.708170235362502     
+ iteration           73 MCMCOBJ=   -72.925386248657162     
+ iteration           74 MCMCOBJ=   -82.933176741606800     
+ iteration           75 MCMCOBJ=   -86.833394813960226     
+ iteration           76 MCMCOBJ=   -84.236716494819575     
+ iteration           77 MCMCOBJ=   -62.230389674677966     
+ iteration           78 MCMCOBJ=   -48.083488874102763     
+ iteration           79 MCMCOBJ=   -51.008480089323150     
+ iteration           80 MCMCOBJ=   -66.233690442810897     
+ iteration           81 MCMCOBJ=   -64.222070981811157     
+ iteration           82 MCMCOBJ=   -84.099985008958612     
+ iteration           83 MCMCOBJ=   -81.919884736540169     
+ iteration           84 MCMCOBJ=   -77.512268950778918     
+ iteration           85 MCMCOBJ=   -64.024923976387754     
+ iteration           86 MCMCOBJ=   -63.157228441174787     
+ iteration           87 MCMCOBJ=   -49.374564129217106     
+ iteration           88 MCMCOBJ=   -65.883404229180044     
+ iteration           89 MCMCOBJ=   -59.684153406676366     
+ iteration           90 MCMCOBJ=   -80.179582214296786     
+ iteration           91 MCMCOBJ=   -91.885831330607630     
+ iteration           92 MCMCOBJ=   -82.474525342867210     
+ iteration           93 MCMCOBJ=   -111.70016127020762     
+ iteration           94 MCMCOBJ=   -88.008951923698675     
+ iteration           95 MCMCOBJ=   -101.15307221776726     
+ iteration           96 MCMCOBJ=   -80.295241224837213     
+ iteration           97 MCMCOBJ=   -84.730077770601994     
+ iteration           98 MCMCOBJ=   -80.548469353372255     
+ iteration           99 MCMCOBJ=   -64.155757364657958     
+ iteration          100 MCMCOBJ=   -62.286544633261165     
+ iteration          101 MCMCOBJ=   -80.424590373253722     
+ iteration          102 MCMCOBJ=   -72.203846974930386     
+ iteration          103 MCMCOBJ=   -77.439673403161677     
+ iteration          104 MCMCOBJ=   -90.601948453972753     
+ iteration          105 MCMCOBJ=   -84.641718119355389     
+ iteration          106 MCMCOBJ=   -69.393412868549078     
+ iteration          107 MCMCOBJ=   -75.418297051372818     
+ iteration          108 MCMCOBJ=   -77.239227942440905     
+ iteration          109 MCMCOBJ=   -73.924000325414724     
+ iteration          110 MCMCOBJ=   -69.277210598520455     
+ iteration          111 MCMCOBJ=   -49.976347059192449     
+ iteration          112 MCMCOBJ=   -68.710735197761110     
+ iteration          113 MCMCOBJ=   -71.617538017806794     
+ iteration          114 MCMCOBJ=   -79.494302276547216     
+ iteration          115 MCMCOBJ=   -97.069265023389505     
+ iteration          116 MCMCOBJ=   -106.43252817667911     
+ iteration          117 MCMCOBJ=   -95.174448685551440     
+ iteration          118 MCMCOBJ=   -68.759998078147675     
+ iteration          119 MCMCOBJ=   -75.512056834852004     
+ iteration          120 MCMCOBJ=   -77.367720868874315     
+ iteration          121 MCMCOBJ=   -45.332667313426079     
+ iteration          122 MCMCOBJ=   -37.189622735049468     
+ iteration          123 MCMCOBJ=   -80.608736318636105     
+ iteration          124 MCMCOBJ=   -91.709638333303673     
+ iteration          125 MCMCOBJ=   -95.451603617507146     
+ iteration          126 MCMCOBJ=   -98.173671296621706     
+ iteration          127 MCMCOBJ=   -73.809812273003374     
+ iteration          128 MCMCOBJ=   -54.667125546614869     
+ iteration          129 MCMCOBJ=   -71.501912292466372     
+ iteration          130 MCMCOBJ=   -51.797241288783248     
+ iteration          131 MCMCOBJ=   -56.365471587325530     
+ iteration          132 MCMCOBJ=   -76.300083889595825     
+ iteration          133 MCMCOBJ=   -85.432840052138374     
+ iteration          134 MCMCOBJ=   -71.591022893269269     
+ iteration          135 MCMCOBJ=   -78.480812624612781     
+ iteration          136 MCMCOBJ=   -111.80988484564547     
+ iteration          137 MCMCOBJ=   -94.871696931131808     
+ iteration          138 MCMCOBJ=   -104.27319258971562     
+ iteration          139 MCMCOBJ=   -97.994487658694354     
+ iteration          140 MCMCOBJ=   -102.67018166882528     
+ iteration          141 MCMCOBJ=   -86.747579214789880     
+ iteration          142 MCMCOBJ=   -91.403366343213875     
+ iteration          143 MCMCOBJ=   -94.233290013387901     
+ iteration          144 MCMCOBJ=   -95.434548323141414     
+ iteration          145 MCMCOBJ=   -82.939939654634713     
+ iteration          146 MCMCOBJ=   -65.921704216490355     
+ iteration          147 MCMCOBJ=   -55.954070198756341     
+ iteration          148 MCMCOBJ=   -67.555527412629147     
+ iteration          149 MCMCOBJ=   -90.521623456350284     
+ iteration          150 MCMCOBJ=   -72.436453717375699     
+ iteration          151 MCMCOBJ=   -105.51454037973160     
+ iteration          152 MCMCOBJ=   -106.87841733909625     
+ iteration          153 MCMCOBJ=   -97.066012765561780     
+ iteration          154 MCMCOBJ=   -108.52096957304224     
+ iteration          155 MCMCOBJ=   -104.31284857245359     
+ iteration          156 MCMCOBJ=   -105.50456430499916     
+ iteration          157 MCMCOBJ=   -101.57461788118255     
+ iteration          158 MCMCOBJ=   -93.998054182762530     
+ iteration          159 MCMCOBJ=   -93.453873376287234     
+ iteration          160 MCMCOBJ=   -109.51404060121926     
+ iteration          161 MCMCOBJ=   -116.43530141050938     
+ iteration          162 MCMCOBJ=   -112.89030538280068     
+ iteration          163 MCMCOBJ=   -79.181310697836594     
+ iteration          164 MCMCOBJ=   -83.007894948815292     
+ iteration          165 MCMCOBJ=   -76.029176204975315     
+ iteration          166 MCMCOBJ=   -68.666296542575580     
+ iteration          167 MCMCOBJ=   -71.826005798893291     
+ iteration          168 MCMCOBJ=   -70.154252147888528     
+ iteration          169 MCMCOBJ=   -73.876067812690209     
+ iteration          170 MCMCOBJ=   -76.870026921577974     
+ iteration          171 MCMCOBJ=   -70.766420954707201     
+ iteration          172 MCMCOBJ=   -89.664502573547779     
+ iteration          173 MCMCOBJ=   -85.602468275514454     
+ iteration          174 MCMCOBJ=   -92.914016892238593     
+ iteration          175 MCMCOBJ=   -92.640612219837223     
+ iteration          176 MCMCOBJ=   -78.304986176117453     
+ iteration          177 MCMCOBJ=   -65.742536244686491     
+ iteration          178 MCMCOBJ=   -82.535256886736008     
+ iteration          179 MCMCOBJ=   -85.680293082720965     
+ iteration          180 MCMCOBJ=   -73.193493592401978     
+ iteration          181 MCMCOBJ=   -65.387221184273642     
+ iteration          182 MCMCOBJ=   -80.891139362485688     
+ iteration          183 MCMCOBJ=   -92.662089137832766     
+ iteration          184 MCMCOBJ=   -98.044178374233738     
+ iteration          185 MCMCOBJ=   -92.582468545181911     
+ iteration          186 MCMCOBJ=   -90.702809035609732     
+ iteration          187 MCMCOBJ=   -101.93024443543857     
+ iteration          188 MCMCOBJ=   -79.613043845170381     
+ iteration          189 MCMCOBJ=   -87.949122428777017     
+ iteration          190 MCMCOBJ=   -85.075930949698147     
+ iteration          191 MCMCOBJ=   -103.91405973859564     
+ iteration          192 MCMCOBJ=   -110.79316077112895     
+ iteration          193 MCMCOBJ=   -93.400148540744823     
+ iteration          194 MCMCOBJ=   -98.221479292445437     
+ iteration          195 MCMCOBJ=   -88.215835922770736     
+ iteration          196 MCMCOBJ=   -84.451424016867293     
+ iteration          197 MCMCOBJ=   -96.999028309828361     
+ iteration          198 MCMCOBJ=   -92.770870244764581     
+ iteration          199 MCMCOBJ=   -75.986718601594646     
+ iteration          200 MCMCOBJ=   -96.068520570403308     
+ iteration          201 MCMCOBJ=   -89.946596729707807     
+ iteration          202 MCMCOBJ=   -75.252518348488351     
+ iteration          203 MCMCOBJ=   -58.682844509671710     
+ iteration          204 MCMCOBJ=   -30.466906120380223     
+ iteration          205 MCMCOBJ=   -57.045058626608828     
+ iteration          206 MCMCOBJ=   -69.414365458838333     
+ iteration          207 MCMCOBJ=   -84.273079688493411     
+ iteration          208 MCMCOBJ=   -53.407723340024219     
+ iteration          209 MCMCOBJ=   -71.395731274600919     
+ iteration          210 MCMCOBJ=   -76.130312681581174     
+ iteration          211 MCMCOBJ=   -64.261333210728537     
+ iteration          212 MCMCOBJ=   -64.288962377104866     
+ iteration          213 MCMCOBJ=   -28.311989203232191     
+ iteration          214 MCMCOBJ=   -53.152784499422168     
+ iteration          215 MCMCOBJ=   -40.094692066124146     
+ iteration          216 MCMCOBJ=   -50.599110906252214     
+ iteration          217 MCMCOBJ=   -69.831315582409786     
+ iteration          218 MCMCOBJ=   -72.329324717631948     
+ iteration          219 MCMCOBJ=   -37.971951564514924     
+ iteration          220 MCMCOBJ=   -37.716416523574807     
+ iteration          221 MCMCOBJ=   -64.232235054985026     
+ iteration          222 MCMCOBJ=   -62.878085060921350     
+ iteration          223 MCMCOBJ=   -82.181304426907957     
+ iteration          224 MCMCOBJ=   -93.648365692698391     
+ iteration          225 MCMCOBJ=   -78.628849899418626     
+ iteration          226 MCMCOBJ=   -59.784056589955618     
+ iteration          227 MCMCOBJ=   -67.512692850957507     
+ iteration          228 MCMCOBJ=   -73.958409336687879     
+ iteration          229 MCMCOBJ=   -57.374490478997110     
+ iteration          230 MCMCOBJ=   -53.741654373953409     
+ iteration          231 MCMCOBJ=   -29.932220234586161     
+ iteration          232 MCMCOBJ=   -28.627566350061862     
+ iteration          233 MCMCOBJ=   -47.171593865628495     
+ iteration          234 MCMCOBJ=   -44.918965331325893     
+ iteration          235 MCMCOBJ=   -61.654902900195211     
+ iteration          236 MCMCOBJ=   -57.196194416864103     
+ iteration          237 MCMCOBJ=   -75.357708623579782     
+ iteration          238 MCMCOBJ=   -85.476969654363671     
+ iteration          239 MCMCOBJ=   -77.238920327221464     
+ iteration          240 MCMCOBJ=   -92.959810061856189     
+ iteration          241 MCMCOBJ=   -103.39276863057110     
+ iteration          242 MCMCOBJ=   -80.301504854224504     
+ iteration          243 MCMCOBJ=   -93.220205445960630     
+ iteration          244 MCMCOBJ=   -109.34003274353620     
+ iteration          245 MCMCOBJ=   -103.23613726743922     
+ iteration          246 MCMCOBJ=   -80.597738294696043     
+ iteration          247 MCMCOBJ=   -57.303069103931435     
+ iteration          248 MCMCOBJ=   -58.681972374990266     
+ iteration          249 MCMCOBJ=   -56.629962577380113     
+ iteration          250 MCMCOBJ=   -37.620016853291361     
+ iteration          251 MCMCOBJ=   -59.246602233064536     
+ iteration          252 MCMCOBJ=   -80.155972699572985     
+ iteration          253 MCMCOBJ=   -87.467817743831276     
+ iteration          254 MCMCOBJ=   -78.822622679581002     
+ iteration          255 MCMCOBJ=   -72.602569963932481     
+ iteration          256 MCMCOBJ=   -59.722894024659183     
+ iteration          257 MCMCOBJ=   -61.949910086963065     
+ iteration          258 MCMCOBJ=   -38.363940425184033     
+ iteration          259 MCMCOBJ=   -53.865156994119886     
+ iteration          260 MCMCOBJ=   -64.449002164679001     
+ iteration          261 MCMCOBJ=   -83.207457529009346     
+ iteration          262 MCMCOBJ=   -82.481031524301372     
+ iteration          263 MCMCOBJ=   -69.964582943645453     
+ iteration          264 MCMCOBJ=   -74.108185869358977     
+ iteration          265 MCMCOBJ=   -84.492191267479669     
+ iteration          266 MCMCOBJ=   -69.867074871588684     
+ iteration          267 MCMCOBJ=   -67.729361299272483     
+ iteration          268 MCMCOBJ=   -66.566014249042340     
+ iteration          269 MCMCOBJ=   -75.754557562899635     
+ iteration          270 MCMCOBJ=   -67.459877178200173     
+ iteration          271 MCMCOBJ=   -54.485621258866466     
+ iteration          272 MCMCOBJ=   -49.771892688204773     
+ iteration          273 MCMCOBJ=   -46.593316892067918     
+ iteration          274 MCMCOBJ=   -43.699788379908874     
+ iteration          275 MCMCOBJ=   -80.720936067767681     
+ iteration          276 MCMCOBJ=   -86.486855240923774     
+ iteration          277 MCMCOBJ=   -80.190994328901724     
+ iteration          278 MCMCOBJ=   -92.699444511207247     
+ iteration          279 MCMCOBJ=   -82.284914961364606     
+ iteration          280 MCMCOBJ=   -72.644370532043766     
+ iteration          281 MCMCOBJ=   -76.534950021816783     
+ iteration          282 MCMCOBJ=   -51.862261300719858     
+ iteration          283 MCMCOBJ=   -63.120548003538346     
+ iteration          284 MCMCOBJ=   -88.213533669017920     
+ iteration          285 MCMCOBJ=   -57.694553572627115     
+ iteration          286 MCMCOBJ=   -83.194039749851058     
+ iteration          287 MCMCOBJ=   -79.390205459927586     
+ iteration          288 MCMCOBJ=   -107.79961510510932     
+ iteration          289 MCMCOBJ=   -91.222104052819887     
+ iteration          290 MCMCOBJ=   -78.806676731743536     
+ iteration          291 MCMCOBJ=   -78.261080416382711     
+ iteration          292 MCMCOBJ=   -102.24528317903294     
+ iteration          293 MCMCOBJ=   -110.35397435394421     
+ iteration          294 MCMCOBJ=   -105.66954799816982     
+ iteration          295 MCMCOBJ=   -89.281071869915110     
+ iteration          296 MCMCOBJ=   -86.812784818199745     
+ iteration          297 MCMCOBJ=   -96.911795049139755     
+ iteration          298 MCMCOBJ=   -105.67256085961483     
+ iteration          299 MCMCOBJ=   -79.912554764169982     
+ iteration          300 MCMCOBJ=   -79.358726779477053     
+ iteration          301 MCMCOBJ=   -79.379874359220779     
+ iteration          302 MCMCOBJ=   -64.817536681125134     
+ iteration          303 MCMCOBJ=   -78.650038146588216     
+ iteration          304 MCMCOBJ=   -67.063700713388556     
+ iteration          305 MCMCOBJ=   -77.341577384782042     
+ iteration          306 MCMCOBJ=   -53.693964964542431     
+ iteration          307 MCMCOBJ=   -64.495259528586899     
+ iteration          308 MCMCOBJ=   -68.042473338532304     
+ iteration          309 MCMCOBJ=   -74.370050948415752     
+ iteration          310 MCMCOBJ=   -57.224316931345747     
+ iteration          311 MCMCOBJ=   -50.365760146320348     
+ iteration          312 MCMCOBJ=   -60.467050561008811     
+ iteration          313 MCMCOBJ=   -64.414477185445378     
+ iteration          314 MCMCOBJ=   -63.939431112355301     
+ iteration          315 MCMCOBJ=   -97.493036671737116     
+ iteration          316 MCMCOBJ=   -92.479431635686538     
+ iteration          317 MCMCOBJ=   -60.596301216807852     
+ iteration          318 MCMCOBJ=   -52.713466494432630     
+ iteration          319 MCMCOBJ=   -53.189107725627487     
+ iteration          320 MCMCOBJ=   -70.314445661250318     
+ iteration          321 MCMCOBJ=   -84.482990375480938     
+ iteration          322 MCMCOBJ=   -99.131479245542465     
+ iteration          323 MCMCOBJ=   -83.667191695966068     
+ iteration          324 MCMCOBJ=   -91.837848974380137     
+ iteration          325 MCMCOBJ=   -66.468741995550232     
+ iteration          326 MCMCOBJ=   -65.621754922306579     
+ iteration          327 MCMCOBJ=   -70.778198680568977     
+ iteration          328 MCMCOBJ=   -78.846236652693435     
+ iteration          329 MCMCOBJ=   -81.824113360963239     
+ iteration          330 MCMCOBJ=   -89.116910030659639     
+ iteration          331 MCMCOBJ=   -95.006372664077901     
+ iteration          332 MCMCOBJ=   -104.28703695922260     
+ iteration          333 MCMCOBJ=   -105.08195258049865     
+ iteration          334 MCMCOBJ=   -75.375110446459601     
+ iteration          335 MCMCOBJ=   -84.206379935620006     
+ iteration          336 MCMCOBJ=   -86.882005528040722     
+ iteration          337 MCMCOBJ=   -73.056764550585314     
+ iteration          338 MCMCOBJ=   -81.802993034131561     
+ iteration          339 MCMCOBJ=   -80.611206363343982     
+ iteration          340 MCMCOBJ=   -81.246102342822851     
+ iteration          341 MCMCOBJ=   -68.480054074829425     
+ iteration          342 MCMCOBJ=   -60.569168639238697     
+ iteration          343 MCMCOBJ=   -81.150606375967527     
+ iteration          344 MCMCOBJ=   -80.747804914202746     
+ iteration          345 MCMCOBJ=   -83.574273299448436     
+ iteration          346 MCMCOBJ=   -80.611070676384728     
+ iteration          347 MCMCOBJ=   -88.944666500137316     
+ iteration          348 MCMCOBJ=   -81.027714650977657     
+ iteration          349 MCMCOBJ=   -84.640716177052354     
+ iteration          350 MCMCOBJ=   -89.143426250453473     
+ iteration          351 MCMCOBJ=   -74.637127615146767     
+ iteration          352 MCMCOBJ=   -75.383263116748594     
+ iteration          353 MCMCOBJ=   -78.525257482577501     
+ iteration          354 MCMCOBJ=   -51.582501454630993     
+ iteration          355 MCMCOBJ=   -43.391986599720440     
+ iteration          356 MCMCOBJ=   -70.667799005106303     
+ iteration          357 MCMCOBJ=   -80.812983262799378     
+ iteration          358 MCMCOBJ=   -82.084570074932813     
+ iteration          359 MCMCOBJ=   -96.145708212810533     
+ iteration          360 MCMCOBJ=   -91.121770641690716     
+ iteration          361 MCMCOBJ=   -77.783323162676567     
+ iteration          362 MCMCOBJ=   -47.395059277987585     
+ iteration          363 MCMCOBJ=   -36.092462322346265     
+ iteration          364 MCMCOBJ=   -66.332251035569499     
+ iteration          365 MCMCOBJ=   -73.468968642172001     
+ iteration          366 MCMCOBJ=   -79.868509853642678     
+ iteration          367 MCMCOBJ=   -76.752293845164814     
+ iteration          368 MCMCOBJ=   -58.383423041945456     
+ iteration          369 MCMCOBJ=   -61.029457189189181     
+ iteration          370 MCMCOBJ=   -49.436149490877604     
+ iteration          371 MCMCOBJ=   -48.950470768885772     
+ iteration          372 MCMCOBJ=   -59.284123099511916     
+ iteration          373 MCMCOBJ=   -52.579913287519368     
+ iteration          374 MCMCOBJ=   -55.838843460650715     
+ iteration          375 MCMCOBJ=   -60.160478748376661     
+ iteration          376 MCMCOBJ=   -68.865518269355547     
+ iteration          377 MCMCOBJ=   -33.334498015350285     
+ iteration          378 MCMCOBJ=   -57.015112392234670     
+ iteration          379 MCMCOBJ=   -73.405049221577642     
+ iteration          380 MCMCOBJ=   -66.942488443468548     
+ iteration          381 MCMCOBJ=   -42.965281082087458     
+ iteration          382 MCMCOBJ=   -57.140947335354710     
+ iteration          383 MCMCOBJ=   -51.995406147205514     
+ iteration          384 MCMCOBJ=   -50.024578083055218     
+ iteration          385 MCMCOBJ=   -52.224030243203011     
+ iteration          386 MCMCOBJ=   -58.717339865179284     
+ iteration          387 MCMCOBJ=   -66.336548030231569     
+ iteration          388 MCMCOBJ=   -75.784700935663935     
+ iteration          389 MCMCOBJ=   -60.924801982640176     
+ iteration          390 MCMCOBJ=   -82.807725204759024     
+ iteration          391 MCMCOBJ=   -86.447284119222715     
+ iteration          392 MCMCOBJ=   -73.087790036134777     
+ iteration          393 MCMCOBJ=   -91.547428893538083     
+ iteration          394 MCMCOBJ=   -83.807021532291301     
+ iteration          395 MCMCOBJ=   -84.282300800094873     
+ iteration          396 MCMCOBJ=   -71.317927207130055     
+ iteration          397 MCMCOBJ=   -55.279472945449143     
+ iteration          398 MCMCOBJ=   -70.078739406083699     
+ iteration          399 MCMCOBJ=   -67.688622454406655     
+ iteration          400 MCMCOBJ=   -63.222696367965490     
+ iteration          401 MCMCOBJ=   -62.432870428385399     
+ iteration          402 MCMCOBJ=   -80.863755561268277     
+ iteration          403 MCMCOBJ=   -36.353185627055211     
+ iteration          404 MCMCOBJ=   -45.907747677214942     
+ iteration          405 MCMCOBJ=   -38.100545939293596     
+ iteration          406 MCMCOBJ=   -60.624701298850262     
+ iteration          407 MCMCOBJ=   -53.353965385290820     
+ iteration          408 MCMCOBJ=   -62.318932956478172     
+ iteration          409 MCMCOBJ=   -78.032364380871755     
+ iteration          410 MCMCOBJ=   -94.099200827522623     
+ iteration          411 MCMCOBJ=   -95.491979078537526     
+ iteration          412 MCMCOBJ=   -56.768434197339324     
+ iteration          413 MCMCOBJ=   -74.275254109104793     
+ iteration          414 MCMCOBJ=   -97.398195803510248     
+ iteration          415 MCMCOBJ=   -109.07989193749376     
+ iteration          416 MCMCOBJ=   -107.27196148257674     
+ iteration          417 MCMCOBJ=   -89.740338920443037     
+ iteration          418 MCMCOBJ=   -96.090878287017247     
+ iteration          419 MCMCOBJ=   -79.630099588090928     
+ iteration          420 MCMCOBJ=   -58.620105584611288     
+ iteration          421 MCMCOBJ=   -69.143621892615144     
+ iteration          422 MCMCOBJ=   -69.053406370691874     
+ iteration          423 MCMCOBJ=   -98.096889604218802     
+ iteration          424 MCMCOBJ=   -105.26461663528235     
+ iteration          425 MCMCOBJ=   -98.861239706045481     
+ iteration          426 MCMCOBJ=   -95.849109873165801     
+ iteration          427 MCMCOBJ=   -77.200187866820286     
+ iteration          428 MCMCOBJ=   -72.157725593869458     
+ iteration          429 MCMCOBJ=   -82.209451240850157     
+ iteration          430 MCMCOBJ=   -78.147443392702684     
+ iteration          431 MCMCOBJ=   -69.252038744593179     
+ iteration          432 MCMCOBJ=   -67.883647093461548     
+ iteration          433 MCMCOBJ=   -81.000797379962478     
+ iteration          434 MCMCOBJ=   -62.117680708319988     
+ iteration          435 MCMCOBJ=   -87.273897823198553     
+ iteration          436 MCMCOBJ=   -50.725901076548055     
+ iteration          437 MCMCOBJ=   -56.606767115685180     
+ iteration          438 MCMCOBJ=   -43.934185981564426     
+ iteration          439 MCMCOBJ=   -81.808964151602311     
+ iteration          440 MCMCOBJ=   -101.43762676755144     
+ iteration          441 MCMCOBJ=   -84.839870659922553     
+ iteration          442 MCMCOBJ=   -87.883444433695928     
+ iteration          443 MCMCOBJ=   -80.088452244068421     
+ iteration          444 MCMCOBJ=   -70.064590394428748     
+ iteration          445 MCMCOBJ=   -69.341235747027895     
+ iteration          446 MCMCOBJ=   -71.208488305444661     
+ iteration          447 MCMCOBJ=   -61.009290421520014     
+ iteration          448 MCMCOBJ=   -44.643223662645596     
+ iteration          449 MCMCOBJ=   -71.357390992197807     
+ iteration          450 MCMCOBJ=   -78.397581898377354     
+ iteration          451 MCMCOBJ=   -89.655188070425538     
+ iteration          452 MCMCOBJ=   -62.084463689757520     
+ iteration          453 MCMCOBJ=   -84.730227650499742     
+ iteration          454 MCMCOBJ=   -103.51414785383014     
+ iteration          455 MCMCOBJ=   -116.39620126826664     
+ iteration          456 MCMCOBJ=   -90.791778150348833     
+ iteration          457 MCMCOBJ=   -66.864522787630392     
+ iteration          458 MCMCOBJ=   -77.013511682813572     
+ iteration          459 MCMCOBJ=   -59.983199927462735     
+ iteration          460 MCMCOBJ=   -52.443806718072388     
+ iteration          461 MCMCOBJ=   -66.539100930184972     
+ iteration          462 MCMCOBJ=   -71.973608121754921     
+ iteration          463 MCMCOBJ=   -67.391251847153143     
+ iteration          464 MCMCOBJ=   -64.961001769819418     
+ iteration          465 MCMCOBJ=   -42.499783295624674     
+ iteration          466 MCMCOBJ=   -61.727549457954780     
+ iteration          467 MCMCOBJ=   -53.116765226360187     
+ iteration          468 MCMCOBJ=   -73.272572344624791     
+ iteration          469 MCMCOBJ=   -77.401947008018212     
+ iteration          470 MCMCOBJ=   -82.771039335929657     
+ iteration          471 MCMCOBJ=   -79.751630636873855     
+ iteration          472 MCMCOBJ=   -86.414728342807052     
+ iteration          473 MCMCOBJ=   -84.209952709274233     
+ iteration          474 MCMCOBJ=   -98.109173609646490     
+ iteration          475 MCMCOBJ=   -89.155831736440831     
+ iteration          476 MCMCOBJ=   -104.41802173723040     
+ iteration          477 MCMCOBJ=   -87.350396424040341     
+ iteration          478 MCMCOBJ=   -76.800643287051670     
+ iteration          479 MCMCOBJ=   -56.094010549750763     
+ iteration          480 MCMCOBJ=   -56.280738939354087     
+ iteration          481 MCMCOBJ=   -49.919015769464231     
+ iteration          482 MCMCOBJ=   -89.698364204223239     
+ iteration          483 MCMCOBJ=   -91.588788013516449     
+ iteration          484 MCMCOBJ=   -92.981434066913209     
+ iteration          485 MCMCOBJ=   -111.28948596963718     
+ iteration          486 MCMCOBJ=   -77.630492025884934     
+ iteration          487 MCMCOBJ=   -72.591158775281713     
+ iteration          488 MCMCOBJ=   -93.302595599518895     
+ iteration          489 MCMCOBJ=   -85.533164791838772     
+ iteration          490 MCMCOBJ=   -76.652136173800855     
+ iteration          491 MCMCOBJ=   -83.723942061347458     
+ iteration          492 MCMCOBJ=   -87.545310814391058     
+ iteration          493 MCMCOBJ=   -89.696670752133869     
+ iteration          494 MCMCOBJ=   -102.30439661129024     
+ iteration          495 MCMCOBJ=   -79.457336268026282     
+ iteration          496 MCMCOBJ=   -86.756944911567132     
+ iteration          497 MCMCOBJ=   -92.260415096455162     
+ iteration          498 MCMCOBJ=   -96.035302515859442     
+ iteration          499 MCMCOBJ=   -89.541280101681807     
+ iteration          500 MCMCOBJ=   -80.068438419342272     
+ iteration          501 MCMCOBJ=   -66.154961239254177     
+ iteration          502 MCMCOBJ=   -55.456062287533200     
+ iteration          503 MCMCOBJ=   -77.418550982295727     
+ iteration          504 MCMCOBJ=   -78.368446102860233     
+ iteration          505 MCMCOBJ=   -77.358704721725786     
+ iteration          506 MCMCOBJ=   -77.688320767253657     
+ iteration          507 MCMCOBJ=   -58.588092945151246     
+ iteration          508 MCMCOBJ=   -40.951708987581647     
+ iteration          509 MCMCOBJ=   -65.771587447894504     
+ iteration          510 MCMCOBJ=   -63.257910564890722     
+ iteration          511 MCMCOBJ=   -74.250784518481325     
+ iteration          512 MCMCOBJ=   -68.507416791040754     
+ iteration          513 MCMCOBJ=   -89.194491153810873     
+ iteration          514 MCMCOBJ=   -62.496517379323024     
+ iteration          515 MCMCOBJ=   -62.692067321631853     
+ iteration          516 MCMCOBJ=   -54.432351932959769     
+ iteration          517 MCMCOBJ=   -61.899955808818795     
+ iteration          518 MCMCOBJ=   -51.179239243330350     
+ iteration          519 MCMCOBJ=   -50.572631273884525     
+ iteration          520 MCMCOBJ=   -64.975820596898728     
+ iteration          521 MCMCOBJ=   -80.677147490856470     
+ iteration          522 MCMCOBJ=   -75.785516820353109     
+ iteration          523 MCMCOBJ=   -76.123418064508414     
+ iteration          524 MCMCOBJ=   -82.013320050793297     
+ iteration          525 MCMCOBJ=   -91.384331771302897     
+ iteration          526 MCMCOBJ=   -79.387404419860047     
+ iteration          527 MCMCOBJ=   -68.363053366575031     
+ iteration          528 MCMCOBJ=   -62.795599628441721     
+ iteration          529 MCMCOBJ=   -44.504905632770942     
+ iteration          530 MCMCOBJ=   -39.468205041550135     
+ iteration          531 MCMCOBJ=   -54.019081078018210     
+ iteration          532 MCMCOBJ=   -63.938813000365144     
+ iteration          533 MCMCOBJ=   -63.200446535570073     
+ iteration          534 MCMCOBJ=   -70.395808271191967     
+ iteration          535 MCMCOBJ=   -44.112059389391753     
+ iteration          536 MCMCOBJ=   -86.482135905407716     
+ iteration          537 MCMCOBJ=   -107.11092552781912     
+ iteration          538 MCMCOBJ=   -111.80943101784707     
+ iteration          539 MCMCOBJ=   -114.74936974496237     
+ iteration          540 MCMCOBJ=   -110.01122970965987     
+ iteration          541 MCMCOBJ=   -100.48431789841419     
+ iteration          542 MCMCOBJ=   -100.29477147842377     
+ iteration          543 MCMCOBJ=   -87.391674940970105     
+ iteration          544 MCMCOBJ=   -88.354981070215885     
+ iteration          545 MCMCOBJ=   -91.735191107197707     
+ iteration          546 MCMCOBJ=   -64.962458781695261     
+ iteration          547 MCMCOBJ=   -62.388895115222809     
+ iteration          548 MCMCOBJ=   -37.995551532931145     
+ iteration          549 MCMCOBJ=   -46.112265411357868     
+ iteration          550 MCMCOBJ=   -63.214643915601997     
+ iteration          551 MCMCOBJ=   -64.242461340110296     
+ iteration          552 MCMCOBJ=   -82.133519629702690     
+ iteration          553 MCMCOBJ=   -70.824826488472965     
+ iteration          554 MCMCOBJ=   -50.284540306051412     
+ iteration          555 MCMCOBJ=   -62.530554277398650     
+ iteration          556 MCMCOBJ=   -65.694642265973414     
+ iteration          557 MCMCOBJ=   -73.320043915171581     
+ iteration          558 MCMCOBJ=   -99.623317620329857     
+ iteration          559 MCMCOBJ=   -87.629101521644458     
+ iteration          560 MCMCOBJ=   -70.643628999063225     
+ iteration          561 MCMCOBJ=   -74.523867603962145     
+ iteration          562 MCMCOBJ=   -60.113414340748889     
+ iteration          563 MCMCOBJ=   -55.168270453369637     
+ iteration          564 MCMCOBJ=   -74.192442641149043     
+ iteration          565 MCMCOBJ=   -65.227461257039209     
+ iteration          566 MCMCOBJ=   -58.945109570128523     
+ iteration          567 MCMCOBJ=   -59.143619539449602     
+ iteration          568 MCMCOBJ=   -81.827208362779743     
+ iteration          569 MCMCOBJ=   -85.881581572115522     
+ iteration          570 MCMCOBJ=   -87.555657598508958     
+ iteration          571 MCMCOBJ=   -42.417048412648953     
+ iteration          572 MCMCOBJ=   -44.466920061710852     
+ iteration          573 MCMCOBJ=   -49.886829755770854     
+ iteration          574 MCMCOBJ=   -64.469902583465213     
+ iteration          575 MCMCOBJ=   -72.078772220056109     
+ iteration          576 MCMCOBJ=   -82.442644034544912     
+ iteration          577 MCMCOBJ=   -88.552362689734380     
+ iteration          578 MCMCOBJ=   -75.665942751724188     
+ iteration          579 MCMCOBJ=   -79.825258127996278     
+ iteration          580 MCMCOBJ=   -76.443602909480873     
+ iteration          581 MCMCOBJ=   -45.872663887984167     
+ iteration          582 MCMCOBJ=   -44.896338125189317     
+ iteration          583 MCMCOBJ=   -63.169440403162085     
+ iteration          584 MCMCOBJ=   -76.966915732840832     
+ iteration          585 MCMCOBJ=   -107.42629404832944     
+ iteration          586 MCMCOBJ=   -88.036719239171759     
+ iteration          587 MCMCOBJ=   -59.167370855927985     
+ iteration          588 MCMCOBJ=   -94.853702338406492     
+ iteration          589 MCMCOBJ=   -88.465466922459058     
+ iteration          590 MCMCOBJ=   -78.360258881305995     
+ iteration          591 MCMCOBJ=   -91.303215216839646     
+ iteration          592 MCMCOBJ=   -74.938098355712597     
+ iteration          593 MCMCOBJ=   -78.830467243870743     
+ iteration          594 MCMCOBJ=   -79.731516971308821     
+ iteration          595 MCMCOBJ=   -75.699686844688955     
+ iteration          596 MCMCOBJ=   -83.760030537450021     
+ iteration          597 MCMCOBJ=   -80.051416828931480     
+ iteration          598 MCMCOBJ=   -96.917718806740524     
+ iteration          599 MCMCOBJ=   -102.16698533427127     
+ iteration          600 MCMCOBJ=   -91.057921262944333     
+ iteration          601 MCMCOBJ=   -68.627434130088886     
+ iteration          602 MCMCOBJ=   -74.557325960966224     
+ iteration          603 MCMCOBJ=   -81.155804224951211     
+ iteration          604 MCMCOBJ=   -80.440074915289941     
+ iteration          605 MCMCOBJ=   -60.001659538307763     
+ iteration          606 MCMCOBJ=   -72.951204820015903     
+ iteration          607 MCMCOBJ=   -78.957832496375360     
+ iteration          608 MCMCOBJ=   -84.681073689066338     
+ iteration          609 MCMCOBJ=   -12.259298167373224     
+ iteration          610 MCMCOBJ=   -27.291675581664421     
+ iteration          611 MCMCOBJ=   -58.300154294281199     
+ iteration          612 MCMCOBJ=   -72.966503005935536     
+ iteration          613 MCMCOBJ=   -60.785053649953518     
+ iteration          614 MCMCOBJ=   -100.91322102288139     
+ iteration          615 MCMCOBJ=   -83.043885722049680     
+ iteration          616 MCMCOBJ=   -63.237802921451078     
+ iteration          617 MCMCOBJ=   -68.082197014633309     
+ iteration          618 MCMCOBJ=   -70.098881404545111     
+ iteration          619 MCMCOBJ=   -62.787322405527107     
+ iteration          620 MCMCOBJ=   -82.105034224937498     
+ iteration          621 MCMCOBJ=   -62.794271444803613     
+ iteration          622 MCMCOBJ=   -57.582004625632628     
+ iteration          623 MCMCOBJ=   -51.301551657981847     
+ iteration          624 MCMCOBJ=   -41.037961611981203     
+ iteration          625 MCMCOBJ=   -49.104739750786734     
+ iteration          626 MCMCOBJ=   -31.203188580459841     
+ iteration          627 MCMCOBJ=   -35.241198605749922     
+ iteration          628 MCMCOBJ=   -44.245545813911313     
+ iteration          629 MCMCOBJ=   -39.656195236722056     
+ iteration          630 MCMCOBJ=   -38.075805187096677     
+ iteration          631 MCMCOBJ=   -52.063837866277801     
+ iteration          632 MCMCOBJ=   -71.528097372134425     
+ iteration          633 MCMCOBJ=   -63.723107711631968     
+ iteration          634 MCMCOBJ=   -75.616586137969222     
+ iteration          635 MCMCOBJ=   -80.806467040180848     
+ iteration          636 MCMCOBJ=   -84.147980301394654     
+ iteration          637 MCMCOBJ=   -71.902342468407269     
+ iteration          638 MCMCOBJ=   -81.814043403345792     
+ iteration          639 MCMCOBJ=   -84.173333138411891     
+ iteration          640 MCMCOBJ=   -84.030894022905628     
+ iteration          641 MCMCOBJ=   -74.845354624274037     
+ iteration          642 MCMCOBJ=   -97.834981031050134     
+ iteration          643 MCMCOBJ=   -75.021363842217824     
+ iteration          644 MCMCOBJ=   -47.389570193487387     
+ iteration          645 MCMCOBJ=   -51.960532703727885     
+ iteration          646 MCMCOBJ=   -50.485601716062583     
+ iteration          647 MCMCOBJ=   -43.361920918637892     
+ iteration          648 MCMCOBJ=   -83.875656679787667     
+ iteration          649 MCMCOBJ=   -85.061138242914140     
+ iteration          650 MCMCOBJ=   -91.345327612302427     
+ iteration          651 MCMCOBJ=   -83.651452395780808     
+ iteration          652 MCMCOBJ=   -57.233175904796596     
+ iteration          653 MCMCOBJ=   -75.217812831229594     
+ iteration          654 MCMCOBJ=   -86.220837372825599     
+ iteration          655 MCMCOBJ=   -85.410274711634315     
+ iteration          656 MCMCOBJ=   -75.610172107720359     
+ iteration          657 MCMCOBJ=   -76.966260379313724     
+ iteration          658 MCMCOBJ=   -82.064805110868448     
+ iteration          659 MCMCOBJ=   -103.83094119697306     
+ iteration          660 MCMCOBJ=   -112.63245379083196     
+ iteration          661 MCMCOBJ=   -78.756398774455192     
+ iteration          662 MCMCOBJ=   -66.718135304192273     
+ iteration          663 MCMCOBJ=   -85.156083986879239     
+ iteration          664 MCMCOBJ=   -97.976413125358903     
+ iteration          665 MCMCOBJ=   -69.731509480794600     
+ iteration          666 MCMCOBJ=   -76.397040043168928     
+ iteration          667 MCMCOBJ=   -79.877118640921140     
+ iteration          668 MCMCOBJ=   -98.062190300939406     
+ iteration          669 MCMCOBJ=   -63.368927486568751     
+ iteration          670 MCMCOBJ=   -48.606904874989262     
+ iteration          671 MCMCOBJ=   -47.567955195438152     
+ iteration          672 MCMCOBJ=   -49.229003762675056     
+ iteration          673 MCMCOBJ=   -74.478193557029272     
+ iteration          674 MCMCOBJ=   -67.473683528966546     
+ iteration          675 MCMCOBJ=   -98.780692992973513     
+ iteration          676 MCMCOBJ=   -103.87789287465620     
+ iteration          677 MCMCOBJ=   -74.541989866663599     
+ iteration          678 MCMCOBJ=   -83.927268883397190     
+ iteration          679 MCMCOBJ=   -71.482723136203845     
+ iteration          680 MCMCOBJ=   -83.704142866490500     
+ iteration          681 MCMCOBJ=   -91.566921143207693     
+ iteration          682 MCMCOBJ=   -98.388615203997830     
+ iteration          683 MCMCOBJ=   -106.57337948247029     
+ iteration          684 MCMCOBJ=   -88.456375462713240     
+ iteration          685 MCMCOBJ=   -83.723445891582145     
+ iteration          686 MCMCOBJ=   -102.85782568369632     
+ iteration          687 MCMCOBJ=   -84.888391070263523     
+ iteration          688 MCMCOBJ=   -61.723039115409968     
+ iteration          689 MCMCOBJ=   -46.260221593787435     
+ iteration          690 MCMCOBJ=   -65.804015265554568     
+ iteration          691 MCMCOBJ=   -90.322526681907263     
+ iteration          692 MCMCOBJ=   -85.730453782020334     
+ iteration          693 MCMCOBJ=   -94.153291482246686     
+ iteration          694 MCMCOBJ=   -98.124180391399719     
+ iteration          695 MCMCOBJ=   -90.070414578362545     
+ iteration          696 MCMCOBJ=   -77.161848968416948     
+ iteration          697 MCMCOBJ=   -83.813369845904816     
+ iteration          698 MCMCOBJ=   -78.328465611778554     
+ iteration          699 MCMCOBJ=   -89.764036658030193     
+ iteration          700 MCMCOBJ=   -109.53508610708785     
+ iteration          701 MCMCOBJ=   -88.400482162788364     
+ iteration          702 MCMCOBJ=   -81.379804764159317     
+ iteration          703 MCMCOBJ=   -79.443285095140851     
+ iteration          704 MCMCOBJ=   -93.801236150792036     
+ iteration          705 MCMCOBJ=   -90.323732308943249     
+ iteration          706 MCMCOBJ=   -84.310241487818587     
+ iteration          707 MCMCOBJ=   -112.97254959442921     
+ iteration          708 MCMCOBJ=   -86.606934750220503     
+ iteration          709 MCMCOBJ=   -96.420978580380051     
+ iteration          710 MCMCOBJ=   -68.405520557603779     
+ iteration          711 MCMCOBJ=   -84.818344597112855     
+ iteration          712 MCMCOBJ=   -101.61796034261761     
+ iteration          713 MCMCOBJ=   -93.400430954128268     
+ iteration          714 MCMCOBJ=   -105.36804254135055     
+ iteration          715 MCMCOBJ=   -106.69987816762777     
+ iteration          716 MCMCOBJ=   -81.721876182503181     
+ iteration          717 MCMCOBJ=   -77.540866770987535     
+ iteration          718 MCMCOBJ=   -80.631556551627384     
+ iteration          719 MCMCOBJ=   -67.342741715285314     
+ iteration          720 MCMCOBJ=   -56.846119868549721     
+ iteration          721 MCMCOBJ=   -70.815476750486766     
+ iteration          722 MCMCOBJ=   -82.008143683296481     
+ iteration          723 MCMCOBJ=   -88.196740364632475     
+ iteration          724 MCMCOBJ=   -77.259317842825425     
+ iteration          725 MCMCOBJ=   -71.427313739742544     
+ iteration          726 MCMCOBJ=   -60.358736917785542     
+ iteration          727 MCMCOBJ=   -71.813787222027386     
+ iteration          728 MCMCOBJ=   -65.373630712279251     
+ iteration          729 MCMCOBJ=   -49.444230564650418     
+ iteration          730 MCMCOBJ=   -53.092629045523523     
+ iteration          731 MCMCOBJ=   -62.538168970537072     
+ iteration          732 MCMCOBJ=   -51.268514768561346     
+ iteration          733 MCMCOBJ=   -65.487787317830779     
+ iteration          734 MCMCOBJ=   -68.443813826409652     
+ iteration          735 MCMCOBJ=   -85.500705542266601     
+ iteration          736 MCMCOBJ=   -81.299121833720591     
+ iteration          737 MCMCOBJ=   -93.214542436406020     
+ iteration          738 MCMCOBJ=   -75.887293433416403     
+ iteration          739 MCMCOBJ=   -85.187644164266302     
+ iteration          740 MCMCOBJ=   -64.532969514929505     
+ iteration          741 MCMCOBJ=   -64.619274972631345     
+ iteration          742 MCMCOBJ=   -83.029471655420849     
+ iteration          743 MCMCOBJ=   -51.047300210357186     
+ iteration          744 MCMCOBJ=   -65.690134855639741     
+ iteration          745 MCMCOBJ=   -65.426388165259709     
+ iteration          746 MCMCOBJ=   -72.453109349153266     
+ iteration          747 MCMCOBJ=   -77.787423411951579     
+ iteration          748 MCMCOBJ=   -53.041865885732442     
+ iteration          749 MCMCOBJ=   -72.838631446186923     
+ iteration          750 MCMCOBJ=   -67.022809317311683     
+ iteration          751 MCMCOBJ=   -78.385431220955851     
+ iteration          752 MCMCOBJ=   -68.100630641904189     
+ iteration          753 MCMCOBJ=   -64.029655440616352     
+ iteration          754 MCMCOBJ=   -66.766168936542442     
+ iteration          755 MCMCOBJ=   -103.64599918025449     
+ iteration          756 MCMCOBJ=   -97.771266666447374     
+ iteration          757 MCMCOBJ=   -112.56118947624989     
+ iteration          758 MCMCOBJ=   -107.25231016772116     
+ iteration          759 MCMCOBJ=   -85.510278413961956     
+ iteration          760 MCMCOBJ=   -68.505972656209408     
+ iteration          761 MCMCOBJ=   -77.119281673784911     
+ iteration          762 MCMCOBJ=   -77.610371787293559     
+ iteration          763 MCMCOBJ=   -72.484667185818253     
+ iteration          764 MCMCOBJ=   -80.743686863038519     
+ iteration          765 MCMCOBJ=   -59.079036721942366     
+ iteration          766 MCMCOBJ=   -65.025654465112908     
+ iteration          767 MCMCOBJ=   -29.837511978331904     
+ iteration          768 MCMCOBJ=   -47.184389018407025     
+ iteration          769 MCMCOBJ=   -70.734956662573524     
+ iteration          770 MCMCOBJ=   -61.877475671862321     
+ iteration          771 MCMCOBJ=   -64.915142968472423     
+ iteration          772 MCMCOBJ=   -71.698163243537792     
+ iteration          773 MCMCOBJ=   -76.103361694281560     
+ iteration          774 MCMCOBJ=   -84.839183531807009     
+ iteration          775 MCMCOBJ=   -58.398693636452620     
+ iteration          776 MCMCOBJ=   -56.632373458197975     
+ iteration          777 MCMCOBJ=   -61.258385778082989     
+ iteration          778 MCMCOBJ=   -87.963089057673628     
+ iteration          779 MCMCOBJ=   -110.32562509483620     
+ iteration          780 MCMCOBJ=   -98.892975719709284     
+ iteration          781 MCMCOBJ=   -103.96891192922432     
+ iteration          782 MCMCOBJ=   -89.652197696173943     
+ iteration          783 MCMCOBJ=   -85.651577359706138     
+ iteration          784 MCMCOBJ=   -75.559948786622471     
+ iteration          785 MCMCOBJ=   -81.480290322014056     
+ iteration          786 MCMCOBJ=   -78.608411213060450     
+ iteration          787 MCMCOBJ=   -97.110413366453230     
+ iteration          788 MCMCOBJ=   -84.180475266008628     
+ iteration          789 MCMCOBJ=   -74.104988296736451     
+ iteration          790 MCMCOBJ=   -75.292249725265251     
+ iteration          791 MCMCOBJ=   -90.961196322475715     
+ iteration          792 MCMCOBJ=   -98.425303226236124     
+ iteration          793 MCMCOBJ=   -99.200311801869432     
+ iteration          794 MCMCOBJ=   -100.37285346144631     
+ iteration          795 MCMCOBJ=   -93.016886433041861     
+ iteration          796 MCMCOBJ=   -88.117532828634964     
+ iteration          797 MCMCOBJ=   -61.342852741678854     
+ iteration          798 MCMCOBJ=   -61.928946000411074     
+ iteration          799 MCMCOBJ=   -64.785830477303435     
+ iteration          800 MCMCOBJ=   -56.071597437660387     
+ iteration          801 MCMCOBJ=   -55.862179435603373     
+ iteration          802 MCMCOBJ=   -122.92449396243755     
+ iteration          803 MCMCOBJ=   -102.10361067413311     
+ iteration          804 MCMCOBJ=   -82.307498299583713     
+ iteration          805 MCMCOBJ=   -49.658806531412488     
+ iteration          806 MCMCOBJ=   -42.869433993896031     
+ iteration          807 MCMCOBJ=   -33.546815690564010     
+ iteration          808 MCMCOBJ=   -64.883049282773300     
+ iteration          809 MCMCOBJ=   -49.118872611217753     
+ iteration          810 MCMCOBJ=   -81.862622754525560     
+ iteration          811 MCMCOBJ=   -57.533611044842274     
+ iteration          812 MCMCOBJ=   -42.709536575840382     
+ iteration          813 MCMCOBJ=   -42.016953475633606     
+ iteration          814 MCMCOBJ=   -54.067616550206758     
+ iteration          815 MCMCOBJ=   -58.792409879687348     
+ iteration          816 MCMCOBJ=   -48.232817726463679     
+ iteration          817 MCMCOBJ=   -71.072322284995650     
+ iteration          818 MCMCOBJ=   -56.651510051653190     
+ iteration          819 MCMCOBJ=   -53.139803514574133     
+ iteration          820 MCMCOBJ=   -65.921203670569810     
+ iteration          821 MCMCOBJ=   -68.217445970617888     
+ iteration          822 MCMCOBJ=   -59.699765455595262     
+ iteration          823 MCMCOBJ=   -65.266906724788001     
+ iteration          824 MCMCOBJ=   -67.247501314755112     
+ iteration          825 MCMCOBJ=   -70.713013757259091     
+ iteration          826 MCMCOBJ=   -67.912779643230209     
+ iteration          827 MCMCOBJ=   -90.165097469471831     
+ iteration          828 MCMCOBJ=   -90.165097469471363     
+ iteration          829 MCMCOBJ=   -94.168071295687923     
+ iteration          830 MCMCOBJ=   -76.978236181454974     
+ iteration          831 MCMCOBJ=   -81.536743695010500     
+ iteration          832 MCMCOBJ=   -88.646200082498808     
+ iteration          833 MCMCOBJ=   -63.737583554658414     
+ iteration          834 MCMCOBJ=   -79.030875048775698     
+ iteration          835 MCMCOBJ=   -80.395603601904284     
+ iteration          836 MCMCOBJ=   -60.640240723251949     
+ iteration          837 MCMCOBJ=   -74.705968598455541     
+ iteration          838 MCMCOBJ=   -77.788543634338694     
+ iteration          839 MCMCOBJ=   -76.564941454844131     
+ iteration          840 MCMCOBJ=   -85.955455934444501     
+ iteration          841 MCMCOBJ=   -75.382960816173423     
+ iteration          842 MCMCOBJ=   -59.218657245385018     
+ iteration          843 MCMCOBJ=   -47.553377077939942     
+ iteration          844 MCMCOBJ=   -65.124438873937763     
+ iteration          845 MCMCOBJ=   -78.457946227802836     
+ iteration          846 MCMCOBJ=   -94.598489245830748     
+ iteration          847 MCMCOBJ=   -80.379336447813898     
+ iteration          848 MCMCOBJ=   -83.029463165467135     
+ iteration          849 MCMCOBJ=   -100.70429400808618     
+ iteration          850 MCMCOBJ=   -85.688908918733446     
+ iteration          851 MCMCOBJ=   -99.172157055426553     
+ iteration          852 MCMCOBJ=   -105.90062080412363     
+ iteration          853 MCMCOBJ=   -92.366475211946749     
+ iteration          854 MCMCOBJ=   -85.134977300907664     
+ iteration          855 MCMCOBJ=   -69.651026358456946     
+ iteration          856 MCMCOBJ=   -75.977791676513249     
+ iteration          857 MCMCOBJ=   -79.332767926944385     
+ iteration          858 MCMCOBJ=   -58.638888541607336     
+ iteration          859 MCMCOBJ=   -80.795204858895005     
+ iteration          860 MCMCOBJ=   -98.888063530885248     
+ iteration          861 MCMCOBJ=   -76.361139000644613     
+ iteration          862 MCMCOBJ=   -77.834818299088994     
+ iteration          863 MCMCOBJ=   -93.042893584157852     
+ iteration          864 MCMCOBJ=   -80.171339072807854     
+ iteration          865 MCMCOBJ=   -79.329861106621735     
+ iteration          866 MCMCOBJ=   -79.473143637503824     
+ iteration          867 MCMCOBJ=   -93.093089113893029     
+ iteration          868 MCMCOBJ=   -95.958592845815133     
+ iteration          869 MCMCOBJ=   -83.063328303535855     
+ iteration          870 MCMCOBJ=   -72.737480825082841     
+ iteration          871 MCMCOBJ=   -102.37864696431581     
+ iteration          872 MCMCOBJ=   -57.889990751687769     
+ iteration          873 MCMCOBJ=   -61.168461645173579     
+ iteration          874 MCMCOBJ=   -70.710426199030422     
+ iteration          875 MCMCOBJ=   -69.331418436019760     
+ iteration          876 MCMCOBJ=   -62.859759237736071     
+ iteration          877 MCMCOBJ=   -55.710449008481319     
+ iteration          878 MCMCOBJ=   -44.793714269266374     
+ iteration          879 MCMCOBJ=   -51.198689316667135     
+ iteration          880 MCMCOBJ=   -52.239069922306577     
+ iteration          881 MCMCOBJ=   -89.663338306672443     
+ iteration          882 MCMCOBJ=   -67.278688022994956     
+ iteration          883 MCMCOBJ=   -83.228470597918985     
+ iteration          884 MCMCOBJ=   -80.252372082142102     
+ iteration          885 MCMCOBJ=   -83.397642359915693     
+ iteration          886 MCMCOBJ=   -72.764854757508104     
+ iteration          887 MCMCOBJ=   -79.685844477815905     
+ iteration          888 MCMCOBJ=   -58.299381388788170     
+ iteration          889 MCMCOBJ=   -65.672817228913118     
+ iteration          890 MCMCOBJ=   -45.318304174314889     
+ iteration          891 MCMCOBJ=   -39.047878195311995     
+ iteration          892 MCMCOBJ=   -65.064401045337235     
+ iteration          893 MCMCOBJ=   -60.870980685155587     
+ iteration          894 MCMCOBJ=   -76.149817095761577     
+ iteration          895 MCMCOBJ=   -84.496407521886354     
+ iteration          896 MCMCOBJ=   -62.900528883800852     
+ iteration          897 MCMCOBJ=   -53.285890211501837     
+ iteration          898 MCMCOBJ=   -73.444496937228109     
+ iteration          899 MCMCOBJ=   -35.336211386749262     
+ iteration          900 MCMCOBJ=   -65.971166580878773     
+ iteration          901 MCMCOBJ=   -72.508841139923419     
+ iteration          902 MCMCOBJ=   -61.823550502944876     
+ iteration          903 MCMCOBJ=   -82.562613966492592     
+ iteration          904 MCMCOBJ=   -110.19480546214267     
+ iteration          905 MCMCOBJ=   -102.74533247369230     
+ iteration          906 MCMCOBJ=   -100.35725002497421     
+ iteration          907 MCMCOBJ=   -90.759979493018491     
+ iteration          908 MCMCOBJ=   -77.274792694079537     
+ iteration          909 MCMCOBJ=   -82.620754789754457     
+ iteration          910 MCMCOBJ=   -82.167236194222269     
+ iteration          911 MCMCOBJ=   -95.471811078575740     
+ iteration          912 MCMCOBJ=   -113.76392966882241     
+ iteration          913 MCMCOBJ=   -105.57555800088171     
+ iteration          914 MCMCOBJ=   -106.76384945673458     
+ iteration          915 MCMCOBJ=   -108.18928600364021     
+ iteration          916 MCMCOBJ=   -107.00988113381707     
+ iteration          917 MCMCOBJ=   -74.399787477245980     
+ iteration          918 MCMCOBJ=   -76.564335982387519     
+ iteration          919 MCMCOBJ=   -88.007508175200343     
+ iteration          920 MCMCOBJ=   -73.636355315376250     
+ iteration          921 MCMCOBJ=   -55.603608915199011     
+ iteration          922 MCMCOBJ=   -71.547125050491616     
+ iteration          923 MCMCOBJ=   -55.608179183796452     
+ iteration          924 MCMCOBJ=   -82.597272097303090     
+ iteration          925 MCMCOBJ=   -68.498566440355347     
+ iteration          926 MCMCOBJ=   -75.579829985826336     
+ iteration          927 MCMCOBJ=   -77.725164036261376     
+ iteration          928 MCMCOBJ=   -82.595097482149782     
+ iteration          929 MCMCOBJ=   -73.122079246510850     
+ iteration          930 MCMCOBJ=   -78.829514633223894     
+ iteration          931 MCMCOBJ=   -67.465460106847573     
+ iteration          932 MCMCOBJ=   -61.590238203469013     
+ iteration          933 MCMCOBJ=   -56.942510214342924     
+ iteration          934 MCMCOBJ=   -55.247905523539870     
+ iteration          935 MCMCOBJ=   -78.275037289081993     
+ iteration          936 MCMCOBJ=   -65.155946637918731     
+ iteration          937 MCMCOBJ=   -86.731301144243218     
+ iteration          938 MCMCOBJ=   -91.940114111826816     
+ iteration          939 MCMCOBJ=   -91.714176073713659     
+ iteration          940 MCMCOBJ=   -105.14783182155770     
+ iteration          941 MCMCOBJ=   -100.97421634731677     
+ iteration          942 MCMCOBJ=   -104.73753001327282     
+ iteration          943 MCMCOBJ=   -86.040298540028786     
+ iteration          944 MCMCOBJ=   -88.131350620881761     
+ iteration          945 MCMCOBJ=   -64.797656795354982     
+ iteration          946 MCMCOBJ=   -74.443123122913519     
+ iteration          947 MCMCOBJ=   -95.967656904379680     
+ iteration          948 MCMCOBJ=   -88.708532167573438     
+ iteration          949 MCMCOBJ=   -89.442210638566536     
+ iteration          950 MCMCOBJ=   -79.249739426390349     
+ iteration          951 MCMCOBJ=   -84.957473018347542     
+ iteration          952 MCMCOBJ=   -94.162023811718299     
+ iteration          953 MCMCOBJ=   -97.263172873577730     
+ iteration          954 MCMCOBJ=   -93.811015671918014     
+ iteration          955 MCMCOBJ=   -84.962485150896356     
+ iteration          956 MCMCOBJ=   -66.663254698439047     
+ iteration          957 MCMCOBJ=   -83.636185877377358     
+ iteration          958 MCMCOBJ=   -73.070034970528695     
+ iteration          959 MCMCOBJ=   -95.437058748325214     
+ iteration          960 MCMCOBJ=   -106.94231112158316     
+ iteration          961 MCMCOBJ=   -87.831613482156897     
+ iteration          962 MCMCOBJ=   -81.297177107257795     
+ iteration          963 MCMCOBJ=   -92.763456527895144     
+ iteration          964 MCMCOBJ=   -103.87498710974650     
+ iteration          965 MCMCOBJ=   -98.594226218080749     
+ iteration          966 MCMCOBJ=   -96.529756393659952     
+ iteration          967 MCMCOBJ=   -88.729919853814465     
+ iteration          968 MCMCOBJ=   -107.11259189735786     
+ iteration          969 MCMCOBJ=   -103.12784137961877     
+ iteration          970 MCMCOBJ=   -106.47808394387278     
+ iteration          971 MCMCOBJ=   -95.405673025898423     
+ iteration          972 MCMCOBJ=   -85.351938638693014     
+ iteration          973 MCMCOBJ=   -91.671822475631018     
+ iteration          974 MCMCOBJ=   -79.960564056675750     
+ iteration          975 MCMCOBJ=   -91.035276849645129     
+ iteration          976 MCMCOBJ=   -89.779029016409041     
+ iteration          977 MCMCOBJ=   -83.370443427588370     
+ iteration          978 MCMCOBJ=   -78.695691121725474     
+ iteration          979 MCMCOBJ=   -80.171042905805763     
+ iteration          980 MCMCOBJ=   -88.643968670953626     
+ iteration          981 MCMCOBJ=   -67.232798792163919     
+ iteration          982 MCMCOBJ=   -81.862822715786066     
+ iteration          983 MCMCOBJ=   -85.421965872018973     
+ iteration          984 MCMCOBJ=   -70.600196042440714     
+ iteration          985 MCMCOBJ=   -72.048758895283896     
+ iteration          986 MCMCOBJ=   -70.849343304105801     
+ iteration          987 MCMCOBJ=   -92.045369447905429     
+ iteration          988 MCMCOBJ=   -94.103579958336624     
+ iteration          989 MCMCOBJ=   -104.65997959441208     
+ iteration          990 MCMCOBJ=   -100.08647991153514     
+ iteration          991 MCMCOBJ=   -80.446955950888977     
+ iteration          992 MCMCOBJ=   -71.420457202997810     
+ iteration          993 MCMCOBJ=   -66.537957868371137     
+ iteration          994 MCMCOBJ=   -85.473465548798799     
+ iteration          995 MCMCOBJ=   -58.637508446354133     
+ iteration          996 MCMCOBJ=   -63.848348511509244     
+ iteration          997 MCMCOBJ=   -63.420642248949328     
+ iteration          998 MCMCOBJ=   -90.757997915881845     
+ iteration          999 MCMCOBJ=   -91.366410860848973     
+ iteration         1000 MCMCOBJ=   -97.822576132353745     
+ iteration         1001 MCMCOBJ=   -110.07959049999292     
+ iteration         1002 MCMCOBJ=   -98.993177640949781     
+ iteration         1003 MCMCOBJ=   -106.93771910866536     
+ iteration         1004 MCMCOBJ=   -108.14741056313382     
+ iteration         1005 MCMCOBJ=   -91.921972849566245     
+ iteration         1006 MCMCOBJ=   -90.881358896200140     
+ iteration         1007 MCMCOBJ=   -81.114453734242900     
+ iteration         1008 MCMCOBJ=   -84.008051603433330     
+ iteration         1009 MCMCOBJ=   -73.270888830600938     
+ iteration         1010 MCMCOBJ=   -72.373205938707827     
+ iteration         1011 MCMCOBJ=   -60.535128427554945     
+ iteration         1012 MCMCOBJ=   -61.295929961576313     
+ iteration         1013 MCMCOBJ=   -80.769984282519630     
+ iteration         1014 MCMCOBJ=   -77.256132733206272     
+ iteration         1015 MCMCOBJ=   -49.281644175018116     
+ iteration         1016 MCMCOBJ=   -40.373101739836180     
+ iteration         1017 MCMCOBJ=   -56.757971927668464     
+ iteration         1018 MCMCOBJ=   -65.364516905764191     
+ iteration         1019 MCMCOBJ=   -47.806601888200149     
+ iteration         1020 MCMCOBJ=   -79.331995529611433     
+ iteration         1021 MCMCOBJ=   -85.893335525591951     
+ iteration         1022 MCMCOBJ=   -71.284063238866779     
+ iteration         1023 MCMCOBJ=   -63.504046557097581     
+ iteration         1024 MCMCOBJ=   -49.004995577412537     
+ iteration         1025 MCMCOBJ=   -67.568979310520277     
+ iteration         1026 MCMCOBJ=   -63.244378327041865     
+ iteration         1027 MCMCOBJ=   -67.604175687142629     
+ iteration         1028 MCMCOBJ=   -84.304682469145945     
+ iteration         1029 MCMCOBJ=   -62.198777715982828     
+ iteration         1030 MCMCOBJ=   -64.240346108259175     
+ iteration         1031 MCMCOBJ=   -53.155046804011356     
+ iteration         1032 MCMCOBJ=   -52.539937660928160     
+ iteration         1033 MCMCOBJ=   -102.16906352285254     
+ iteration         1034 MCMCOBJ=   -95.439049905946774     
+ iteration         1035 MCMCOBJ=   -84.550150734814480     
+ iteration         1036 MCMCOBJ=   -72.022303087864998     
+ iteration         1037 MCMCOBJ=   -86.057200233118110     
+ iteration         1038 MCMCOBJ=   -109.72523253957215     
+ iteration         1039 MCMCOBJ=   -106.90884592976909     
+ iteration         1040 MCMCOBJ=   -106.81426418347549     
+ iteration         1041 MCMCOBJ=   -82.455774704483048     
+ iteration         1042 MCMCOBJ=   -69.695158828669491     
+ iteration         1043 MCMCOBJ=   -85.513584353968398     
+ iteration         1044 MCMCOBJ=   -84.226228281915894     
+ iteration         1045 MCMCOBJ=   -78.076076542647982     
+ iteration         1046 MCMCOBJ=   -78.595890891678707     
+ iteration         1047 MCMCOBJ=   -79.681203929750424     
+ iteration         1048 MCMCOBJ=   -76.731505252431262     
+ iteration         1049 MCMCOBJ=   -64.939744616945177     
+ iteration         1050 MCMCOBJ=   -87.072962486470374     
+ iteration         1051 MCMCOBJ=   -91.240128286336812     
+ iteration         1052 MCMCOBJ=   -86.261726293204745     
+ iteration         1053 MCMCOBJ=   -97.688335890059321     
+ iteration         1054 MCMCOBJ=   -92.287409809592219     
+ iteration         1055 MCMCOBJ=   -59.985184153978580     
+ iteration         1056 MCMCOBJ=   -69.987985804692613     
+ iteration         1057 MCMCOBJ=   -59.903926639820753     
+ iteration         1058 MCMCOBJ=   -75.439128935430986     
+ iteration         1059 MCMCOBJ=   -73.398152033820736     
+ iteration         1060 MCMCOBJ=   -86.615926321551157     
+ iteration         1061 MCMCOBJ=   -95.994507465058589     
+ iteration         1062 MCMCOBJ=   -86.445914174698061     
+ iteration         1063 MCMCOBJ=   -88.230024713309319     
+ iteration         1064 MCMCOBJ=   -97.423107221776405     
+ iteration         1065 MCMCOBJ=   -83.248245736479419     
+ iteration         1066 MCMCOBJ=   -65.375930624131627     
+ iteration         1067 MCMCOBJ=   -90.695761931734410     
+ iteration         1068 MCMCOBJ=   -83.300498563618703     
+ iteration         1069 MCMCOBJ=   -91.493080724780995     
+ iteration         1070 MCMCOBJ=   -78.478903448342720     
+ iteration         1071 MCMCOBJ=   -71.681005638206372     
+ iteration         1072 MCMCOBJ=   -77.771011974808545     
+ iteration         1073 MCMCOBJ=   -121.28895046079519     
+ iteration         1074 MCMCOBJ=   -126.18239816480219     
+ iteration         1075 MCMCOBJ=   -112.48572982315258     
+ iteration         1076 MCMCOBJ=   -95.492284925081577     
+ iteration         1077 MCMCOBJ=   -93.971316076652997     
+ iteration         1078 MCMCOBJ=   -104.22037592995714     
+ iteration         1079 MCMCOBJ=   -93.812285591766098     
+ iteration         1080 MCMCOBJ=   -85.295363947484546     
+ iteration         1081 MCMCOBJ=   -51.902467603747972     
+ iteration         1082 MCMCOBJ=   -17.173286484701883     
+ iteration         1083 MCMCOBJ=   -50.362678315694339     
+ iteration         1084 MCMCOBJ=   -65.570959519856473     
+ iteration         1085 MCMCOBJ=   -69.665618032544572     
+ iteration         1086 MCMCOBJ=   -89.823614969598083     
+ iteration         1087 MCMCOBJ=   -48.509925586546181     
+ iteration         1088 MCMCOBJ=   -60.019808715339877     
+ iteration         1089 MCMCOBJ=   -61.283983927704192     
+ iteration         1090 MCMCOBJ=   -51.861951073495000     
+ iteration         1091 MCMCOBJ=   -47.899472171599122     
+ iteration         1092 MCMCOBJ=   -60.116563643855180     
+ iteration         1093 MCMCOBJ=   -86.902707504412547     
+ iteration         1094 MCMCOBJ=   -87.671959927287503     
+ iteration         1095 MCMCOBJ=   -97.398467887584971     
+ iteration         1096 MCMCOBJ=   -86.299267844584023     
+ iteration         1097 MCMCOBJ=   -89.898896527018621     
+ iteration         1098 MCMCOBJ=   -67.851230353399032     
+ iteration         1099 MCMCOBJ=   -72.270803869208521     
+ iteration         1100 MCMCOBJ=   -73.266198165959196     
+ iteration         1101 MCMCOBJ=   -77.759654688469368     
+ iteration         1102 MCMCOBJ=   -85.390628166466712     
+ iteration         1103 MCMCOBJ=   -83.575511263308485     
+ iteration         1104 MCMCOBJ=   -77.059835529984795     
+ iteration         1105 MCMCOBJ=   -71.573639445112008     
+ iteration         1106 MCMCOBJ=   -58.087421602126753     
+ iteration         1107 MCMCOBJ=   -39.111749361923827     
+ iteration         1108 MCMCOBJ=   -45.316260225161500     
+ iteration         1109 MCMCOBJ=   -47.798017417810996     
+ iteration         1110 MCMCOBJ=   -47.386778121225774     
+ iteration         1111 MCMCOBJ=   -36.371227294700482     
+ iteration         1112 MCMCOBJ=   -66.529414829838075     
+ iteration         1113 MCMCOBJ=   -72.062763099915855     
+ iteration         1114 MCMCOBJ=   -62.067934204603176     
+ iteration         1115 MCMCOBJ=   -48.605833845468133     
+ iteration         1116 MCMCOBJ=   -49.853260550913603     
+ iteration         1117 MCMCOBJ=   -73.984951613531663     
+ iteration         1118 MCMCOBJ=   -72.185184185101377     
+ iteration         1119 MCMCOBJ=   -56.033531083281865     
+ iteration         1120 MCMCOBJ=   -59.015133687129989     
+ iteration         1121 MCMCOBJ=   -86.708285139933807     
+ iteration         1122 MCMCOBJ=   -84.295313230120186     
+ iteration         1123 MCMCOBJ=   -91.756034894838422     
+ iteration         1124 MCMCOBJ=   -81.720023144305230     
+ iteration         1125 MCMCOBJ=   -73.032599001055999     
+ iteration         1126 MCMCOBJ=   -92.980216734805197     
+ iteration         1127 MCMCOBJ=   -80.638226040287464     
+ iteration         1128 MCMCOBJ=   -85.025012354407664     
+ iteration         1129 MCMCOBJ=   -75.666465221597804     
+ iteration         1130 MCMCOBJ=   -74.454784628290156     
+ iteration         1131 MCMCOBJ=   -75.257173652124010     
+ iteration         1132 MCMCOBJ=   -75.428754831478926     
+ iteration         1133 MCMCOBJ=   -86.088736207197002     
+ iteration         1134 MCMCOBJ=   -84.679725524459428     
+ iteration         1135 MCMCOBJ=   -71.888563251286769     
+ iteration         1136 MCMCOBJ=   -75.630344961201203     
+ iteration         1137 MCMCOBJ=   -76.896181374923472     
+ iteration         1138 MCMCOBJ=   -81.037832320978438     
+ iteration         1139 MCMCOBJ=   -84.335515291881052     
+ iteration         1140 MCMCOBJ=   -60.856192527666941     
+ iteration         1141 MCMCOBJ=   -78.983660975196528     
+ iteration         1142 MCMCOBJ=   -94.884793804916740     
+ iteration         1143 MCMCOBJ=   -105.19321273034460     
+ iteration         1144 MCMCOBJ=   -88.018775857845910     
+ iteration         1145 MCMCOBJ=   -90.421170687732655     
+ iteration         1146 MCMCOBJ=   -61.941952493052838     
+ iteration         1147 MCMCOBJ=   -72.558856148146916     
+ iteration         1148 MCMCOBJ=   -65.051112549415052     
+ iteration         1149 MCMCOBJ=   -73.728783768535322     
+ iteration         1150 MCMCOBJ=   -83.479794053788012     
+ iteration         1151 MCMCOBJ=   -97.521884766896051     
+ iteration         1152 MCMCOBJ=   -83.302356620789993     
+ iteration         1153 MCMCOBJ=   -73.187132961007507     
+ iteration         1154 MCMCOBJ=   -62.093673468876190     
+ iteration         1155 MCMCOBJ=   -72.780030547989782     
+ iteration         1156 MCMCOBJ=   -76.483486560490846     
+ iteration         1157 MCMCOBJ=   -63.048990673089641     
+ iteration         1158 MCMCOBJ=   -86.454990175449893     
+ iteration         1159 MCMCOBJ=   -54.543847373753856     
+ iteration         1160 MCMCOBJ=   -64.892975227299189     
+ iteration         1161 MCMCOBJ=   -70.833105682602962     
+ iteration         1162 MCMCOBJ=   -78.830631623893566     
+ iteration         1163 MCMCOBJ=   -85.375022798255969     
+ iteration         1164 MCMCOBJ=   -101.13853355168116     
+ iteration         1165 MCMCOBJ=   -60.939217595502349     
+ iteration         1166 MCMCOBJ=   -65.444527617126695     
+ iteration         1167 MCMCOBJ=   -63.073747275179663     
+ iteration         1168 MCMCOBJ=   -76.783598067981728     
+ iteration         1169 MCMCOBJ=   -79.720335006711863     
+ iteration         1170 MCMCOBJ=   -72.436604524571820     
+ iteration         1171 MCMCOBJ=   -85.839951617093618     
+ iteration         1172 MCMCOBJ=   -97.686567521746468     
+ iteration         1173 MCMCOBJ=   -97.686567521746497     
+ iteration         1174 MCMCOBJ=   -114.26402796201191     
+ iteration         1175 MCMCOBJ=   -90.869762788189448     
+ iteration         1176 MCMCOBJ=   -63.936555101670450     
+ iteration         1177 MCMCOBJ=   -59.948314676181958     
+ iteration         1178 MCMCOBJ=   -50.256268221750119     
+ iteration         1179 MCMCOBJ=   -27.006749268817597     
+ iteration         1180 MCMCOBJ=   -13.594772443034360     
+ iteration         1181 MCMCOBJ=   -33.107309433136791     
+ iteration         1182 MCMCOBJ=   -68.483456703638865     
+ iteration         1183 MCMCOBJ=   -79.731580035213881     
+ iteration         1184 MCMCOBJ=   -75.311798321149354     
+ iteration         1185 MCMCOBJ=   -91.842436743250587     
+ iteration         1186 MCMCOBJ=   -94.131372167899357     
+ iteration         1187 MCMCOBJ=   -69.900047324037729     
+ iteration         1188 MCMCOBJ=   -67.064409850665982     
+ iteration         1189 MCMCOBJ=   -61.255754886581002     
+ iteration         1190 MCMCOBJ=   -51.289837308171400     
+ iteration         1191 MCMCOBJ=   -54.868488650275417     
+ iteration         1192 MCMCOBJ=   -49.675777400956562     
+ iteration         1193 MCMCOBJ=   -56.358604323557621     
+ iteration         1194 MCMCOBJ=   -94.578895256112730     
+ iteration         1195 MCMCOBJ=   -86.991198113928320     
+ iteration         1196 MCMCOBJ=   -70.779788421551928     
+ iteration         1197 MCMCOBJ=   -66.371947063049163     
+ iteration         1198 MCMCOBJ=   -64.397109726295739     
+ iteration         1199 MCMCOBJ=   -76.442917818719081     
+ iteration         1200 MCMCOBJ=   -99.251034459189114     
+ iteration         1201 MCMCOBJ=   -97.402533365516177     
+ iteration         1202 MCMCOBJ=   -99.147701279160430     
+ iteration         1203 MCMCOBJ=   -82.098769909954939     
+ iteration         1204 MCMCOBJ=   -67.189130237294577     
+ iteration         1205 MCMCOBJ=   -43.173268897519037     
+ iteration         1206 MCMCOBJ=   -46.235952851727788     
+ iteration         1207 MCMCOBJ=   -18.135073806271162     
+ iteration         1208 MCMCOBJ=   -26.416605092903986     
+ iteration         1209 MCMCOBJ=   -39.522699385737155     
+ iteration         1210 MCMCOBJ=   -49.400508414642829     
+ iteration         1211 MCMCOBJ=   -43.887766670848556     
+ iteration         1212 MCMCOBJ=   -51.717343303140026     
+ iteration         1213 MCMCOBJ=   -71.322498095583839     
+ iteration         1214 MCMCOBJ=   -96.530087823930543     
+ iteration         1215 MCMCOBJ=   -98.794364409270784     
+ iteration         1216 MCMCOBJ=   -114.80057630383756     
+ iteration         1217 MCMCOBJ=   -105.39275028921335     
+ iteration         1218 MCMCOBJ=   -112.17207455927957     
+ iteration         1219 MCMCOBJ=   -93.687338378206391     
+ iteration         1220 MCMCOBJ=   -76.650045138339635     
+ iteration         1221 MCMCOBJ=   -99.551210032989303     
+ iteration         1222 MCMCOBJ=   -91.669752908055244     
+ iteration         1223 MCMCOBJ=   -79.248032212495431     
+ iteration         1224 MCMCOBJ=   -69.425470620303017     
+ iteration         1225 MCMCOBJ=   -72.130297775672162     
+ iteration         1226 MCMCOBJ=   -83.966700326685242     
+ iteration         1227 MCMCOBJ=   -74.220839509145776     
+ iteration         1228 MCMCOBJ=   -82.145047195403706     
+ iteration         1229 MCMCOBJ=   -64.716604905076167     
+ iteration         1230 MCMCOBJ=   -61.318497593223377     
+ iteration         1231 MCMCOBJ=   -81.782911497383949     
+ iteration         1232 MCMCOBJ=   -77.203248774094916     
+ iteration         1233 MCMCOBJ=   -93.313282796526437     
+ iteration         1234 MCMCOBJ=   -101.43914838763422     
+ iteration         1235 MCMCOBJ=   -96.409651521708142     
+ iteration         1236 MCMCOBJ=   -97.597219074500330     
+ iteration         1237 MCMCOBJ=   -97.149548458860764     
+ iteration         1238 MCMCOBJ=   -80.938063806147213     
+ iteration         1239 MCMCOBJ=   -59.283617890998762     
+ iteration         1240 MCMCOBJ=   -45.192157508267435     
+ iteration         1241 MCMCOBJ=   -53.639384615039212     
+ iteration         1242 MCMCOBJ=   -82.147379912411296     
+ iteration         1243 MCMCOBJ=   -73.508975630036289     
+ iteration         1244 MCMCOBJ=   -88.904974763496838     
+ iteration         1245 MCMCOBJ=   -87.677908872036866     
+ iteration         1246 MCMCOBJ=   -118.12217556944037     
+ iteration         1247 MCMCOBJ=   -107.40207674232639     
+ iteration         1248 MCMCOBJ=   -87.001354795339793     
+ iteration         1249 MCMCOBJ=   -102.64023014737970     
+ iteration         1250 MCMCOBJ=   -99.110727069813720     
+ iteration         1251 MCMCOBJ=   -89.517297622136937     
+ iteration         1252 MCMCOBJ=   -95.591991154847150     
+ iteration         1253 MCMCOBJ=   -106.03078855810807     
+ iteration         1254 MCMCOBJ=   -112.49621919551186     
+ iteration         1255 MCMCOBJ=   -82.439322197932867     
+ iteration         1256 MCMCOBJ=   -94.074745400063520     
+ iteration         1257 MCMCOBJ=   -103.06479116739369     
+ iteration         1258 MCMCOBJ=   -103.62950193131826     
+ iteration         1259 MCMCOBJ=   -86.963378005644486     
+ iteration         1260 MCMCOBJ=   -62.750282953272425     
+ iteration         1261 MCMCOBJ=   -59.121813799880229     
+ iteration         1262 MCMCOBJ=   -45.865156205965334     
+ iteration         1263 MCMCOBJ=   -73.234394586906348     
+ iteration         1264 MCMCOBJ=   -55.156467345075697     
+ iteration         1265 MCMCOBJ=   -56.373577712422680     
+ iteration         1266 MCMCOBJ=   -60.059650521967356     
+ iteration         1267 MCMCOBJ=   -81.517129880093151     
+ iteration         1268 MCMCOBJ=   -93.420189271787066     
+ iteration         1269 MCMCOBJ=   -80.766835012275919     
+ iteration         1270 MCMCOBJ=   -84.222333154745570     
+ iteration         1271 MCMCOBJ=   -100.34594747919535     
+ iteration         1272 MCMCOBJ=   -94.899862384163157     
+ iteration         1273 MCMCOBJ=   -74.885905565992019     
+ iteration         1274 MCMCOBJ=   -59.373301788257514     
+ iteration         1275 MCMCOBJ=   -57.772009770481390     
+ iteration         1276 MCMCOBJ=   -56.768510530557457     
+ iteration         1277 MCMCOBJ=   -42.808806091484328     
+ iteration         1278 MCMCOBJ=   -73.064404830582916     
+ iteration         1279 MCMCOBJ=   -68.193815691380919     
+ iteration         1280 MCMCOBJ=   -70.568409013618876     
+ iteration         1281 MCMCOBJ=   -53.258993275720243     
+ iteration         1282 MCMCOBJ=   -73.928274271614086     
+ iteration         1283 MCMCOBJ=   -108.30378314068571     
+ iteration         1284 MCMCOBJ=   -113.92529087660822     
+ iteration         1285 MCMCOBJ=   -106.53617550786166     
+ iteration         1286 MCMCOBJ=   -96.455290466323163     
+ iteration         1287 MCMCOBJ=   -96.544954237369055     
+ iteration         1288 MCMCOBJ=   -99.679637459802180     
+ iteration         1289 MCMCOBJ=   -101.53121226733798     
+ iteration         1290 MCMCOBJ=   -85.746072379257626     
+ iteration         1291 MCMCOBJ=   -90.082082406298198     
+ iteration         1292 MCMCOBJ=   -80.941328220300733     
+ iteration         1293 MCMCOBJ=   -62.114593786847536     
+ iteration         1294 MCMCOBJ=   -60.772500608598484     
+ iteration         1295 MCMCOBJ=   -55.866751516132247     
+ iteration         1296 MCMCOBJ=   -71.943829542291596     
+ iteration         1297 MCMCOBJ=   -48.306275247774344     
+ iteration         1298 MCMCOBJ=   -54.341682033905769     
+ iteration         1299 MCMCOBJ=   -36.785530097536537     
+ iteration         1300 MCMCOBJ=   -55.619190388726757     
+ iteration         1301 MCMCOBJ=   -99.308856004465198     
+ iteration         1302 MCMCOBJ=   -90.244861637363442     
+ iteration         1303 MCMCOBJ=   -93.843944359949091     
+ iteration         1304 MCMCOBJ=   -77.719115259141660     
+ iteration         1305 MCMCOBJ=   -84.120743545089994     
+ iteration         1306 MCMCOBJ=   -84.747590677192974     
+ iteration         1307 MCMCOBJ=   -86.205162937818145     
+ iteration         1308 MCMCOBJ=   -83.261019273267536     
+ iteration         1309 MCMCOBJ=   -101.38331332035740     
+ iteration         1310 MCMCOBJ=   -92.845418661063462     
+ iteration         1311 MCMCOBJ=   -102.91535650947645     
+ iteration         1312 MCMCOBJ=   -102.58886255563776     
+ iteration         1313 MCMCOBJ=   -99.599195001151713     
+ iteration         1314 MCMCOBJ=   -117.49332585690843     
+ iteration         1315 MCMCOBJ=   -97.982605014258610     
+ iteration         1316 MCMCOBJ=   -79.493185043849536     
+ iteration         1317 MCMCOBJ=   -100.91032192580630     
+ iteration         1318 MCMCOBJ=   -92.073058310662248     
+ iteration         1319 MCMCOBJ=   -92.950615668633432     
+ iteration         1320 MCMCOBJ=   -77.360216045724457     
+ iteration         1321 MCMCOBJ=   -77.984795626640818     
+ iteration         1322 MCMCOBJ=   -74.723082071549101     
+ iteration         1323 MCMCOBJ=   -67.482276283978194     
+ iteration         1324 MCMCOBJ=   -82.034998479954027     
+ iteration         1325 MCMCOBJ=   -56.700449871790724     
+ iteration         1326 MCMCOBJ=   -55.553798098475056     
+ iteration         1327 MCMCOBJ=   -55.644820028921096     
+ iteration         1328 MCMCOBJ=   -76.918063122142811     
+ iteration         1329 MCMCOBJ=   -27.749712310049816     
+ iteration         1330 MCMCOBJ=   -39.135872401472355     
+ iteration         1331 MCMCOBJ=   -65.369361122062813     
+ iteration         1332 MCMCOBJ=   -40.113130018516266     
+ iteration         1333 MCMCOBJ=   -77.859356714355442     
+ iteration         1334 MCMCOBJ=   -100.01752405519240     
+ iteration         1335 MCMCOBJ=   -78.688863239273275     
+ iteration         1336 MCMCOBJ=   -81.359716595942530     
+ iteration         1337 MCMCOBJ=   -93.270799084676213     
+ iteration         1338 MCMCOBJ=   -102.13222260311308     
+ iteration         1339 MCMCOBJ=   -102.11711478406140     
+ iteration         1340 MCMCOBJ=   -107.93155790792791     
+ iteration         1341 MCMCOBJ=   -103.01103317916434     
+ iteration         1342 MCMCOBJ=   -97.095826477355047     
+ iteration         1343 MCMCOBJ=   -85.809597946077020     
+ iteration         1344 MCMCOBJ=   -78.235737404454682     
+ iteration         1345 MCMCOBJ=   -62.896334509712659     
+ iteration         1346 MCMCOBJ=   -68.018372373848038     
+ iteration         1347 MCMCOBJ=   -50.669416242075670     
+ iteration         1348 MCMCOBJ=   -12.212538627638333     
+ iteration         1349 MCMCOBJ=   -14.238768964492618     
+ iteration         1350 MCMCOBJ=   -14.615722587214126     
+ iteration         1351 MCMCOBJ=   -28.379999957689432     
+ iteration         1352 MCMCOBJ=   -34.544643889085357     
+ iteration         1353 MCMCOBJ=   -17.825607995644010     
+ iteration         1354 MCMCOBJ=   -51.948989846563897     
+ iteration         1355 MCMCOBJ=   -44.613311599526050     
+ iteration         1356 MCMCOBJ=   -51.047164481350435     
+ iteration         1357 MCMCOBJ=   -55.148094254788013     
+ iteration         1358 MCMCOBJ=   -48.509263183174454     
+ iteration         1359 MCMCOBJ=   -34.654207926073575     
+ iteration         1360 MCMCOBJ=   -17.216839126079261     
+ iteration         1361 MCMCOBJ=   -41.312271649865203     
+ iteration         1362 MCMCOBJ=   -86.610375528574963     
+ iteration         1363 MCMCOBJ=   -76.526322764639119     
+ iteration         1364 MCMCOBJ=   -81.483420573684043     
+ iteration         1365 MCMCOBJ=   -80.246095648923045     
+ iteration         1366 MCMCOBJ=   -56.863744412495151     
+ iteration         1367 MCMCOBJ=   -71.715763543064000     
+ iteration         1368 MCMCOBJ=   -95.439397495344878     
+ iteration         1369 MCMCOBJ=   -72.176210202501807     
+ iteration         1370 MCMCOBJ=   -86.021419515504519     
+ iteration         1371 MCMCOBJ=   -70.828225331335844     
+ iteration         1372 MCMCOBJ=   -72.760013759623277     
+ iteration         1373 MCMCOBJ=   -51.731102068085214     
+ iteration         1374 MCMCOBJ=   -36.445903853218212     
+ iteration         1375 MCMCOBJ=   -20.683383851088557     
+ iteration         1376 MCMCOBJ=   -40.211185211123997     
+ iteration         1377 MCMCOBJ=   -58.143827477971222     
+ iteration         1378 MCMCOBJ=   -40.405599456405056     
+ iteration         1379 MCMCOBJ=   -73.774026327585503     
+ iteration         1380 MCMCOBJ=   -80.358056795531624     
+ iteration         1381 MCMCOBJ=   -97.908599531222833     
+ iteration         1382 MCMCOBJ=   -109.99818415125030     
+ iteration         1383 MCMCOBJ=   -97.419656182559748     
+ iteration         1384 MCMCOBJ=   -72.158307814447596     
+ iteration         1385 MCMCOBJ=   -93.357172481949988     
+ iteration         1386 MCMCOBJ=   -96.445009645211726     
+ iteration         1387 MCMCOBJ=   -114.42395995838268     
+ iteration         1388 MCMCOBJ=   -96.840861940348788     
+ iteration         1389 MCMCOBJ=   -105.46663179700631     
+ iteration         1390 MCMCOBJ=   -100.75961252072416     
+ iteration         1391 MCMCOBJ=   -87.565169113366579     
+ iteration         1392 MCMCOBJ=   -66.191863954731161     
+ iteration         1393 MCMCOBJ=   -36.634852156112416     
+ iteration         1394 MCMCOBJ=   -37.243854056316913     
+ iteration         1395 MCMCOBJ=   -54.733127058743300     
+ iteration         1396 MCMCOBJ=   -36.130105598167312     
+ iteration         1397 MCMCOBJ=   -25.078287488041273     
+ iteration         1398 MCMCOBJ=   -27.606833760019580     
+ iteration         1399 MCMCOBJ=   -65.102866165732323     
+ iteration         1400 MCMCOBJ=   -65.512592025550177     
+ iteration         1401 MCMCOBJ=   -81.653922140631863     
+ iteration         1402 MCMCOBJ=   -64.558923363466761     
+ iteration         1403 MCMCOBJ=   -103.17200321186503     
+ iteration         1404 MCMCOBJ=   -97.588860685116728     
+ iteration         1405 MCMCOBJ=   -91.595067273972120     
+ iteration         1406 MCMCOBJ=   -95.984776952566421     
+ iteration         1407 MCMCOBJ=   -85.441343511651354     
+ iteration         1408 MCMCOBJ=   -90.927625163238460     
+ iteration         1409 MCMCOBJ=   -110.09201079983237     
+ iteration         1410 MCMCOBJ=   -65.727069787983282     
+ iteration         1411 MCMCOBJ=   -80.264207059990497     
+ iteration         1412 MCMCOBJ=   -85.251676951525667     
+ iteration         1413 MCMCOBJ=   -60.205482925584647     
+ iteration         1414 MCMCOBJ=   -72.507526008935713     
+ iteration         1415 MCMCOBJ=   -78.185550473980655     
+ iteration         1416 MCMCOBJ=   -75.346860370877749     
+ iteration         1417 MCMCOBJ=   -84.837785160849521     
+ iteration         1418 MCMCOBJ=   -80.995925566647358     
+ iteration         1419 MCMCOBJ=   -50.546397689658527     
+ iteration         1420 MCMCOBJ=   -63.222148636523116     
+ iteration         1421 MCMCOBJ=   -68.379761549241238     
+ iteration         1422 MCMCOBJ=   -68.328289084993145     
+ iteration         1423 MCMCOBJ=   -78.948608050644737     
+ iteration         1424 MCMCOBJ=   -89.107728243924299     
+ iteration         1425 MCMCOBJ=   -93.319487861277636     
+ iteration         1426 MCMCOBJ=   -88.090189530085652     
+ iteration         1427 MCMCOBJ=   -90.585029432463060     
+ iteration         1428 MCMCOBJ=   -52.957044247129808     
+ iteration         1429 MCMCOBJ=   -77.807861019879468     
+ iteration         1430 MCMCOBJ=   -82.385002988053614     
+ iteration         1431 MCMCOBJ=   -52.854733046585103     
+ iteration         1432 MCMCOBJ=   -76.304359313135777     
+ iteration         1433 MCMCOBJ=   -71.773167736937722     
+ iteration         1434 MCMCOBJ=   -60.269543675399284     
+ iteration         1435 MCMCOBJ=   -41.322467722902090     
+ iteration         1436 MCMCOBJ=   -58.795327833339627     
+ iteration         1437 MCMCOBJ=   -62.928832227491014     
+ iteration         1438 MCMCOBJ=   -58.713173140002951     
+ iteration         1439 MCMCOBJ=   -59.804894256859725     
+ iteration         1440 MCMCOBJ=   -44.786387436266104     
+ iteration         1441 MCMCOBJ=   -67.345896975617691     
+ iteration         1442 MCMCOBJ=   -84.466278988200287     
+ iteration         1443 MCMCOBJ=   -62.698517536094485     
+ iteration         1444 MCMCOBJ=   -56.605152775262795     
+ iteration         1445 MCMCOBJ=   -69.663355564074266     
+ iteration         1446 MCMCOBJ=   -61.086758289924560     
+ iteration         1447 MCMCOBJ=   -69.980030377066257     
+ iteration         1448 MCMCOBJ=   -81.654106832715428     
+ iteration         1449 MCMCOBJ=   -52.465680841562381     
+ iteration         1450 MCMCOBJ=   -60.770283935927161     
+ iteration         1451 MCMCOBJ=   -76.445927887844931     
+ iteration         1452 MCMCOBJ=   -90.610278836761168     
+ iteration         1453 MCMCOBJ=   -73.917193040633734     
+ iteration         1454 MCMCOBJ=   -78.978814260629420     
+ iteration         1455 MCMCOBJ=   -68.694900003082850     
+ iteration         1456 MCMCOBJ=   -87.522706210295709     
+ iteration         1457 MCMCOBJ=   -85.140930296952476     
+ iteration         1458 MCMCOBJ=   -60.791905028166923     
+ iteration         1459 MCMCOBJ=   -67.563787866983390     
+ iteration         1460 MCMCOBJ=   -83.204228730841479     
+ iteration         1461 MCMCOBJ=   -72.326662195942617     
+ iteration         1462 MCMCOBJ=   -74.982783919114866     
+ iteration         1463 MCMCOBJ=   -64.448451226437328     
+ iteration         1464 MCMCOBJ=   -69.559712038930073     
+ iteration         1465 MCMCOBJ=   -69.904058700535842     
+ iteration         1466 MCMCOBJ=   -64.568585995004426     
+ iteration         1467 MCMCOBJ=   -67.264504890504838     
+ iteration         1468 MCMCOBJ=   -86.265412718014559     
+ iteration         1469 MCMCOBJ=   -72.363644737989915     
+ iteration         1470 MCMCOBJ=   -78.163605461515445     
+ iteration         1471 MCMCOBJ=   -89.069527079794184     
+ iteration         1472 MCMCOBJ=   -84.261783142603818     
+ iteration         1473 MCMCOBJ=   -84.025226510498058     
+ iteration         1474 MCMCOBJ=   -61.201762178029057     
+ iteration         1475 MCMCOBJ=   -65.719216784180205     
+ iteration         1476 MCMCOBJ=   -75.462373259912994     
+ iteration         1477 MCMCOBJ=   -83.247477986276849     
+ iteration         1478 MCMCOBJ=   -90.625170801712471     
+ iteration         1479 MCMCOBJ=   -95.128051317501104     
+ iteration         1480 MCMCOBJ=   -78.776175313161133     
+ iteration         1481 MCMCOBJ=   -86.775965986121449     
+ iteration         1482 MCMCOBJ=   -102.62658764128027     
+ iteration         1483 MCMCOBJ=   -87.769297774992296     
+ iteration         1484 MCMCOBJ=   -97.368881655664097     
+ iteration         1485 MCMCOBJ=   -84.297715944832220     
+ iteration         1486 MCMCOBJ=   -67.634839633051428     
+ iteration         1487 MCMCOBJ=   -77.140918186948952     
+ iteration         1488 MCMCOBJ=   -87.031046745700010     
+ iteration         1489 MCMCOBJ=   -84.752534103192474     
+ iteration         1490 MCMCOBJ=   -103.56082162892118     
+ iteration         1491 MCMCOBJ=   -111.00542557635723     
+ iteration         1492 MCMCOBJ=   -105.03867032642074     
+ iteration         1493 MCMCOBJ=   -107.96901573907624     
+ iteration         1494 MCMCOBJ=   -116.35777812438052     
+ iteration         1495 MCMCOBJ=   -104.17309413303136     
+ iteration         1496 MCMCOBJ=   -93.584585960282453     
+ iteration         1497 MCMCOBJ=   -92.363995891515643     
+ iteration         1498 MCMCOBJ=   -72.354088766539164     
+ iteration         1499 MCMCOBJ=   -74.889847914595720     
+ iteration         1500 MCMCOBJ=   -66.583899451505943     
+ iteration         1501 MCMCOBJ=   -61.924426049944415     
+ iteration         1502 MCMCOBJ=   -77.966900512929982     
+ iteration         1503 MCMCOBJ=   -78.722001809040890     
+ iteration         1504 MCMCOBJ=   -63.826731934731349     
+ iteration         1505 MCMCOBJ=   -62.903385778283223     
+ iteration         1506 MCMCOBJ=   -105.13588921842516     
+ iteration         1507 MCMCOBJ=   -80.135459392961764     
+ iteration         1508 MCMCOBJ=   -60.714689583072058     
+ iteration         1509 MCMCOBJ=   -63.403485797096735     
+ iteration         1510 MCMCOBJ=   -78.972108783911807     
+ iteration         1511 MCMCOBJ=   -98.696629676336883     
+ iteration         1512 MCMCOBJ=   -69.787440241357089     
+ iteration         1513 MCMCOBJ=   -97.588727483093379     
+ iteration         1514 MCMCOBJ=   -80.201516511354797     
+ iteration         1515 MCMCOBJ=   -73.547731405130435     
+ iteration         1516 MCMCOBJ=   -88.779390530860155     
+ iteration         1517 MCMCOBJ=   -98.437471856237252     
+ iteration         1518 MCMCOBJ=   -91.288697475393221     
+ iteration         1519 MCMCOBJ=   -76.970972553553565     
+ iteration         1520 MCMCOBJ=   -79.758859226941723     
+ iteration         1521 MCMCOBJ=   -87.139016712191079     
+ iteration         1522 MCMCOBJ=   -63.553027005258826     
+ iteration         1523 MCMCOBJ=   -74.248089026129193     
+ iteration         1524 MCMCOBJ=   -77.743706340024943     
+ iteration         1525 MCMCOBJ=   -73.188290875140154     
+ iteration         1526 MCMCOBJ=   -62.349027991708148     
+ iteration         1527 MCMCOBJ=   -75.592704952963459     
+ iteration         1528 MCMCOBJ=   -70.381861528207679     
+ iteration         1529 MCMCOBJ=   -59.962045393432206     
+ iteration         1530 MCMCOBJ=   -72.876253539918778     
+ iteration         1531 MCMCOBJ=   -60.024936640765041     
+ iteration         1532 MCMCOBJ=   -81.741718070129409     
+ iteration         1533 MCMCOBJ=   -91.073114470595939     
+ iteration         1534 MCMCOBJ=   -79.717073924981364     
+ iteration         1535 MCMCOBJ=   -87.899596831738293     
+ iteration         1536 MCMCOBJ=   -55.338665311529439     
+ iteration         1537 MCMCOBJ=   -60.471716770697469     
+ iteration         1538 MCMCOBJ=   -87.806382967289608     
+ iteration         1539 MCMCOBJ=   -87.328985811228392     
+ iteration         1540 MCMCOBJ=   -89.333706027001995     
+ iteration         1541 MCMCOBJ=   -80.584500967259885     
+ iteration         1542 MCMCOBJ=   -94.639809051677972     
+ iteration         1543 MCMCOBJ=   -103.16921541294704     
+ iteration         1544 MCMCOBJ=   -67.587758499358060     
+ iteration         1545 MCMCOBJ=   -56.129208952397711     
+ iteration         1546 MCMCOBJ=   -64.793183836902656     
+ iteration         1547 MCMCOBJ=   -64.439069897527062     
+ iteration         1548 MCMCOBJ=   -70.275669969594574     
+ iteration         1549 MCMCOBJ=   -71.206471313781748     
+ iteration         1550 MCMCOBJ=   -60.054158571011968     
+ iteration         1551 MCMCOBJ=   -55.991069469220918     
+ iteration         1552 MCMCOBJ=   -54.762933511568562     
+ iteration         1553 MCMCOBJ=   -63.736687353774855     
+ iteration         1554 MCMCOBJ=   -61.930380786057832     
+ iteration         1555 MCMCOBJ=   -62.871258550464503     
+ iteration         1556 MCMCOBJ=   -90.941904895151765     
+ iteration         1557 MCMCOBJ=   -71.483321620798591     
+ iteration         1558 MCMCOBJ=   -51.027384314746563     
+ iteration         1559 MCMCOBJ=   -31.201576274635229     
+ iteration         1560 MCMCOBJ=   -45.363554733395198     
+ iteration         1561 MCMCOBJ=   -74.578162990345618     
+ iteration         1562 MCMCOBJ=   -73.012501972262342     
+ iteration         1563 MCMCOBJ=   -74.199310474883902     
+ iteration         1564 MCMCOBJ=   -71.364264002480340     
+ iteration         1565 MCMCOBJ=   -70.656212656528027     
+ iteration         1566 MCMCOBJ=   -57.630786845048384     
+ iteration         1567 MCMCOBJ=   -78.859945350764605     
+ iteration         1568 MCMCOBJ=   -89.453126791282259     
+ iteration         1569 MCMCOBJ=   -85.510409805400528     
+ iteration         1570 MCMCOBJ=   -58.568689950237079     
+ iteration         1571 MCMCOBJ=   -52.229524967771709     
+ iteration         1572 MCMCOBJ=   -62.993365505203492     
+ iteration         1573 MCMCOBJ=   -51.624511292345360     
+ iteration         1574 MCMCOBJ=   -46.669658929310820     
+ iteration         1575 MCMCOBJ=   -43.236523023155002     
+ iteration         1576 MCMCOBJ=   -54.318558393146830     
+ iteration         1577 MCMCOBJ=   -41.577455260598860     
+ iteration         1578 MCMCOBJ=   -65.555808715863122     
+ iteration         1579 MCMCOBJ=   -67.398405181978760     
+ iteration         1580 MCMCOBJ=   -72.523898021338368     
+ iteration         1581 MCMCOBJ=   -54.193812052605011     
+ iteration         1582 MCMCOBJ=   -90.088127508889613     
+ iteration         1583 MCMCOBJ=   -102.51879033496705     
+ iteration         1584 MCMCOBJ=   -80.281580213057566     
+ iteration         1585 MCMCOBJ=   -87.971009351971418     
+ iteration         1586 MCMCOBJ=   -92.791583422017183     
+ iteration         1587 MCMCOBJ=   -69.653366196622400     
+ iteration         1588 MCMCOBJ=   -77.913937066520873     
+ iteration         1589 MCMCOBJ=   -42.135916940738483     
+ iteration         1590 MCMCOBJ=   -44.665101424521481     
+ iteration         1591 MCMCOBJ=   -64.109029827489749     
+ iteration         1592 MCMCOBJ=   -79.521834641946697     
+ iteration         1593 MCMCOBJ=   -86.106805677927596     
+ iteration         1594 MCMCOBJ=   -85.257493344398043     
+ iteration         1595 MCMCOBJ=   -75.512029825573194     
+ iteration         1596 MCMCOBJ=   -57.584050114523350     
+ iteration         1597 MCMCOBJ=   -68.314276870604573     
+ iteration         1598 MCMCOBJ=   -76.211092357491395     
+ iteration         1599 MCMCOBJ=   -74.404824579129766     
+ iteration         1600 MCMCOBJ=   -46.841086021161580     
+ iteration         1601 MCMCOBJ=   -25.329471272938690     
+ iteration         1602 MCMCOBJ=   -52.450939804452133     
+ iteration         1603 MCMCOBJ=   -57.350895233179472     
+ iteration         1604 MCMCOBJ=   -44.205836678406648     
+ iteration         1605 MCMCOBJ=   -69.241377584612408     
+ iteration         1606 MCMCOBJ=   -79.469616070814183     
+ iteration         1607 MCMCOBJ=   -93.379967205989644     
+ iteration         1608 MCMCOBJ=   -61.604255545317606     
+ iteration         1609 MCMCOBJ=   -93.430364185983649     
+ iteration         1610 MCMCOBJ=   -101.91313343967806     
+ iteration         1611 MCMCOBJ=   -83.206531411568122     
+ iteration         1612 MCMCOBJ=   -70.615026560324694     
+ iteration         1613 MCMCOBJ=   -100.31820046771520     
+ iteration         1614 MCMCOBJ=   -108.04786072857671     
+ iteration         1615 MCMCOBJ=   -101.85810273729695     
+ iteration         1616 MCMCOBJ=   -98.880049365034040     
+ iteration         1617 MCMCOBJ=   -90.136937245618540     
+ iteration         1618 MCMCOBJ=   -89.561529734045948     
+ iteration         1619 MCMCOBJ=   -80.486784465203542     
+ iteration         1620 MCMCOBJ=   -79.441253875887540     
+ iteration         1621 MCMCOBJ=   -68.798389692196110     
+ iteration         1622 MCMCOBJ=   -98.571239637459215     
+ iteration         1623 MCMCOBJ=   -105.93404487435454     
+ iteration         1624 MCMCOBJ=   -100.14870020696003     
+ iteration         1625 MCMCOBJ=   -90.997814967366580     
+ iteration         1626 MCMCOBJ=   -83.718488973476710     
+ iteration         1627 MCMCOBJ=   -66.959201972464427     
+ iteration         1628 MCMCOBJ=   -74.431730922279726     
+ iteration         1629 MCMCOBJ=   -72.559837465297591     
+ iteration         1630 MCMCOBJ=   -89.985345489378105     
+ iteration         1631 MCMCOBJ=   -68.110686354439963     
+ iteration         1632 MCMCOBJ=   -62.349421523482008     
+ iteration         1633 MCMCOBJ=   -60.420585107769604     
+ iteration         1634 MCMCOBJ=   -64.204409154816545     
+ iteration         1635 MCMCOBJ=   -61.006091829338288     
+ iteration         1636 MCMCOBJ=   -74.276825130660924     
+ iteration         1637 MCMCOBJ=   -71.088786810433959     
+ iteration         1638 MCMCOBJ=   -81.292270999468201     
+ iteration         1639 MCMCOBJ=   -42.061736022127221     
+ iteration         1640 MCMCOBJ=   -64.649790571005212     
+ iteration         1641 MCMCOBJ=   -73.327566937059842     
+ iteration         1642 MCMCOBJ=   -83.870557110441666     
+ iteration         1643 MCMCOBJ=   -90.205307575678304     
+ iteration         1644 MCMCOBJ=   -93.099185935882346     
+ iteration         1645 MCMCOBJ=   -83.452846234734238     
+ iteration         1646 MCMCOBJ=   -90.311245424537418     
+ iteration         1647 MCMCOBJ=   -98.104214136265171     
+ iteration         1648 MCMCOBJ=   -95.301761407096990     
+ iteration         1649 MCMCOBJ=   -100.94399167083520     
+ iteration         1650 MCMCOBJ=   -88.857541389906430     
+ iteration         1651 MCMCOBJ=   -63.905210878752747     
+ iteration         1652 MCMCOBJ=   -45.285395250498908     
+ iteration         1653 MCMCOBJ=   -84.080893569075684     
+ iteration         1654 MCMCOBJ=   -81.475711827882037     
+ iteration         1655 MCMCOBJ=   -75.442770231826799     
+ iteration         1656 MCMCOBJ=   -66.002639721122222     
+ iteration         1657 MCMCOBJ=   -40.086314316014295     
+ iteration         1658 MCMCOBJ=   -28.316025157998411     
+ iteration         1659 MCMCOBJ=   -64.468074030649674     
+ iteration         1660 MCMCOBJ=   -58.505571379766394     
+ iteration         1661 MCMCOBJ=   -83.085769879907176     
+ iteration         1662 MCMCOBJ=   -93.736875817174919     
+ iteration         1663 MCMCOBJ=   -82.314556286422729     
+ iteration         1664 MCMCOBJ=   -78.732498952485273     
+ iteration         1665 MCMCOBJ=   -56.769437434426870     
+ iteration         1666 MCMCOBJ=   -61.175519578362419     
+ iteration         1667 MCMCOBJ=   -35.982121234904184     
+ iteration         1668 MCMCOBJ=   -48.517550285081569     
+ iteration         1669 MCMCOBJ=   -74.116304359633972     
+ iteration         1670 MCMCOBJ=   -74.847528875541926     
+ iteration         1671 MCMCOBJ=   -71.002326446074676     
+ iteration         1672 MCMCOBJ=   -65.288511240568937     
+ iteration         1673 MCMCOBJ=   -81.709929332079270     
+ iteration         1674 MCMCOBJ=   -82.569448055298068     
+ iteration         1675 MCMCOBJ=   -101.10322574504899     
+ iteration         1676 MCMCOBJ=   -94.052659046756872     
+ iteration         1677 MCMCOBJ=   -61.042590103333389     
+ iteration         1678 MCMCOBJ=   -68.909768463886024     
+ iteration         1679 MCMCOBJ=   -81.710306653141998     
+ iteration         1680 MCMCOBJ=   -82.850005503789717     
+ iteration         1681 MCMCOBJ=   -80.533005301597726     
+ iteration         1682 MCMCOBJ=   -90.515522985817327     
+ iteration         1683 MCMCOBJ=   -89.404060893246367     
+ iteration         1684 MCMCOBJ=   -93.475785871386037     
+ iteration         1685 MCMCOBJ=   -103.05245523385082     
+ iteration         1686 MCMCOBJ=   -98.085304215210670     
+ iteration         1687 MCMCOBJ=   -102.45035873501244     
+ iteration         1688 MCMCOBJ=   -99.219226463132287     
+ iteration         1689 MCMCOBJ=   -98.851403775039515     
+ iteration         1690 MCMCOBJ=   -71.691180166962411     
+ iteration         1691 MCMCOBJ=   -78.732802480568495     
+ iteration         1692 MCMCOBJ=   -87.329445043165862     
+ iteration         1693 MCMCOBJ=   -78.290648495842277     
+ iteration         1694 MCMCOBJ=   -49.188103454179206     
+ iteration         1695 MCMCOBJ=   -24.540977392255783     
+ iteration         1696 MCMCOBJ=   -37.670825158347100     
+ iteration         1697 MCMCOBJ=   -62.455745981868532     
+ iteration         1698 MCMCOBJ=   -81.770101034589686     
+ iteration         1699 MCMCOBJ=   -78.979230553511812     
+ iteration         1700 MCMCOBJ=   -61.876511039711289     
+ iteration         1701 MCMCOBJ=   -76.747198771752181     
+ iteration         1702 MCMCOBJ=   -72.041028629456420     
+ iteration         1703 MCMCOBJ=   -80.996264887504637     
+ iteration         1704 MCMCOBJ=   -63.504097958285200     
+ iteration         1705 MCMCOBJ=   -79.827762935472947     
+ iteration         1706 MCMCOBJ=   -79.607247815165934     
+ iteration         1707 MCMCOBJ=   -69.191021947013382     
+ iteration         1708 MCMCOBJ=   -90.783833934528815     
+ iteration         1709 MCMCOBJ=   -88.740473596083689     
+ iteration         1710 MCMCOBJ=   -86.554455993298106     
+ iteration         1711 MCMCOBJ=   -91.192057869408188     
+ iteration         1712 MCMCOBJ=   -70.133931521762534     
+ iteration         1713 MCMCOBJ=   -88.205468893044042     
+ iteration         1714 MCMCOBJ=   -74.906494692330099     
+ iteration         1715 MCMCOBJ=   -75.291891677621393     
+ iteration         1716 MCMCOBJ=   -54.404953765718901     
+ iteration         1717 MCMCOBJ=   -68.145144843799741     
+ iteration         1718 MCMCOBJ=   -38.518423933187357     
+ iteration         1719 MCMCOBJ=   -75.715282839750657     
+ iteration         1720 MCMCOBJ=   -69.063795194241052     
+ iteration         1721 MCMCOBJ=   -68.791530078230295     
+ iteration         1722 MCMCOBJ=   -55.011663596983254     
+ iteration         1723 MCMCOBJ=   -59.566911928351644     
+ iteration         1724 MCMCOBJ=   -61.610821353138206     
+ iteration         1725 MCMCOBJ=   -74.109286736436275     
+ iteration         1726 MCMCOBJ=   -101.88059253554330     
+ iteration         1727 MCMCOBJ=   -93.452144030054669     
+ iteration         1728 MCMCOBJ=   -61.779272854967857     
+ iteration         1729 MCMCOBJ=   -22.465677498616888     
+ iteration         1730 MCMCOBJ=   -57.414783693014918     
+ iteration         1731 MCMCOBJ=   -52.754695866986104     
+ iteration         1732 MCMCOBJ=   -51.300628448492645     
+ iteration         1733 MCMCOBJ=   -71.920899650659109     
+ iteration         1734 MCMCOBJ=   -77.260482087108898     
+ iteration         1735 MCMCOBJ=   -58.139831248141348     
+ iteration         1736 MCMCOBJ=   -84.015654104460239     
+ iteration         1737 MCMCOBJ=   -82.250838173575602     
+ iteration         1738 MCMCOBJ=   -91.463099160692963     
+ iteration         1739 MCMCOBJ=   -83.536935748575587     
+ iteration         1740 MCMCOBJ=   -66.623228295963116     
+ iteration         1741 MCMCOBJ=   -70.943890162001736     
+ iteration         1742 MCMCOBJ=   -79.731399896516621     
+ iteration         1743 MCMCOBJ=   -79.569108532191095     
+ iteration         1744 MCMCOBJ=   -26.437678922643588     
+ iteration         1745 MCMCOBJ=   -44.035097708012806     
+ iteration         1746 MCMCOBJ=   -54.614114799411219     
+ iteration         1747 MCMCOBJ=   -66.946726205241447     
+ iteration         1748 MCMCOBJ=   -85.085383736969931     
+ iteration         1749 MCMCOBJ=   -93.447443199209033     
+ iteration         1750 MCMCOBJ=   -95.000138817609269     
+ iteration         1751 MCMCOBJ=   -102.02255550304353     
+ iteration         1752 MCMCOBJ=   -76.759707554805800     
+ iteration         1753 MCMCOBJ=   -47.178414124206853     
+ iteration         1754 MCMCOBJ=   -43.583987344573401     
+ iteration         1755 MCMCOBJ=   -34.549361621826343     
+ iteration         1756 MCMCOBJ=   -62.074016560547278     
+ iteration         1757 MCMCOBJ=   -80.449095998144884     
+ iteration         1758 MCMCOBJ=   -84.138864113460528     
+ iteration         1759 MCMCOBJ=   -80.602926514279574     
+ iteration         1760 MCMCOBJ=   -62.245654357508720     
+ iteration         1761 MCMCOBJ=   -94.279216626345800     
+ iteration         1762 MCMCOBJ=   -67.050166026005357     
+ iteration         1763 MCMCOBJ=   -43.296555801329426     
+ iteration         1764 MCMCOBJ=   -63.212115442111525     
+ iteration         1765 MCMCOBJ=   -59.735750598275359     
+ iteration         1766 MCMCOBJ=   -68.021996139060803     
+ iteration         1767 MCMCOBJ=   -82.444452086268669     
+ iteration         1768 MCMCOBJ=   -81.958373466871294     
+ iteration         1769 MCMCOBJ=   -60.869035327308403     
+ iteration         1770 MCMCOBJ=   -66.167581578697408     
+ iteration         1771 MCMCOBJ=   -50.377640337720045     
+ iteration         1772 MCMCOBJ=   -48.611138386163105     
+ iteration         1773 MCMCOBJ=   -45.351899295159548     
+ iteration         1774 MCMCOBJ=   -42.142021725417962     
+ iteration         1775 MCMCOBJ=   -45.664505992289826     
+ iteration         1776 MCMCOBJ=   -48.392521107337814     
+ iteration         1777 MCMCOBJ=   -80.273981428927414     
+ iteration         1778 MCMCOBJ=   -83.926183211978596     
+ iteration         1779 MCMCOBJ=   -64.943989261737940     
+ iteration         1780 MCMCOBJ=   -39.548875050909729     
+ iteration         1781 MCMCOBJ=   -45.287739032351752     
+ iteration         1782 MCMCOBJ=   -50.786204795963222     
+ iteration         1783 MCMCOBJ=   -66.547646390298894     
+ iteration         1784 MCMCOBJ=   -83.541730886562405     
+ iteration         1785 MCMCOBJ=   -83.969552007231414     
+ iteration         1786 MCMCOBJ=   -88.493504514809032     
+ iteration         1787 MCMCOBJ=   -86.497334349321235     
+ iteration         1788 MCMCOBJ=   -88.407994777993935     
+ iteration         1789 MCMCOBJ=   -70.829746866121866     
+ iteration         1790 MCMCOBJ=   -84.609558382901625     
+ iteration         1791 MCMCOBJ=   -62.143383055869222     
+ iteration         1792 MCMCOBJ=   -68.776382301998254     
+ iteration         1793 MCMCOBJ=   -72.975955430495674     
+ iteration         1794 MCMCOBJ=   -74.360773807993951     
+ iteration         1795 MCMCOBJ=   -102.97961910206712     
+ iteration         1796 MCMCOBJ=   -111.51072038441534     
+ iteration         1797 MCMCOBJ=   -82.897024200433066     
+ iteration         1798 MCMCOBJ=   -53.654759478941749     
+ iteration         1799 MCMCOBJ=   -55.311173207800451     
+ iteration         1800 MCMCOBJ=   -57.117669811491474     
+ iteration         1801 MCMCOBJ=   -78.174812609666333     
+ iteration         1802 MCMCOBJ=   -54.981736938910139     
+ iteration         1803 MCMCOBJ=   -59.665335735466158     
+ iteration         1804 MCMCOBJ=   -31.671683853232189     
+ iteration         1805 MCMCOBJ=   -35.451114796891268     
+ iteration         1806 MCMCOBJ=   -30.104736328083369     
+ iteration         1807 MCMCOBJ=   -52.101225913752074     
+ iteration         1808 MCMCOBJ=   -33.924566123379215     
+ iteration         1809 MCMCOBJ=   -48.969003954494539     
+ iteration         1810 MCMCOBJ=   -75.267701789096009     
+ iteration         1811 MCMCOBJ=   -67.790497693668584     
+ iteration         1812 MCMCOBJ=   -61.232103318959773     
+ iteration         1813 MCMCOBJ=   -83.675689253015577     
+ iteration         1814 MCMCOBJ=   -77.073367058994421     
+ iteration         1815 MCMCOBJ=   -69.121932600547964     
+ iteration         1816 MCMCOBJ=   -78.570907357009133     
+ iteration         1817 MCMCOBJ=   -58.875548704337099     
+ iteration         1818 MCMCOBJ=   -25.584719103839891     
+ iteration         1819 MCMCOBJ=   -44.865520645088104     
+ iteration         1820 MCMCOBJ=   -60.112481081901500     
+ iteration         1821 MCMCOBJ=   -89.710876846997138     
+ iteration         1822 MCMCOBJ=   -78.720855708443352     
+ iteration         1823 MCMCOBJ=   -73.262308856419040     
+ iteration         1824 MCMCOBJ=   -81.379392503209800     
+ iteration         1825 MCMCOBJ=   -64.341961954408433     
+ iteration         1826 MCMCOBJ=   -61.905721764689353     
+ iteration         1827 MCMCOBJ=   -38.902830200289543     
+ iteration         1828 MCMCOBJ=   -71.440596855221258     
+ iteration         1829 MCMCOBJ=   -55.999410563982231     
+ iteration         1830 MCMCOBJ=   -46.851849249661939     
+ iteration         1831 MCMCOBJ=   -64.801746247087962     
+ iteration         1832 MCMCOBJ=   -81.148875206245023     
+ iteration         1833 MCMCOBJ=   -85.010784313602841     
+ iteration         1834 MCMCOBJ=   -94.733828518562433     
+ iteration         1835 MCMCOBJ=   -117.57257687187328     
+ iteration         1836 MCMCOBJ=   -101.90241535386261     
+ iteration         1837 MCMCOBJ=   -85.534474597939280     
+ iteration         1838 MCMCOBJ=   -89.041152030672265     
+ iteration         1839 MCMCOBJ=   -83.259644619283094     
+ iteration         1840 MCMCOBJ=   -77.736889819465318     
+ iteration         1841 MCMCOBJ=   -84.401306404143497     
+ iteration         1842 MCMCOBJ=   -86.866972458613745     
+ iteration         1843 MCMCOBJ=   -83.010396430931223     
+ iteration         1844 MCMCOBJ=   -113.14169472028797     
+ iteration         1845 MCMCOBJ=   -105.34659763958547     
+ iteration         1846 MCMCOBJ=   -106.61853825463376     
+ iteration         1847 MCMCOBJ=   -89.531448603920410     
+ iteration         1848 MCMCOBJ=   -81.005486075300851     
+ iteration         1849 MCMCOBJ=   -84.196894917960577     
+ iteration         1850 MCMCOBJ=   -95.246719420417250     
+ iteration         1851 MCMCOBJ=   -82.113757373007715     
+ iteration         1852 MCMCOBJ=   -86.628533420590728     
+ iteration         1853 MCMCOBJ=   -78.534245540049255     
+ iteration         1854 MCMCOBJ=   -86.912600438928180     
+ iteration         1855 MCMCOBJ=   -95.995017987250478     
+ iteration         1856 MCMCOBJ=   -92.386959902055509     
+ iteration         1857 MCMCOBJ=   -111.53729073927225     
+ iteration         1858 MCMCOBJ=   -102.31281986449994     
+ iteration         1859 MCMCOBJ=   -59.120915530553837     
+ iteration         1860 MCMCOBJ=   -62.498725791839995     
+ iteration         1861 MCMCOBJ=   -78.951622599452278     
+ iteration         1862 MCMCOBJ=   -74.830576241992247     
+ iteration         1863 MCMCOBJ=   -105.38849728335180     
+ iteration         1864 MCMCOBJ=   -109.78054398020468     
+ iteration         1865 MCMCOBJ=   -96.648981541373530     
+ iteration         1866 MCMCOBJ=   -101.15624770204994     
+ iteration         1867 MCMCOBJ=   -104.76229345489627     
+ iteration         1868 MCMCOBJ=   -101.25816539666404     
+ iteration         1869 MCMCOBJ=   -87.560488544093758     
+ iteration         1870 MCMCOBJ=   -104.59785119889554     
+ iteration         1871 MCMCOBJ=   -102.35585786183327     
+ iteration         1872 MCMCOBJ=   -84.602401625414103     
+ iteration         1873 MCMCOBJ=   -72.739845644954698     
+ iteration         1874 MCMCOBJ=   -75.406150682569020     
+ iteration         1875 MCMCOBJ=   -58.369475332432060     
+ iteration         1876 MCMCOBJ=   -98.496130678919016     
+ iteration         1877 MCMCOBJ=   -101.21254819879610     
+ iteration         1878 MCMCOBJ=   -92.731799451225342     
+ iteration         1879 MCMCOBJ=   -79.724369310925510     
+ iteration         1880 MCMCOBJ=   -30.225412072472068     
+ iteration         1881 MCMCOBJ=   -47.937509060340133     
+ iteration         1882 MCMCOBJ=   -49.165728749262151     
+ iteration         1883 MCMCOBJ=   -55.591791474521621     
+ iteration         1884 MCMCOBJ=   -57.171377294980971     
+ iteration         1885 MCMCOBJ=   -77.333267515451240     
+ iteration         1886 MCMCOBJ=   -81.454202566762063     
+ iteration         1887 MCMCOBJ=   -96.656977462594512     
+ iteration         1888 MCMCOBJ=   -106.83196244617082     
+ iteration         1889 MCMCOBJ=   -113.80481776036466     
+ iteration         1890 MCMCOBJ=   -107.98001640917637     
+ iteration         1891 MCMCOBJ=   -109.99095313810554     
+ iteration         1892 MCMCOBJ=   -76.402798453385230     
+ iteration         1893 MCMCOBJ=   -91.160311064730024     
+ iteration         1894 MCMCOBJ=   -100.01219302792863     
+ iteration         1895 MCMCOBJ=   -103.81120144346313     
+ iteration         1896 MCMCOBJ=   -86.112614190292305     
+ iteration         1897 MCMCOBJ=   -100.24855412256281     
+ iteration         1898 MCMCOBJ=   -93.318399618523884     
+ iteration         1899 MCMCOBJ=   -79.494707320612903     
+ iteration         1900 MCMCOBJ=   -58.849991430194891     
+ iteration         1901 MCMCOBJ=   -73.524596604330966     
+ iteration         1902 MCMCOBJ=   -50.331896697139456     
+ iteration         1903 MCMCOBJ=   -85.599390515177546     
+ iteration         1904 MCMCOBJ=   -97.421360332981394     
+ iteration         1905 MCMCOBJ=   -75.792255608209487     
+ iteration         1906 MCMCOBJ=   -69.521517479249511     
+ iteration         1907 MCMCOBJ=   -54.055891374887160     
+ iteration         1908 MCMCOBJ=   -35.261312268825058     
+ iteration         1909 MCMCOBJ=   -27.977634781817073     
+ iteration         1910 MCMCOBJ=   -21.203111416792343     
+ iteration         1911 MCMCOBJ=   -42.061823400524766     
+ iteration         1912 MCMCOBJ=   -44.381487148425805     
+ iteration         1913 MCMCOBJ=   -50.668252265606576     
+ iteration         1914 MCMCOBJ=   -61.279696323671544     
+ iteration         1915 MCMCOBJ=   -53.760787453456473     
+ iteration         1916 MCMCOBJ=   -75.681511928550151     
+ iteration         1917 MCMCOBJ=   -69.159769976794152     
+ iteration         1918 MCMCOBJ=   -102.23245632900553     
+ iteration         1919 MCMCOBJ=   -84.061871515556433     
+ iteration         1920 MCMCOBJ=   -97.167343784699369     
+ iteration         1921 MCMCOBJ=   -84.122086780931056     
+ iteration         1922 MCMCOBJ=   -80.699263163976710     
+ iteration         1923 MCMCOBJ=   -79.538513978889711     
+ iteration         1924 MCMCOBJ=   -78.168164702830524     
+ iteration         1925 MCMCOBJ=   -81.365359988126755     
+ iteration         1926 MCMCOBJ=   -48.779275034245003     
+ iteration         1927 MCMCOBJ=   -77.032591524014464     
+ iteration         1928 MCMCOBJ=   -64.414441975102577     
+ iteration         1929 MCMCOBJ=   -70.188813678792513     
+ iteration         1930 MCMCOBJ=   -83.493682091127809     
+ iteration         1931 MCMCOBJ=   -78.255310752464609     
+ iteration         1932 MCMCOBJ=   -87.696897122897582     
+ iteration         1933 MCMCOBJ=   -89.600745621145833     
+ iteration         1934 MCMCOBJ=   -88.868983591824104     
+ iteration         1935 MCMCOBJ=   -105.69544608419753     
+ iteration         1936 MCMCOBJ=   -109.55073847331471     
+ iteration         1937 MCMCOBJ=   -92.939280639177341     
+ iteration         1938 MCMCOBJ=   -95.239562397742176     
+ iteration         1939 MCMCOBJ=   -103.17122215400946     
+ iteration         1940 MCMCOBJ=   -68.320560403374785     
+ iteration         1941 MCMCOBJ=   -67.885554560148762     
+ iteration         1942 MCMCOBJ=   -44.484714364601160     
+ iteration         1943 MCMCOBJ=   -60.276252603429455     
+ iteration         1944 MCMCOBJ=   -77.298506209747103     
+ iteration         1945 MCMCOBJ=   -60.755986193308601     
+ iteration         1946 MCMCOBJ=   -65.008827497966934     
+ iteration         1947 MCMCOBJ=   -96.077502603814750     
+ iteration         1948 MCMCOBJ=   -65.491473547876225     
+ iteration         1949 MCMCOBJ=   -63.733647433391425     
+ iteration         1950 MCMCOBJ=   -78.252304450408317     
+ iteration         1951 MCMCOBJ=   -48.573358357925507     
+ iteration         1952 MCMCOBJ=   -58.104777068682267     
+ iteration         1953 MCMCOBJ=   -79.289346360035026     
+ iteration         1954 MCMCOBJ=   -92.280320038171837     
+ iteration         1955 MCMCOBJ=   -97.628915414435994     
+ iteration         1956 MCMCOBJ=   -115.86085276735615     
+ iteration         1957 MCMCOBJ=   -116.01649288856783     
+ iteration         1958 MCMCOBJ=   -112.69745275664984     
+ iteration         1959 MCMCOBJ=   -115.36677078750949     
+ iteration         1960 MCMCOBJ=   -118.25433884774648     
+ iteration         1961 MCMCOBJ=   -92.823035690693501     
+ iteration         1962 MCMCOBJ=   -89.880614584016101     
+ iteration         1963 MCMCOBJ=   -97.721596346569171     
+ iteration         1964 MCMCOBJ=   -97.238899934354848     
+ iteration         1965 MCMCOBJ=   -100.56311203347676     
+ iteration         1966 MCMCOBJ=   -106.14195043223683     
+ iteration         1967 MCMCOBJ=   -100.11436788137571     
+ iteration         1968 MCMCOBJ=   -71.094591363012995     
+ iteration         1969 MCMCOBJ=   -74.231401997865788     
+ iteration         1970 MCMCOBJ=   -64.466914958514138     
+ iteration         1971 MCMCOBJ=   -56.847805106302516     
+ iteration         1972 MCMCOBJ=   -65.895119256848446     
+ iteration         1973 MCMCOBJ=   -78.691829381865617     
+ iteration         1974 MCMCOBJ=   -84.417581903388125     
+ iteration         1975 MCMCOBJ=   -94.598207192911715     
+ iteration         1976 MCMCOBJ=   -105.13496237996057     
+ iteration         1977 MCMCOBJ=   -66.241780604588200     
+ iteration         1978 MCMCOBJ=   -43.961080416518108     
+ iteration         1979 MCMCOBJ=   -66.847218412665143     
+ iteration         1980 MCMCOBJ=   -73.501783582279799     
+ iteration         1981 MCMCOBJ=   -80.675629954322304     
+ iteration         1982 MCMCOBJ=   -71.890807999144073     
+ iteration         1983 MCMCOBJ=   -75.520553362674249     
+ iteration         1984 MCMCOBJ=   -83.834915363716945     
+ iteration         1985 MCMCOBJ=   -73.309012802948331     
+ iteration         1986 MCMCOBJ=   -46.284451483615513     
+ iteration         1987 MCMCOBJ=   -53.550477079882768     
+ iteration         1988 MCMCOBJ=   -64.305380525677180     
+ iteration         1989 MCMCOBJ=   -68.514144861581869     
+ iteration         1990 MCMCOBJ=   -56.933972328584829     
+ iteration         1991 MCMCOBJ=   -67.979250107656796     
+ iteration         1992 MCMCOBJ=   -91.276482524778231     
+ iteration         1993 MCMCOBJ=   -91.898761510292033     
+ iteration         1994 MCMCOBJ=   -81.260733429997885     
+ iteration         1995 MCMCOBJ=   -90.902495543319972     
+ iteration         1996 MCMCOBJ=   -103.45967123519614     
+ iteration         1997 MCMCOBJ=   -85.647970563983577     
+ iteration         1998 MCMCOBJ=   -82.194575488743595     
+ iteration         1999 MCMCOBJ=   -71.365031380093455     
+ iteration         2000 MCMCOBJ=   -85.927797915643097     
+
+ #TERM:
+ BURN-IN WAS NOT TESTED FOR CONVERGENCE
+ STATISTICAL PORTION WAS COMPLETED
+
+ ETABAR IS THE ARITHMETIC MEAN OF THE ETA-ESTIMATES,
+ AND THE P-VALUE IS GIVEN FOR THE NULL HYPOTHESIS THAT THE TRUE MEAN IS 0.
+
+ ETABAR:         7.4965E-03  1.6732E-02  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+ SE:             7.0829E-02  1.4196E-01  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+ N:                      39          39           0           0           0           0           0
+
+ P VAL.:         9.1571E-01  9.0618E-01  1.0000E+00  1.0000E+00  1.0000E+00  1.0000E+00  1.0000E+00
+
+ ETASHRINKSD(%)  5.6140E+00  1.1447E+01  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+ ETASHRINKVR(%)  1.0913E+01  2.1583E+01  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+ EBVSHRINKSD(%)  2.3589E+00  9.9647E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+ EBVSHRINKVR(%)  4.6622E+00  1.8936E+01  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+ RELATIVEINF(%)  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00
+ EPSSHRINKSD(%)  1.3061E+01
+ EPSSHRINKVR(%)  2.4417E+01
+
+  
+ TOTAL DATA POINTS NORMALLY DISTRIBUTED (N):          310
+ N*LOG(2PI) CONSTANT TO OBJECTIVE FUNCTION:    569.74189058689706     
+ OBJECTIVE FUNCTION VALUE WITHOUT CONSTANT:   -75.350788159234156     
+ OBJECTIVE FUNCTION VALUE WITH CONSTANT:       494.39110242766287     
+ REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
+  
+ TOTAL EFFECTIVE ETAS (NIND*NETA):                            78
+ NIND*NETA*LOG(2PI) CONSTANT TO OBJECTIVE FUNCTION:    143.35441117992895     
+ OBJECTIVE FUNCTION VALUE WITHOUT CONSTANT:   -75.350788159234156     
+ OBJECTIVE FUNCTION VALUE WITH CONSTANT:       68.003623020694789     
+ REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
+  
+ PRIOR CONSTANT TO OBJECTIVE FUNCTION:    10.514955398777966     
+ OBJECTIVE FUNCTION VALUE WITHOUT CONSTANT:   -75.350788159234156     
+ OBJECTIVE FUNCTION VALUE WITH CONSTANT:      -64.835832760456185     
+ REPORTED OBJECTIVE FUNCTION DOES NOT CONTAIN CONSTANT
+  
+ #TERE:
+ Elapsed estimation  time in seconds:   569.39
+ Elapsed covariance  time in seconds:     0.00
+1
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ ************************************************************************************************************************
+ ********************                                                                                ********************
+ ********************                              NUTS BAYESIAN ANALYSIS                            ********************
+ #OBJT:**************                       AVERAGE VALUE OF LIKELIHOOD FUNCTION                     ********************
+ ********************                                                                                ********************
+ ************************************************************************************************************************
+ 
+
+
+
+
+
+ #OBJV:********************************************      -75.351       **************************************************
+ #OBJS:********************************************       18.894 (STD) **************************************************
+1
+ ************************************************************************************************************************
+ ********************                                                                                ********************
+ ********************                              NUTS BAYESIAN ANALYSIS                            ********************
+ ********************                             FINAL PARAMETER ESTIMATE                           ********************
+ ********************                                                                                ********************
+ ************************************************************************************************************************
+ 
+
+
+ THETA - VECTOR OF FIXED EFFECTS PARAMETERS   *********
+
+
+         TH 1      TH 2      TH 3      TH 4      TH 5     
+ 
+         6.66E+00  7.60E+00  5.90E+00  7.54E+00 -1.18E+00
+ 
+
+
+ OMEGA - COV MATRIX FOR RANDOM EFFECTS - ETAS  ********
+
+
+         ETA1      ETA2      ETA3      ETA4      ETA5      ETA6      ETA7     
+ 
+ ETA1
++        2.20E-01
+ 
+ ETA2
++        2.09E-01  1.00E+00
+ 
+ ETA3
++        0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA4
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA5
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA6
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA7
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+
+
+ SIGMA - COV MATRIX FOR RANDOM EFFECTS - EPSILONS  ****
+
+
+         EPS1     
+ 
+ EPS1
++        1.20E-01
+ 
+1
+
+
+ OMEGA - CORR MATRIX FOR RANDOM EFFECTS - ETAS  *******
+
+
+         ETA1      ETA2      ETA3      ETA4      ETA5      ETA6      ETA7     
+ 
+ ETA1
++        4.65E-01
+ 
+ ETA2
++        4.50E-01  9.86E-01
+ 
+ ETA3
++        0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA4
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA5
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA6
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA7
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+
+
+ SIGMA - CORR MATRIX FOR RANDOM EFFECTS - EPSILONS  ***
+
+
+         EPS1     
+ 
+ EPS1
++        3.45E-01
+ 
+1
+ ************************************************************************************************************************
+ ********************                                                                                ********************
+ ********************                              NUTS BAYESIAN ANALYSIS                            ********************
+ ********************                STANDARD ERROR OF ESTIMATE (From Sample Variance)               ********************
+ ********************                                                                                ********************
+ ************************************************************************************************************************
+ 
+
+
+ THETA - VECTOR OF FIXED EFFECTS PARAMETERS   *********
+
+
+         TH 1      TH 2      TH 3      TH 4      TH 5     
+ 
+         8.30E-02  2.49E-01  2.31E-01  1.05E-01  1.01E-01
+ 
+
+
+ OMEGA - COV MATRIX FOR RANDOM EFFECTS - ETAS  ********
+
+
+         ETA1      ETA2      ETA3      ETA4      ETA5      ETA6      ETA7     
+ 
+ ETA1
++        5.37E-02
+ 
+ ETA2
++        9.52E-02  3.68E-01
+ 
+ ETA3
++        0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA4
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA5
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA6
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA7
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+
+
+ SIGMA - COV MATRIX FOR RANDOM EFFECTS - EPSILONS  ****
+
+
+         EPS1     
+ 
+ EPS1
++        1.17E-02
+ 
+1
+
+
+ OMEGA - CORR MATRIX FOR RANDOM EFFECTS - ETAS  *******
+
+
+         ETA1      ETA2      ETA3      ETA4      ETA5      ETA6      ETA7     
+ 
+ ETA1
++        5.58E-02
+ 
+ ETA2
++        1.55E-01  1.73E-01
+ 
+ ETA3
++        0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA4
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA5
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA6
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+ ETA7
++        0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+ 
+
+
+ SIGMA - CORR MATRIX FOR RANDOM EFFECTS - EPSILONS  ***
+
+
+         EPS1     
+ 
+ EPS1
++        1.68E-02
+ 
+1
+ ************************************************************************************************************************
+ ********************                                                                                ********************
+ ********************                              NUTS BAYESIAN ANALYSIS                            ********************
+ ********************               COVARIANCE MATRIX OF ESTIMATE (From Sample Variance)             ********************
+ ********************                                                                                ********************
+ ************************************************************************************************************************
+ 
+
+            TH 1      TH 2      TH 3      TH 4      TH 5      OM11      OM12      OM13      OM14      OM15      OM16      OM17  
+             OM22      OM23      OM24      OM25      OM26      OM27      OM33      OM34      OM35      OM36      OM37      OM44  
+            OM45      OM46      OM47      OM55      OM56      OM57      OM66      OM67      OM77      SG11  
+ 
+ TH 1
++        6.88E-03
+ 
+ TH 2
++        6.20E-03  6.20E-02
+ 
+ TH 3
++        8.56E-04 -5.97E-03  5.34E-02
+ 
+ TH 4
++        1.18E-03 -5.15E-03  1.91E-02  1.09E-02
+ 
+ TH 5
++        1.64E-04  1.61E-02  5.51E-03  1.34E-03  1.02E-02
+ 
+ OM11
++       -1.81E-04 -6.93E-05 -1.61E-03 -6.74E-04 -4.22E-04  2.89E-03
+ 
+ OM12
++       -3.97E-05  9.94E-05  3.79E-03  1.01E-03  1.17E-03  2.17E-03  9.06E-03
+ 
+ OM13
++       ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM14
++       ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM15
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM16
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM17
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM22
++        1.52E-03 -3.85E-02  1.78E-02  1.06E-02 -1.26E-02  1.85E-03  1.58E-02  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+          1.35E-01
+ 
+ OM23
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... .........
+ 
+ OM24
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... .........
+ 
+ OM25
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... .........
+ 
+ OM26
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... .........
+ 
+ OM27
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... .........
+ 
+ OM33
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... .........
+ 
+1
+
+            TH 1      TH 2      TH 3      TH 4      TH 5      OM11      OM12      OM13      OM14      OM15      OM16      OM17  
+             OM22      OM23      OM24      OM25      OM26      OM27      OM33      OM34      OM35      OM36      OM37      OM44  
+            OM45      OM46      OM47      OM55      OM56      OM57      OM66      OM67      OM77      SG11  
+ 
+ OM34
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM35
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM36
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM37
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM44
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM45
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        .........
+ 
+ OM46
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... .........
+ 
+ OM47
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... .........
+ 
+ OM55
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... .........
+ 
+ OM56
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... .........
+ 
+ OM57
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... ......... .........
+ 
+ OM66
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... ......... ......... .........
+ 
+ OM67
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM77
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+1
+
+            TH 1      TH 2      TH 3      TH 4      TH 5      OM11      OM12      OM13      OM14      OM15      OM16      OM17  
+             OM22      OM23      OM24      OM25      OM26      OM27      OM33      OM34      OM35      OM36      OM37      OM44  
+            OM45      OM46      OM47      OM55      OM56      OM57      OM66      OM67      OM77      SG11  
+ 
+ SG11
++        3.94E-05  4.46E-04 -2.36E-04 -1.46E-04  1.71E-04 -8.02E-07 -2.76E-05  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+         -4.06E-04  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+         0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  1.36E-04
+ 
+1
+ ************************************************************************************************************************
+ ********************                                                                                ********************
+ ********************                              NUTS BAYESIAN ANALYSIS                            ********************
+ ********************              CORRELATION MATRIX OF ESTIMATE (From Sample Variance)             ********************
+ ********************                                                                                ********************
+ ************************************************************************************************************************
+ 
+
+            TH 1      TH 2      TH 3      TH 4      TH 5      OM11      OM12      OM13      OM14      OM15      OM16      OM17  
+             OM22      OM23      OM24      OM25      OM26      OM27      OM33      OM34      OM35      OM36      OM37      OM44  
+            OM45      OM46      OM47      OM55      OM56      OM57      OM66      OM67      OM77      SG11  
+ 
+ TH 1
++        8.30E-02
+ 
+ TH 2
++        3.00E-01  2.49E-01
+ 
+ TH 3
++        4.47E-02 -1.04E-01  2.31E-01
+ 
+ TH 4
++        1.36E-01 -1.98E-01  7.91E-01  1.05E-01
+ 
+ TH 5
++        1.96E-02  6.40E-01  2.36E-01  1.27E-01  1.01E-01
+ 
+ OM11
++       -4.07E-02 -5.18E-03 -1.30E-01 -1.20E-01 -7.78E-02  5.37E-02
+ 
+ OM12
++       -5.02E-03  4.20E-03  1.72E-01  1.02E-01  1.21E-01  4.25E-01  9.52E-02
+ 
+ OM13
++       ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM14
++       ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM15
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM16
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM17
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM22
++        4.99E-02 -4.20E-01  2.09E-01  2.76E-01 -3.40E-01  9.37E-02  4.52E-01  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+          3.68E-01
+ 
+ OM23
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... .........
+ 
+ OM24
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... .........
+ 
+ OM25
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... .........
+ 
+ OM26
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... .........
+ 
+ OM27
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... .........
+ 
+ OM33
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... .........
+ 
+1
+
+            TH 1      TH 2      TH 3      TH 4      TH 5      OM11      OM12      OM13      OM14      OM15      OM16      OM17  
+             OM22      OM23      OM24      OM25      OM26      OM27      OM33      OM34      OM35      OM36      OM37      OM44  
+            OM45      OM46      OM47      OM55      OM56      OM57      OM66      OM67      OM77      SG11  
+ 
+ OM34
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM35
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM36
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM37
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM44
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM45
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        .........
+ 
+ OM46
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... .........
+ 
+ OM47
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... .........
+ 
+ OM55
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... .........
+ 
+ OM56
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... .........
+ 
+ OM57
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... ......... .........
+ 
+ OM66
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... ......... ......... .........
+ 
+ OM67
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM77
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+1
+
+            TH 1      TH 2      TH 3      TH 4      TH 5      OM11      OM12      OM13      OM14      OM15      OM16      OM17  
+             OM22      OM23      OM24      OM25      OM26      OM27      OM33      OM34      OM35      OM36      OM37      OM44  
+            OM45      OM46      OM47      OM55      OM56      OM57      OM66      OM67      OM77      SG11  
+ 
+ SG11
++        4.07E-02  1.53E-01 -8.77E-02 -1.19E-01  1.45E-01 -1.28E-03 -2.48E-02  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+         -9.44E-02  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+         0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  1.17E-02
+ 
+1
+ ************************************************************************************************************************
+ ********************                                                                                ********************
+ ********************                              NUTS BAYESIAN ANALYSIS                            ********************
+ ********************           INVERSE COVARIANCE MATRIX OF ESTIMATE (From Sample Variance)         ********************
+ ********************                                                                                ********************
+ ************************************************************************************************************************
+ 
+
+            TH 1      TH 2      TH 3      TH 4      TH 5      OM11      OM12      OM13      OM14      OM15      OM16      OM17  
+             OM22      OM23      OM24      OM25      OM26      OM27      OM33      OM34      OM35      OM36      OM37      OM44  
+            OM45      OM46      OM47      OM55      OM56      OM57      OM66      OM67      OM77      SG11  
+ 
+ TH 1
++        1.92E+02
+ 
+ TH 2
++       -4.19E+01  4.20E+01
+ 
+ TH 3
++        8.12E+00  1.57E+00  5.50E+01
+ 
+ TH 4
++       -5.66E+01  2.47E+01 -9.17E+01  2.82E+02
+ 
+ TH 5
++        5.97E+01 -6.36E+01 -1.76E+01 -4.37E+01  2.43E+02
+ 
+ OM11
++        1.21E+01 -5.16E+00  1.87E+01 -1.29E+01  5.09E+01  4.63E+02
+ 
+ OM12
++        3.75E+00 -2.87E+00 -1.54E+01  3.25E+01 -5.72E+01 -1.46E+02  2.06E+02
+ 
+ OM13
++       ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM14
++       ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM15
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM16
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM17
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM22
++       -5.89E+00  4.71E+00  2.51E-01 -9.79E+00  1.51E+01  1.23E+01 -2.86E+01  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+          1.41E+01
+ 
+ OM23
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... .........
+ 
+ OM24
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... .........
+ 
+ OM25
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... .........
+ 
+ OM26
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... .........
+ 
+ OM27
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... .........
+ 
+ OM33
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... .........
+ 
+1
+
+            TH 1      TH 2      TH 3      TH 4      TH 5      OM11      OM12      OM13      OM14      OM15      OM16      OM17  
+             OM22      OM23      OM24      OM25      OM26      OM27      OM33      OM34      OM35      OM36      OM37      OM44  
+            OM45      OM46      OM47      OM55      OM56      OM57      OM66      OM67      OM77      SG11  
+ 
+ OM34
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM35
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM36
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM37
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM44
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM45
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        .........
+ 
+ OM46
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... .........
+ 
+ OM47
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... .........
+ 
+ OM55
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... .........
+ 
+ OM56
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... .........
+ 
+ OM57
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... ......... .........
+ 
+ OM66
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... ......... ......... .........
+ 
+ OM67
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... ......... ......... ......... .........
+ 
+ OM77
++       ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+         ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........
+        ......... ......... ......... ......... ......... ......... ......... ......... .........
+ 
+1
+
+            TH 1      TH 2      TH 3      TH 4      TH 5      OM11      OM12      OM13      OM14      OM15      OM16      OM17  
+             OM22      OM23      OM24      OM25      OM26      OM27      OM33      OM34      OM35      OM36      OM37      OM44  
+            OM45      OM46      OM47      OM55      OM56      OM57      OM66      OM67      OM77      SG11  
+ 
+ SG11
++       -5.65E+01 -3.02E+00  9.85E+00  1.10E+02 -1.57E+02 -2.18E+01  4.35E+01  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+         -6.48E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+         0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  7.69E+03
+ 
+ Elapsed postprocess time in seconds:     0.38
+ Elapsed finaloutput time in seconds:     0.07
+ #CPUT: Total CPU Time in Seconds,      885.310
+Stop Time:
+Fri Nov 24 17:55:54 EST 2023
