@@ -101,7 +101,7 @@ system.time({
       run = model_name,
       n_post = 2000,
       logDV = FALSE,
-      # Specify the path of the simulation output file (generated from run_sims_npde)
+      # Specify the path of the simulation output file (generated from nm_join_bayes)
       sims_output_path = file.path(model_dir, model_name,
                                    glue("diag-sims-{model_name}.rds"))
     ),
