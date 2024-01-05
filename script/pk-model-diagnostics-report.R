@@ -39,18 +39,6 @@ model_dir_sim <- here("model/mrgsolve")
 # recommended that these simulations are run using the full posterior using the
 # methods implemented in this code.
 
-#These two scripts contain helper functions that perform simulations and 
-#summarizations for the creation of NPDE diagnostics. 
-# source(here("script/run-sims-npde.R"))
-
-# source(here("script/functions-diagnostics-npde.R"))
-
-# Parallel options --------------------------------------------------------
-# # Ensure that matrix algebra is not threaded when parallelising simulations 
-# omp_set_num_threads(1)
-# blas_set_num_threads(1)
-# blas_get_num_procs()
-
 # Check number of cores
 options(future.fork.enable = TRUE)
 future::plan(future::multicore, workers = parallelly::availableCores() - 1)

@@ -1,6 +1,8 @@
 # NMBayesTutorial
 Supplementary code for NONMEM Bayes Tutorial
 
+> **Note:** This branch contains example code using the `bbr.bayes` package. The original code used to produce output shown in the tutorial was written without the use of `bbr.bayes`, and can be found [in the `main` branch of this repo](https://github.com/metrumresearchgroup/NMBayesTutorial).
+
 Packages have been specified in _/renv_ and should be accessible by first running in your RStudio Console window:
 
 
@@ -58,8 +60,6 @@ For more details refer to the [UserGuide](script/UserGuide.pdf)
       
       diagnostic-templates/ = diagnostic templates for model diagnostics
       
-      functions-diagnostics-npde.R = Helper script for post-hoc npde generation
-      
       functions-diagnostics-rhat-ess.R = Helper script Bayesian-specific diagnostics
       
       functions-diagnostics.R = Helper script for general diagnostics
@@ -77,8 +77,6 @@ For more details refer to the [UserGuide](script/UserGuide.pdf)
       pk-model-diagnostics-report.R = Diagnostic generating script
       
       pksens.R = Sensitivity analysis example script
-      
-      run-sims-npde.R = Helper script for post-hoc npde generation
       
       simout/ = Simulation output for post-hoc diagnostics
       
