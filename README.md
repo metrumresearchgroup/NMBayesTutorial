@@ -1,6 +1,8 @@
 # NMBayesTutorial
 Supplementary code for NONMEM Bayes Tutorial
 
+> **Note:** This branch contains the original code used to produce output shown in the tutorial. This code has since be rewritten to make use of the new R package `bbr.bayes`, and can be found [in the `bbr.bayes` branch of this repo](https://github.com/metrumresearchgroup/NMBayesTutorial/tree/bbr.bayes).
+
 Packages have been specified in _/renv_ and should be accessible by first running in your RStudio Console window:
 
 
